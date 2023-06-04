@@ -9,17 +9,21 @@
       
       
       
+        <link rel="prev" href="../../2_Setup/exercise/">
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      
+        <link rel="next" href="../../4_LambdaConsumer/exercise/">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.13">
     
     
       
-        <title>Amazon MSK Train-The-Trainer Workshop</title>
+        <title>3 - Produce clickstream data to MSK Serverless using Elastic Container Service - Amazon MSK Train-The-Trainer Workshop</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.85bb2934.min.css">
       
       
 
@@ -35,7 +39,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -56,6 +60,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#produce-clickstream-data-to-msk-serverless-using-elastic-container-service" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -68,7 +77,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="Amazon MSK Train-The-Trainer Workshop" class="md-header__button md-logo" aria-label="Amazon MSK Train-The-Trainer Workshop" data-md-component="logo">
+    <a href="../../../.." title="Amazon MSK Train-The-Trainer Workshop" class="md-header__button md-logo" aria-label="Amazon MSK Train-The-Trainer Workshop" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -87,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              3 - Produce clickstream data to MSK Serverless using Elastic Container Service
             
           </span>
         </div>
@@ -166,7 +175,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Amazon MSK Train-The-Trainer Workshop" class="md-nav__button md-logo" aria-label="Amazon MSK Train-The-Trainer Workshop" data-md-component="logo">
+    <a href="../../../.." title="Amazon MSK Train-The-Trainer Workshop" class="md-nav__button md-logo" aria-label="Amazon MSK Train-The-Trainer Workshop" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -197,7 +206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/index.md" class="md-nav__link">
+      <a href="../../../../index.md" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -212,7 +221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/setup.md" class="md-nav__link">
+      <a href="../../../../setup.md" class="md-nav__link">
         Setup
       </a>
     </li>
@@ -281,7 +290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/day1/part1/Prerequisites/exercise.md" class="md-nav__link">
+      <a href="../../../part1/Prerequisites/exercise.md" class="md-nav__link">
         1 - Prerequisites
       </a>
     </li>
@@ -295,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/day1/part1/1_provisoned/exercise.md" class="md-nav__link">
+      <a href="../../../part1/1_provisoned/exercise.md" class="md-nav__link">
         2 - Launching MSK cluster (Provisoned)
       </a>
     </li>
@@ -351,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Open Monitoring Lab" class="md-nav__link">
+      <a href="../../../../Open Monitoring Lab" class="md-nav__link">
         None
       </a>
     </li>
@@ -400,7 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Kafka Migration Lab - MSK to MSK Serverless" class="md-nav__link">
+      <a href="../../../../Kafka Migration Lab - MSK to MSK Serverless" class="md-nav__link">
         None
       </a>
     </li>
@@ -420,14 +429,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
       
       
       
@@ -436,7 +447,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           Part 4
@@ -447,14 +458,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
       
       
       
@@ -463,7 +476,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_6_1">
           <span class="md-nav__icon md-icon"></span>
           Building a Serverless Apache Kafka Data Pipeline
@@ -476,7 +489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/day1/Part%204/1_Intro/exercise/" class="md-nav__link">
+      <a href="../../1_Intro/exercise/" class="md-nav__link">
         1 - Introduction
       </a>
     </li>
@@ -490,7 +503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/day1/Part%204/2_Setup/exercise/" class="md-nav__link">
+      <a href="../../2_Setup/exercise/" class="md-nav__link">
         2 - Setup MSK Serverless cluster
       </a>
     </li>
@@ -502,11 +515,66 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="/day1/Part%204/3_Producer/exercise/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3 - Produce clickstream data to MSK Serverless using Elastic Container Service
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         3 - Produce clickstream data to MSK Serverless using Elastic Container Service
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#run-task" class="md-nav__link">
+    Run Task
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpc-and-security-groups" class="md-nav__link">
+    VPC and security groups
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-options" class="md-nav__link">
+    Advanced Options
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -518,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/day1/Part%204/4_LambdaConsumer/exercise/" class="md-nav__link">
+      <a href="../../4_LambdaConsumer/exercise/" class="md-nav__link">
         4 - Consume data from MSK Serverless using Lambda
       </a>
     </li>
@@ -532,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/day1/Part%204/5_QS_Dashboard/exercise/" class="md-nav__link">
+      <a href="../../5_QS_Dashboard/exercise/" class="md-nav__link">
         5 - Create Quicksight Dashboard
       </a>
     </li>
@@ -546,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/day1/Part%204/6_KDA_Consumer/exercise/" class="md-nav__link">
+      <a href="../../6_KDA_Consumer/exercise/" class="md-nav__link">
         6 - Consume using Kinesis Data Analytics and write to Amazon OpenSearch Service
       </a>
     </li>
@@ -602,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/MSK Connect Lab" class="md-nav__link">
+      <a href="../../../../MSK Connect Lab" class="md-nav__link">
         None
       </a>
     </li>
@@ -651,7 +719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/MSK Integration with Athena and Redshift" class="md-nav__link">
+      <a href="../../../../MSK Integration with Athena and Redshift" class="md-nav__link">
         None
       </a>
     </li>
@@ -682,6 +750,37 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#run-task" class="md-nav__link">
+    Run Task
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpc-and-security-groups" class="md-nav__link">
+    VPC and security groups
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-options" class="md-nav__link">
+    Advanced Options
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -693,8 +792,53 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+  
+  
+
+
+<h1 id="produce-clickstream-data-to-msk-serverless-using-elastic-container-service"><strong>Produce clickstream data to MSK Serverless using Elastic Container Service</strong><a class="headerlink" href="#produce-clickstream-data-to-msk-serverless-using-elastic-container-service" title="Permanent link">&para;</a></h1>
+<p>Now that we have successfully created topics in our cluster, our next step is to produce data to the cluster. In this step we will deploy a serverlessECS Fargate container that runs an application to produce sample clickstream data to MSK Serverless cluster.</p>
+<p>Navigate to <a href="https://us-east-2.console.aws.amazon.com/ecs/home">Amazon ECS console</a> page.</p>
+<p>On the left side menu click on <strong>Task Definitions</strong> to navigate to page that displays available Task Definitions.</p>
+<p><img alt="serv21" src="../images/serv21.png" />
+<img alt="serv22" src="../images/serv22.png" /></p>
+<p>Select the checkbox against the available Task Definition and Click on <strong>Run Task</strong> option from <strong>Deploy</strong> menu.</p>
+<p><img alt="serv23" src="../images/serv23.png" /></p>
+<h2 id="run-task"><strong>Run Task</strong><a class="headerlink" href="#run-task" title="Permanent link">&para;</a></h2>
+<p>On the Run Task page, select <strong>Fargate</strong> for Launch type option and for theOperating system family select <strong>Linux</strong> from drop down. Refer to below image for more details on other fields</p>
+<p><img alt="serv24" src="../images/serv24.png" /></p>
+<p>Expand the <strong>Networking</strong> section.</p>
+<p><img alt="serv25" src="../images/serv25.png" /></p>
+<h2 id="vpc-and-security-groups"><strong>VPC and security groups</strong><a class="headerlink" href="#vpc-and-security-groups" title="Permanent link">&para;</a></h2>
+<p>Change <strong>VPC</strong> to <strong>MMVPC</strong>. Select <strong>PrivateSubnetMSKOne</strong>, <strong>PrivateSubnetMSKTwo</strong> and <strong>PrivateSubnetMSKThree</strong>.</p>
+<p>For <strong>Security Groups</strong>, select Use an existing security group, uncheck thedefault security group, and select the security group name starting with <strong>msk-serverless-workshop-cfn-ProducerECSTaskSecurity</strong>.</p>
+<p><img alt="serv26" src="../images/serv26.png" /></p>
+<h2 id="advanced-options"><strong>Advanced Options</strong><a class="headerlink" href="#advanced-options" title="Permanent link">&para;</a></h2>
+<p>Expand the section under <strong>Container Overrides</strong>.</p>
+<p>For <strong>BOOTSTRAP_STRING</strong> enter the value of your MSK Serverless cluster broker endpoint (you copied this earlier from the <a href="https://us-east-2.console.aws.amazon.com/msk/">Amazon MSK cluster console page</a>, with <strong>View client information</strong>).</p>
+<p><img alt="serv27" src="../images/serv27.png" /></p>
+<p>Scroll to the bottom of the page and click on the <strong>Create button</strong>.</p>
+<p><img alt="serv28" src="../images/serv28.png" /></p>
+<p>On the new page, wait for your task to get into Running status as shown in below image.</p>
+<p><img alt="serv29" src="../images/serv29.png" /></p>
+<p>You have now successfully setup a producer ECS task that will continuously keep on producing clickstream data to Kafka topic.</p>
+<h1 id="check-schema-in-aws-glue-schema-registry"><strong>Check schema in AWS Glue Schema Registry</strong><a class="headerlink" href="#check-schema-in-aws-glue-schema-registry" title="Permanent link">&para;</a></h1>
+<p>Now that the producer ECS task is running, it would create the clickstream schema in AWS Glue Schema Registry.</p>
+<p>Navigate to <a href="https://us-east-2.console.aws.amazon.com/glue/home">Amazon Glue console</a> page and select <strong>Stream schema registries</strong> from left menu.</p>
+<p>You would see the schema registry name <strong>serverless</strong>. Click on the registry name.</p>
+<p><img alt="serv30" src="../images/serv30.png" /></p>
+<p>This would show the schema <strong>clickstream</strong> within the registry. Click on the schema name to see the schema versions. You would see the <strong>v1</strong> over there.</p>
+<p><img alt="serv31" src="../images/serv31.png" /></p>
+<p>Click on the version <strong>v1</strong>, this would show you the avro schema of the clickstream data produced by the ECS task.</p>
+<p><img alt="serv32" src="../images/serv32.png" /></p>
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -726,10 +870,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "/", "features": ["tabs"], "search": "/assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["tabs"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.b4d07000.min.js"></script>
       
     
   </body>

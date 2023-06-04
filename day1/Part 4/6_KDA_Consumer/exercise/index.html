@@ -9,17 +9,19 @@
       
       
       
+        <link rel="prev" href="../../5_QS_Dashboard/exercise/">
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.13">
     
     
       
-        <title>Amazon MSK Train-The-Trainer Workshop</title>
+        <title>6 - Consume using Kinesis Data Analytics and write to Amazon OpenSearch Service - Amazon MSK Train-The-Trainer Workshop</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.85bb2934.min.css">
       
       
 
@@ -35,7 +37,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -56,6 +58,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#consume-using-kinesis-data-analytics-and-write-to-amazon-opensearch-service" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -68,7 +75,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="Amazon MSK Train-The-Trainer Workshop" class="md-header__button md-logo" aria-label="Amazon MSK Train-The-Trainer Workshop" data-md-component="logo">
+    <a href="../../../.." title="Amazon MSK Train-The-Trainer Workshop" class="md-header__button md-logo" aria-label="Amazon MSK Train-The-Trainer Workshop" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -87,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              6 - Consume using Kinesis Data Analytics and write to Amazon OpenSearch Service
             
           </span>
         </div>
@@ -166,7 +173,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Amazon MSK Train-The-Trainer Workshop" class="md-nav__button md-logo" aria-label="Amazon MSK Train-The-Trainer Workshop" data-md-component="logo">
+    <a href="../../../.." title="Amazon MSK Train-The-Trainer Workshop" class="md-nav__button md-logo" aria-label="Amazon MSK Train-The-Trainer Workshop" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -197,7 +204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/index.md" class="md-nav__link">
+      <a href="../../../../index.md" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -212,7 +219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/setup.md" class="md-nav__link">
+      <a href="../../../../setup.md" class="md-nav__link">
         Setup
       </a>
     </li>
@@ -281,7 +288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/day1/part1/Prerequisites/exercise.md" class="md-nav__link">
+      <a href="../../../part1/Prerequisites/exercise.md" class="md-nav__link">
         1 - Prerequisites
       </a>
     </li>
@@ -295,7 +302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/day1/part1/1_provisoned/exercise.md" class="md-nav__link">
+      <a href="../../../part1/1_provisoned/exercise.md" class="md-nav__link">
         2 - Launching MSK cluster (Provisoned)
       </a>
     </li>
@@ -351,7 +358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Open Monitoring Lab" class="md-nav__link">
+      <a href="../../../../Open Monitoring Lab" class="md-nav__link">
         None
       </a>
     </li>
@@ -400,7 +407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Kafka Migration Lab - MSK to MSK Serverless" class="md-nav__link">
+      <a href="../../../../Kafka Migration Lab - MSK to MSK Serverless" class="md-nav__link">
         None
       </a>
     </li>
@@ -420,14 +427,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
       
       
       
@@ -436,7 +445,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           Part 4
@@ -447,14 +456,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
       
       
       
@@ -463,7 +474,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_6_1">
           <span class="md-nav__icon md-icon"></span>
           Building a Serverless Apache Kafka Data Pipeline
@@ -476,7 +487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/day1/Part%204/1_Intro/exercise/" class="md-nav__link">
+      <a href="../../1_Intro/exercise/" class="md-nav__link">
         1 - Introduction
       </a>
     </li>
@@ -490,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/day1/Part%204/2_Setup/exercise/" class="md-nav__link">
+      <a href="../../2_Setup/exercise/" class="md-nav__link">
         2 - Setup MSK Serverless cluster
       </a>
     </li>
@@ -504,7 +515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/day1/Part%204/3_Producer/exercise/" class="md-nav__link">
+      <a href="../../3_Producer/exercise/" class="md-nav__link">
         3 - Produce clickstream data to MSK Serverless using Elastic Container Service
       </a>
     </li>
@@ -518,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/day1/Part%204/4_LambdaConsumer/exercise/" class="md-nav__link">
+      <a href="../../4_LambdaConsumer/exercise/" class="md-nav__link">
         4 - Consume data from MSK Serverless using Lambda
       </a>
     </li>
@@ -532,7 +543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/day1/Part%204/5_QS_Dashboard/exercise/" class="md-nav__link">
+      <a href="../../5_QS_Dashboard/exercise/" class="md-nav__link">
         5 - Create Quicksight Dashboard
       </a>
     </li>
@@ -544,11 +555,66 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="/day1/Part%204/6_KDA_Consumer/exercise/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          6 - Consume using Kinesis Data Analytics and write to Amazon OpenSearch Service
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         6 - Consume using Kinesis Data Analytics and write to Amazon OpenSearch Service
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configure-kinesis-analytics-application" class="md-nav__link">
+    Configure Kinesis Analytics Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-kinesis-analytics-application" class="md-nav__link">
+    Run Kinesis Analytics Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-apache-flink-dashboard" class="md-nav__link">
+    Open Apache Flink Dashboard
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -602,7 +668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/MSK Connect Lab" class="md-nav__link">
+      <a href="../../../../MSK Connect Lab" class="md-nav__link">
         None
       </a>
     </li>
@@ -651,7 +717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/MSK Integration with Athena and Redshift" class="md-nav__link">
+      <a href="../../../../MSK Integration with Athena and Redshift" class="md-nav__link">
         None
       </a>
     </li>
@@ -682,6 +748,37 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configure-kinesis-analytics-application" class="md-nav__link">
+    Configure Kinesis Analytics Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-kinesis-analytics-application" class="md-nav__link">
+    Run Kinesis Analytics Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-apache-flink-dashboard" class="md-nav__link">
+    Open Apache Flink Dashboard
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -693,8 +790,63 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+  
+  
+
+
+<h1 id="consume-using-kinesis-data-analytics-and-write-to-amazon-opensearch-service"><strong>Consume using Kinesis Data Analytics and write to Amazon OpenSearch Service</strong><a class="headerlink" href="#consume-using-kinesis-data-analytics-and-write-to-amazon-opensearch-service" title="Permanent link">&para;</a></h1>
+<p>In this module, we would like to consume data from MSK Serverless cluster using Amazon Kinesis Data Analytics - Flink, process the data and write the data in Amazon OpenSearch Service</p>
+<p>The OpenSearch Service is deployed in your AWS account and Dashboards are already configured. We need to configure Kinesis Data Analytics application with correct runtime parameters.</p>
+<p>Navigate to the AWS <a href="https://us-east-2.console.aws.amazon.com/kinesisanalytics/">Kinesis Analytics Console</a> and click on the application <strong>KDAFlinkClickstream-msk-serverless-workshop-cfn</strong>.</p>
+<h2 id="configure-kinesis-analytics-application"><strong>Configure Kinesis Analytics Application</strong><a class="headerlink" href="#configure-kinesis-analytics-application" title="Permanent link">&para;</a></h2>
+<p>Click on the <strong>Configure</strong> button to update the Kinesis Data Analytics configuration.</p>
+<p><img alt="serv51" src="../images/serv51.png" /></p>
+<p>Scroll to <strong>RunTime Properties</strong> section. Update <strong>BootStrapServers</strong> and keep restof the value as default.</p>
+<p><img alt="serv52" src="../images/serv52.png" /></p>
+<p>Save your changes.</p>
+<h2 id="run-kinesis-analytics-application"><strong>Run Kinesis Analytics Application</strong><a class="headerlink" href="#run-kinesis-analytics-application" title="Permanent link">&para;</a></h2>
+<p>Click on the <strong>Run</strong> button to run the application. This takes a few minutes.</p>
+<p><img alt="serv53" src="../images/serv53.png" /></p>
+<h2 id="open-apache-flink-dashboard"><strong>Open Apache Flink Dashboard</strong><a class="headerlink" href="#open-apache-flink-dashboard" title="Permanent link">&para;</a></h2>
+<p>Once the Kinesis Analytics application is running, click on <strong>Open Apache Flink dashboard</strong> to open the Flink dashboard.</p>
+<p><img alt="serv54" src="../images/serv54.png" /></p>
+<p>Click on the Job Name <strong>Flink Streaming Job</strong></p>
+<p><img alt="serv55" src="../images/serv55.png" /></p>
+<p>This would show the Job details including the operator directed acyclic graph and data flowing through the operators.</p>
+<p><img alt="serv56" src="../images/serv56.png" /></p>
+<p>You have now successfully setup a Kinesis Analytics application that reads messages from a Kafka topic, process the data and then write it to Amazon OpenSearch Service.</p>
+<p>Lets check the data in OpenSearch Dashboard!</p>
+<h1 id="amazon-opensearch-dashboard-visualisation"><strong>Amazon OpenSearch Dashboard Visualisation</strong><a class="headerlink" href="#amazon-opensearch-dashboard-visualisation" title="Permanent link">&para;</a></h1>
+<p>In this module, we would see the dashboard visualisation generated based onthe ingested data from Kinesis Analytics application.</p>
+<h2 id="amazon-opensearch-service"><strong>Amazon OpenSearch Service</strong><a class="headerlink" href="#amazon-opensearch-service" title="Permanent link">&para;</a></h2>
+<p>Go to <a href="https://us-east-2.console.aws.amazon.com/cloudformation/">AWS CloudFormation Console</a> and click on stack named msk-serverless-workshop-cfn. Go to the Outputs tab of the stack.</p>
+<p><img alt="serv57" src="../images/serv57.png" /></p>
+<p>Right-click on the <strong>OpenSearchDashboardEndpoint</strong> and click <strong>Open Link in new tab</strong>. This would try to redirect you to the OpenSearch Dashboard login page.</p>
+<p>As OpenSearch Service is deployed in a VPC, we are using NGinx reverse proxy to access the OpenSearch Dashboard outside of the VPC.</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">We</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">using</span><span class="w"> </span><span class="nv">self</span><span class="w"> </span><span class="nv">signed</span><span class="w"> </span><span class="nv">certificate</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">Nginx</span>.<span class="w"> </span><span class="nv">however</span><span class="w"> </span><span class="nv">recommended</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">use</span><span class="w"> </span><span class="nv">valid</span><span class="w"> </span><span class="nv">certificate</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">production</span>.
+</code></pre></div>
+
+<p>If you are accessing the url using Google Chrome, you have to click on the webpage body and type thisisunsafe. This would redirect you to actual OpenSearch login page.</p>
+<p><img alt="serv58" src="../images/serv58.png" /></p>
+<p>Go back to the CloudFormation output, retrieve the values for <strong>OpenSearchMasterUserName</strong> and <strong>OpenSearchMasterPassword</strong> and use it for login.</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">Ensure</span><span class="w"> </span><span class="nv">that</span><span class="w"> </span><span class="nv">there</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">no</span><span class="w"> </span><span class="nv">spaces</span><span class="w"> </span><span class="nv">copied</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">OpenSearchMasterPassword</span>,<span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">won</span><span class="err">&#39;t be able to login to OpenSearch Dashboard.</span>
+</code></pre></div>
+
+<p>Select Global tenant on the popup dialog box.</p>
+<h2 id="amazon-opensearch-dashboard"><strong>Amazon OpenSearch Dashboard</strong><a class="headerlink" href="#amazon-opensearch-dashboard" title="Permanent link">&para;</a></h2>
+<p>Click on the hamburger menu on the left of the screen as highlighted below and then click on <strong>Dashboard</strong>.</p>
+<p><img alt="serv59" src="../images/serv59.png" /></p>
+<p>This would open the OpenSearch Dashboard where you can see the data gets plotted.</p>
+<p><img alt="serv60" src="../images/serv60.png" /></p>
+<p>You have now confirmed data flowing to OpenSearch Service and visualizations are rendered.</p>
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -726,10 +878,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "/", "features": ["tabs"], "search": "/assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["tabs"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.b4d07000.min.js"></script>
       
     
   </body>
