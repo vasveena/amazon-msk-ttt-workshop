@@ -6,14 +6,13 @@ theme:
  name: material
  features:
    - tabs
-
 nav:
-  - Introduction: index.md
-  - Setup: setup.md
+  - Introduction
+  - Setup
   - Part 1:
-    - Kafka overview & Amazon MSK Cluster Creation:
-      - 1 - Prerequisites: 
-      - 2 - Launching MSK cluster (Provisoned): 
+    - Kafka overview & Amazon MSK Cluster Creation
+      - 1 - Prerequisites
+      - 2 - Launching MSK cluster (Provisoned)
   - Part 2: 
     - Open Monitoring Lab 
   - Part 3: 
