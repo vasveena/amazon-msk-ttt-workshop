@@ -1,0 +1,1229 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../1_provisoned/exercise/">
+      
+      
+        <link rel="next" href="../../../../day2/part4/1_Intro/exercise/">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
+    
+    
+      
+        <title>4 - Launching MSK cluster (Provisoned)(CLI) - Amazon MSK Train-The-Trainer Workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.85bb2934.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#launching-an-msk-cluster-cli" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Amazon MSK Train-The-Trainer Workshop" class="md-header__button md-logo" aria-label="Amazon MSK Train-The-Trainer Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Amazon MSK Train-The-Trainer Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4 - Launching MSK cluster (Provisoned)(CLI)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vasveena/amazon-msk-ttt-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vasveena/amazon-msk-ttt-workshop
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Amazon MSK Train-The-Trainer Workshop" class="md-nav__button md-logo" aria-label="Amazon MSK Train-The-Trainer Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Amazon MSK Train-The-Trainer Workshop
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vasveena/amazon-msk-ttt-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vasveena/amazon-msk-ttt-workshop
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../setup/" class="md-nav__link">
+        Setup
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Part 1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Part 1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          Kafka overview & Amazon MSK Cluster Creation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Kafka overview & Amazon MSK Cluster Creation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/exercise/" class="md-nav__link">
+        1 - Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Prerequisites/exercise/" class="md-nav__link">
+        2 - Prerequisites
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_provisoned/exercise/" class="md-nav__link">
+        3 - Launching MSK cluster (Provisoned)(Console)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          4 - Launching MSK cluster (Provisoned)(CLI)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        4 - Launching MSK cluster (Provisoned)(CLI)
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-the-enviroment" class="md-nav__link">
+    Prepare the Enviroment
+  </a>
+  
+    <nav class="md-nav" aria-label="Prepare the Enviroment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-your-cloud9-workstation-environment" class="md-nav__link">
+    Setting Up Your Cloud9 Workstation Environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-aws-cloud9-terminal-ide" class="md-nav__link">
+    Accessing AWS Cloud9 Terminal IDE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-msk-cluster-cli" class="md-nav__link">
+    Create MSK Cluster (CLI)
+  </a>
+  
+    <nav class="md-nav" aria-label="Create MSK Cluster (CLI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-get-subnet-information" class="md-nav__link">
+    Step-1: Get Subnet Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-create-a-custom-cluster-configuration" class="md-nav__link">
+    Step-2: Create a custom cluster configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-create-the-configuration-object" class="md-nav__link">
+    Step-3: Create the configuration object
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-3: Create the configuration object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#review-the-configuration-created" class="md-nav__link">
+    Review the configuration created
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-create-the-cluster-definition-file" class="md-nav__link">
+    Step-4: Create the cluster definition file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-create-the-cluster" class="md-nav__link">
+    Step 5 - Create the cluster
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-review-the-cluster-deployed" class="md-nav__link">
+    Step 6 - Review the cluster deployed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Part 2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Part 2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Open Monitoring Lab" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Part 3
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Part 3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Kafka Migration Lab - MSK to MSK Serverless" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Part 4
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Part 4
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+          Building a Serverless Apache Kafka Data Pipeline
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Building a Serverless Apache Kafka Data Pipeline
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day2/part4/1_Intro/exercise/" class="md-nav__link">
+        1 - Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day2/part4/2_Setup/exercise/" class="md-nav__link">
+        2 - Setup MSK Serverless cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day2/part4/3_Producer/exercise/" class="md-nav__link">
+        3 - Produce clickstream data to MSK Serverless using Elastic Container Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day2/part4/4_LambdaConsumer/exercise/" class="md-nav__link">
+        4 - Consume data from MSK Serverless using Lambda
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day2/part4/5_QS_Dashboard/exercise/" class="md-nav__link">
+        5 - Create Quicksight Dashboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day2/part4/6_KDA_Consumer/exercise/" class="md-nav__link">
+        6 - Consume using Kinesis Data Analytics and write to Amazon OpenSearch Service
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Part 5
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Part 5
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+          MSK Integration with Athena and Redshift
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          MSK Integration with Athena and Redshift
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day2/part5/overview/exercise/" class="md-nav__link">
+        1 - Architecture Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day2/part5/Prerequisites/exercise/" class="md-nav__link">
+        2 - Prerequisites
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day2/part5/athena/exercise/" class="md-nav__link">
+        3 - Integration with Athena
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day2/part5/redshift/exercise/" class="md-nav__link">
+        4 - Integration with Redshift
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-the-enviroment" class="md-nav__link">
+    Prepare the Enviroment
+  </a>
+  
+    <nav class="md-nav" aria-label="Prepare the Enviroment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-your-cloud9-workstation-environment" class="md-nav__link">
+    Setting Up Your Cloud9 Workstation Environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-aws-cloud9-terminal-ide" class="md-nav__link">
+    Accessing AWS Cloud9 Terminal IDE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-msk-cluster-cli" class="md-nav__link">
+    Create MSK Cluster (CLI)
+  </a>
+  
+    <nav class="md-nav" aria-label="Create MSK Cluster (CLI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-get-subnet-information" class="md-nav__link">
+    Step-1: Get Subnet Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-create-a-custom-cluster-configuration" class="md-nav__link">
+    Step-2: Create a custom cluster configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-create-the-configuration-object" class="md-nav__link">
+    Step-3: Create the configuration object
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-3: Create the configuration object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#review-the-configuration-created" class="md-nav__link">
+    Review the configuration created
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-create-the-cluster-definition-file" class="md-nav__link">
+    Step-4: Create the cluster definition file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-create-the-cluster" class="md-nav__link">
+    Step 5 - Create the cluster
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-review-the-cluster-deployed" class="md-nav__link">
+    Step 6 - Review the cluster deployed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="launching-an-msk-cluster-cli"><strong>Launching an MSK cluster (CLI)</strong><a class="headerlink" href="#launching-an-msk-cluster-cli" title="Permanent link">&para;</a></h1>
+<p><strong>In this exercise you will create an Amazon MSK cluster using the AWS CLI.</strong></p>
+<h2 id="prepare-the-enviroment">Prepare the Enviroment<a class="headerlink" href="#prepare-the-enviroment" title="Permanent link">&para;</a></h2>
+<h3 id="setting-up-your-cloud9-workstation-environment">Setting Up Your Cloud9 Workstation Environment<a class="headerlink" href="#setting-up-your-cloud9-workstation-environment" title="Permanent link">&para;</a></h3>
+<p><strong>AWS Cloud9</strong> is a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser while providing you with access to a full Linux server.</p>
+<p>You will use <a href="https://aws.amazon.com/cloud9/">AWS Cloud9</a> as your workstation enviroment to run shell commands, Python scripts and SQL queries for the labs.</p>
+<h3 id="accessing-aws-cloud9-terminal-ide">Accessing AWS Cloud9 Terminal IDE<a class="headerlink" href="#accessing-aws-cloud9-terminal-ide" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Go to the <a href="https://us-east-1.console.aws.amazon.com/cloud9control/home?region=us-east-1#/">AWS Cloud9 Console</a>  and you should see a Cloud9 Environment named <strong>msk-labs-default-Cloud9EC2Bastion</strong>. (Make sure you are in the right AWS Region).<img alt="cloud9-1" src="../images/cloud9-1.png" /></li>
+<li>Click on Open to launch your AWS Cloud9 Terminal IDE. A new tab will open in your Browser!<blockquote>
+<p>Tip: Now, you can close the first AWS Cloud9 tab in your browser and stick to the new AWS Cloud9 Terminal IDE tab that just opened (the one that partially says msk-labs-default-Cloud9EC2Bastion).</p>
+</blockquote>
+</li>
+<li>Allow for the AWS Cloud9 IDE quick setup to finish, then close the Welcome tab</li>
+<li>To run commands in Cloud9 you need a terminal. Click on the green plus icon (+) and select new terminal to add a new Command Line Terminal tab: <img alt="cloud9-2" src="../images/cloud9-2.png" /><blockquote>
+<p>From now on, you will use this terminal window throughout this workshop lab to execute all the AWS CLI commands and scripts.</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="create-msk-cluster-cli">Create MSK Cluster (CLI)<a class="headerlink" href="#create-msk-cluster-cli" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-get-subnet-information">Step-1: Get Subnet Information<a class="headerlink" href="#step-1-get-subnet-information" title="Permanent link">&para;</a></h3>
+<p>We need to get the subnets to deploy the brokers in to. For that, we need to know the VPC ID for the lab.</p>
+<ol>
+<li>Use the cli to get a list of VPCs in your account <blockquote>
+<p>aws ec2 describe-vpcs --output table </p>
+</blockquote>
+</li>
+<li>Look in the table for the VPC you're using for the exercise.  If you are using the VPC created as part of the workshop event, it will be named <strong>MSKVPC</strong>. <img alt="cli-1" src="../images/cli-1.png" /></li>
+<li>Copy the VPCid (example: vpc-0eb566c1948800933) to your notepad </li>
+<li>Use the cli to get a list of subnets in that VPC<blockquote>
+<p>aws ec2 describe-subnets --filters "Name=vpc-id,Values=vpc-001ed0757fbb9e2b5" --output table | egrep "Name|AvailabilityZone|SubnetId"</p>
+</blockquote>
+</li>
+</ol>
+<p><strong>This will list the subnets in the selected VPC, then grab only the AZ, SubnetID, and Name, making it easier for you to grab the SubnetIds for the 3 private subnets in 3 different AZs. Add these to your notepad for later use. Example: (Highlighted in green)</strong> 
+<img alt="cli-2" src="../images/cli-2.png" /></p>
+<h3 id="step-2-create-a-custom-cluster-configuration">Step-2: Create a custom cluster configuration<a class="headerlink" href="#step-2-create-a-custom-cluster-configuration" title="Permanent link">&para;</a></h3>
+<p>We are going to enable your new Amazon MSK cluster to have the following settings:</p>
+<table>
+<thead>
+<tr>
+<th>Configuration Name</th>
+<th align="center">Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auto.create.topics.enable</td>
+<td align="center">allow topics to be created automatically by producers and consumers. This is not typically enabled in a production cluster, but it is handy for development and testing to lower the operational overhead</td>
+</tr>
+<tr>
+<td>delete.topic.enable</td>
+<td align="center">enables topic deletion on the server. If topic deletion is not enabled, you cannot delete topics. You likely want to turn this on on all clusters you build unless you have a specific need not to.</td>
+</tr>
+<tr>
+<td>log.retention.hours</td>
+<td align="center">we will set this to 8 hours for the lab. Note that this is the default configuration, it can still be overridden at the topic level</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>On your Cloud9 terminal, create a file called 'cluster_config.txt' with the following command:</p>
+<blockquote>
+<p>vi ~/cluster_config.txt</p>
+</blockquote>
+</li>
+<li>
+<p>Put in the following content (hit i to enter insert mode):</p>
+<blockquote>
+<p>auto.create.topics.enable = true</p>
+<p>delete.topic.enable = true</p>
+<p>log.retention.hours = 8</p>
+</blockquote>
+</li>
+<li>
+<p>Press <escape> to exit insert mode, then type :wq! to save and exit</p>
+</li>
+<li>Confirm if the file is created successfully, using below command: <blockquote>
+<p>cat ~/cluster_config.txt</p>
+</blockquote>
+</li>
+</ol>
+<p><img alt="cli-3" src="../images/cli-3.png" /></p>
+<h3 id="step-3-create-the-configuration-object">Step-3: Create the configuration object<a class="headerlink" href="#step-3-create-the-configuration-object" title="Permanent link">&para;</a></h3>
+<p>Run the following command to push the configuration to the Amazon MSK service for use at cluster creation time:</p>
+<blockquote>
+<p>aws kafka create-configuration --name "WorkshopMSKConfig" --description "Configuration used for MSK workshop - Auto topic creation; topic deletion; 8hrs retention" --kafka-versions "2.8.1" "2.7.0" --server-properties fileb://cluster_config.txt</p>
+</blockquote>
+<p>The --kafka-versions option is used to tell Amazon MSK which versions of Amazon MSK this configuration is allowed to be used with. If you see an error like the following, then ensure that you've typed in the kafka version string correctly (including quotes):</p>
+<blockquote>
+<p>An error occurred (BadRequestException) when calling the CreateConfiguration operation: Unsupported KafkaVersion [2.7.1]. Valid values: [1.1.1, 2.1.0, 2.2.1, 2.3.1]</p>
+</blockquote>
+<p>When the command is run, it will return a JSON object, including the ARN for the configuration object. You should copy and paste this in to your text editor for use later, or assign it to an environment variable (export CLUSTER_ARN="arn:..."). Example:</p>
+<p><img alt="cli-4" src="../images/cli-4.png" /></p>
+<h4 id="review-the-configuration-created">Review the configuration created<a class="headerlink" href="#review-the-configuration-created" title="Permanent link">&para;</a></h4>
+<p>You can review the configuration using the CLI. Using the ARN provided in the output Step above (or retrieved from aws kafka list-configurations) you can query for your saved configuration:</p>
+<blockquote>
+<p>aws kafka describe-configuration --arn $CLUSTER_ARN</p>
+</blockquote>
+<p>The output:
+<img alt="cli-5" src="../images/cli-5.png" /></p>
+<p>For more details on creating and managing Amazon MSK Cluster Configuration, see the <a href="https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-operations.html">MSK Configuration Operations</a>  document.</p>
+<h3 id="step-4-create-the-cluster-definition-file">Step-4: Create the cluster definition file<a class="headerlink" href="#step-4-create-the-cluster-definition-file" title="Permanent link">&para;</a></h3>
+<p>To complete this Step, you need the following:</p>
+<ol>
+<li>Private SubnetID us-east-1a (from step 1 above)</li>
+<li>Private SubnetID us-east-1b (from step 1 above)</li>
+<li>Private SubnetID us-east-1c (from step 1 above)</li>
+<li>Securitygroup ID for the SG "MSKWorkshop-KafkaService" (from Prerequisites lab)</li>
+<li>Cluster configuration ARN (from step 2 above)</li>
+</ol>
+<p>You will now combine the data above into a cluster definition file (clusterinfo.json). It will look something like this, where you will replace the values with the values from above:</p>
+<p>Example of a complete file:</p>
+<div class="codehilite"><pre><span></span><code>{
+  &quot;BrokerNodeGroupInfo&quot;: {
+     &quot;BrokerAZDistribution&quot;: &quot;DEFAULT&quot;,
+     &quot;InstanceType&quot;: &quot;kafka.m5.large&quot;,
+     &quot;ClientSubnets&quot;: [
+         &quot;subnet-0777309bbfe01c152&quot;, &quot;subnet-0d629834c7436ba42&quot;, &quot;subnet-01236bbb66a65708d&quot;
+     ],
+     &quot;SecurityGroups&quot;: [
+         &quot;sg-0b4e02d3f8487d13a&quot;
+     ],
+     &quot;StorageInfo&quot;: {
+         &quot;EbsStorageInfo&quot;: {
+            &quot;VolumeSize&quot;: 100
+         }
+     }
+  },
+  &quot;ClusterName&quot;: &quot;MSKWorkshopCluster-cli&quot;,
+  &quot;ConfigurationInfo&quot;: {
+     &quot;Arn&quot;: &quot;arn:aws:kafka:us-east-1:&lt;aws-account-number&gt;:configuration/WorkshopMSKConfig/68151d80-d2fe-491b-8632-9e090cd7e2ea-21&quot;,
+     &quot;Revision&quot;: 1
+  },
+  &quot;EncryptionInfo&quot;: {
+     &quot;EncryptionAtRest&quot;: {
+         &quot;DataVolumeKMSKeyId&quot;: &quot;&quot;
+     },
+     &quot;EncryptionInTransit&quot;: {
+         &quot;InCluster&quot;: true,
+         &quot;ClientBroker&quot;: &quot;TLS_PLAINTEXT&quot;
+     }
+  },
+  &quot;EnhancedMonitoring&quot;: &quot;PER_TOPIC_PER_BROKER&quot;,
+  &quot;KafkaVersion&quot;: &quot;2.8.1&quot;,
+  &quot;NumberOfBrokerNodes&quot;: 3,
+  &quot;OpenMonitoring&quot;: {
+     &quot;Prometheus&quot;: {
+         &quot;JmxExporter&quot;: {
+            &quot;EnabledInBroker&quot;: true
+         },
+         &quot;NodeExporter&quot;: {
+            &quot;EnabledInBroker&quot;: true
+         }
+     }
+  }
+}
+</code></pre></div>
+
+<h3 id="step-5-create-the-cluster">Step 5 - Create the cluster<a class="headerlink" href="#step-5-create-the-cluster" title="Permanent link">&para;</a></h3>
+<p>We can now use the command line tool and the cluster definition to create the cluster:</p>
+<blockquote>
+<p>aws kafka create-cluster --cli-input-json file://~/clusterinfo.json </p>
+</blockquote>
+<p>The command will return a JSON object that containers your cluster ARN, name and state. Grab the ARN.</p>
+<p><img alt="cli-6" src="../images/cli-6.png" /></p>
+<p><strong>This step will take some time. You can move on to the next step to see how to monitor progress and review the cluster deployment.</strong></p>
+<h3 id="step-6-review-the-cluster-deployed">Step 6 - Review the cluster deployed<a class="headerlink" href="#step-6-review-the-cluster-deployed" title="Permanent link">&para;</a></h3>
+<p>You can check on your cluster configuration and status by using the cli and the <strong>--describe-cluster</strong> option. You will need the cluster arn for this, which you got from the last step.</p>
+<p>Use the ARN and get the cluster configuration and state, changing the example ARN to the one from the command above:</p>
+<blockquote>
+<p>aws kafka describe-cluster --cluster-arn arn:aws:kafka:us-east-1:xyz:cluster/MSKWorkshop/20a94343-552f-4298-9076-99673162e023-6 | grep -i state</p>
+</blockquote>
+<p><img alt="cli-7" src="../images/cli-7.png" /></p>
+<p>You can alternatively check the same on the <a href="https://us-east-1.console.aws.amazon.com/msk/home?region=us-east-1#/clusters">MSK Console</a>
+(Right click -&gt; Open Link in New Tab).</p>
+<p><img alt="cli-8" src="../images/cli-8.png" /></p>
+<p>When the cluster is ready, you will get the state as "ACTIVE".</p>
+<p><img alt="cli-9" src="../images/cli-9.png" /></p>
+<p>You are done here! Proceed to Next Lab.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["tabs"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      
+    
+  </body>
+</html>
