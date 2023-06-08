@@ -743,8 +743,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-iam-policies" class="md-nav__link">
-    Create IAM Policies
+  <a href="#create-iam-policy" class="md-nav__link">
+    Create IAM Policy
   </a>
   
 </li>
@@ -953,8 +953,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-iam-policies" class="md-nav__link">
-    Create IAM Policies
+  <a href="#create-iam-policy" class="md-nav__link">
+    Create IAM Policy
   </a>
   
 </li>
@@ -1138,7 +1138,7 @@
 </ol>
 <h2 id="4-setting-up-iam">4. Setting up IAM<a class="headerlink" href="#4-setting-up-iam" title="Permanent link">&para;</a></h2>
 <p>This is used to create IAM policies and IAM role for the redshift cluster</p>
-<h3 id="create-iam-policies">Create IAM Policies<a class="headerlink" href="#create-iam-policies" title="Permanent link">&para;</a></h3>
+<h3 id="create-iam-policy">Create IAM Policy<a class="headerlink" href="#create-iam-policy" title="Permanent link">&para;</a></h3>
 <p>Create an IAM Policy, which provides permission for communication with the Amazon MSK cluster. The policy you need depends on the authentication method used on your cluster, if you use Amazon MSK. See <a href="https://docs.aws.amazon.com/msk/latest/developerguide/kafka_apis_iam.html">Authentication and Authorization for Apache Kafka APIs</a> for authentication methods available in Amazon MSK.</p>
 <ol>
 <li>Navigate to <a href="https://us-east-1.console.aws.amazon.com/iamv2/home?region=us-east-1#/policies">IAM Console</a>, Click on left pane and choose <strong>Policies</strong> in <strong>Acess management</strong> section</li>
@@ -1168,44 +1168,19 @@
 <li>
 <p>Click <strong>Next</strong></p>
 </li>
-<li>In <strong>Policy details</strong>, provide below details:<blockquote>
+<li>
+<p>In <strong>Policy details</strong>, provide below details</p>
+<blockquote>
 <ul>
 <li>Policy name: MSK-unauthenticated-access</li>
 <li>Description: An IAM policy for Amazon MSK using unauthenticated access</li>
 </ul>
 </blockquote>
 </li>
-<li>Click <strong>Create policy</strong></li>
+<li>
+<p>Click <strong>Create policy</strong></p>
+</li>
 </ol>
-<p>An IAM policy for Amazon MSK when using IAM authentication:</p>
-<div class="codehilite"><pre><span></span><code>{
-<span class="w">    </span><span class="s2">&quot;Version&quot;</span>:<span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;Statement&quot;</span>:<span class="w"> </span>[
-<span class="w">        </span>{
-<span class="w">            </span><span class="s2">&quot;Sid&quot;</span>:<span class="w"> </span><span class="s2">&quot;MSKIAMpolicy&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;Effect&quot;</span>:<span class="w"> </span><span class="s2">&quot;Allow&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;Action&quot;</span>:<span class="w"> </span>[
-<span class="w">                </span><span class="s2">&quot;kafka-cluster:ReadData&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;kafka-cluster:DescribeTopic&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;kafka-cluster:Connect&quot;</span>
-<span class="w">            </span>],
-<span class="w">            </span><span class="s2">&quot;Resource&quot;</span>:<span class="w"> </span>[
-<span class="w">                </span><span class="s2">&quot;arn:aws:kafka:*:0123456789:cluster/*/*&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;arn:aws:kafka:*:0123456789:topic/*/*/*&quot;</span>
-<span class="w">            </span>]
-<span class="w">        </span>},
-<span class="w">        </span>{
-<span class="w">            </span><span class="s2">&quot;Sid&quot;</span>:<span class="w"> </span><span class="s2">&quot;MSKPolicy&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;Effect&quot;</span>:<span class="w"> </span><span class="s2">&quot;Allow&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;Action&quot;</span>:<span class="w"> </span>[
-<span class="w">                </span><span class="s2">&quot;kafka:GetBootstrapBrokers&quot;</span>
-<span class="w">            </span>],
-<span class="w">            </span><span class="s2">&quot;Resource&quot;</span>:<span class="w"> </span><span class="s2">&quot;*&quot;</span>
-<span class="w">        </span>}
-<span class="w">    </span>]
-}
-</code></pre></div>
-
 <h3 id="create-iam-role">Create IAM Role<a class="headerlink" href="#create-iam-role" title="Permanent link">&para;</a></h3>
 <p>Create an IAM role with a trust policy that allows your Amazon Redshift cluster to assume the role. For information about how to configure the trust policy for the IAM role, see <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/authorizing-redshift-service.html">Authorizing Amazon Redshift to access other AWS services on your behalf</a>. </p>
 <ol>
@@ -1228,8 +1203,10 @@
 <li>
 <p>In <strong>Cluster subnet group details</strong>, provide below configuration details:</p>
 <blockquote>
-<p>Name: msk-redshift-vpc
-Description: This subnet group contains msk and redshift subnet groups </p>
+<ul>
+<li>Name: msk-redshift-vpc-subnet-group</li>
+<li>Description: This subnet group contains msk and redshift subnet groups </li>
+</ul>
 </blockquote>
 </li>
 <li>
@@ -1239,6 +1216,45 @@ Description: This subnet group contains msk and redshift subnet groups </p>
 <li>Click <strong>Create cluster subnet group</strong></li>
 </ol>
 <h2 id="6-create-redshift-cluster">6. Create Redshift Cluster<a class="headerlink" href="#6-create-redshift-cluster" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Navigate to <a href="https://us-east-1.console.aws.amazon.com/redshiftv2/home?region=us-east-1#create-cluster">Redshift Console</a>, Click on left pane and choose <strong>Provisioned clusters dashboard</strong> and click on <strong>Create cluster</strong></li>
+<li>
+<p>In <strong>Cluster configuration</strong>, provide the below details:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">Cluster</span><span class="w"> </span><span class="nx">identifier</span><span class="w">              </span><span class="p">:</span><span class="w"> </span><span class="nx">redshift</span><span class="o">-</span><span class="nx">cluster</span><span class="o">-</span><span class="mi">1</span>
+<span class="nx">Choose</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">cluster</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nx">I</span><span class="err">&#39;</span><span class="nx">ll</span><span class="w"> </span><span class="nx">choose</span>
+<span class="nx">Node</span><span class="w"> </span><span class="k">type</span><span class="w">                       </span><span class="p">:</span><span class="w"> </span><span class="nx">dc2</span><span class="p">.</span><span class="nx">large</span>
+<span class="nx">Number</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">nodes</span><span class="w">                 </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>In <strong>Database configurations</strong>, provide the below details:</p>
+<div class="codehilite"><pre><span></span><code>Admin user name     : awsuser
+Admin user password : &lt; Password &gt;
+</code></pre></div>
+
+</li>
+<li>
+<p>In <strong>Associated IAM roles</strong>, click on <strong>Associate IAM roles</strong></p>
+</li>
+<li>Select the radio button beside the IAM role <strong>msk-redshift-role</strong> and click <strong>Associate IAM roles</strong></li>
+<li>In <strong>Additional configurations</strong>, toggle the <strong>Use defaults</strong> option.</li>
+<li>
+<p>Expand <strong>Network and security</strong> section and provide below configuration:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">Virtual</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="nx">cloud</span><span class="w"> </span><span class="p">(</span><span class="nx">VPC</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nx">MSKVPC</span>
+<span class="nx">VPC</span><span class="w"> </span><span class="nx">security</span><span class="w"> </span><span class="nx">groups</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="nx">msk</span><span class="o">-</span><span class="nx">labs</span><span class="o">-</span><span class="k">default</span><span class="o">-</span><span class="nx">MSKSecurityGroup</span>
+<span class="nx">Cluster</span><span class="w"> </span><span class="nx">subnet</span><span class="w"> </span><span class="nx">group</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="nx">msk</span><span class="o">-</span><span class="nx">redshift</span><span class="o">-</span><span class="nx">vpc</span><span class="o">-</span><span class="nx">subnet</span><span class="o">-</span><span class="nx">group</span>
+<span class="nx">Availability</span><span class="w"> </span><span class="nx">Zone</span><span class="w">           </span><span class="p">:</span><span class="w"> </span><span class="nx">us</span><span class="o">-</span><span class="nx">east</span><span class="o">-</span><span class="mi">1</span><span class="nx">a</span>
+<span class="nx">Enhanced</span><span class="w"> </span><span class="nx">VPC</span><span class="w"> </span><span class="nx">routing</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="nx">Turn</span><span class="w"> </span><span class="nx">off</span>
+<span class="nx">Publicly</span><span class="w"> </span><span class="nx">accessible</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="nx">Check</span><span class="w"> </span><span class="nx">Box</span><span class="w"> </span><span class="p">(</span><span class="nx">True</span><span class="p">)</span>
+<span class="nx">Elastic</span><span class="w"> </span><span class="nx">IP</span><span class="w"> </span><span class="nx">address</span><span class="w">          </span><span class="p">:</span><span class="w"> </span><span class="nx">None</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Click <strong>Create cluster</strong></p>
+</li>
+</ol>
 <h2 id="7-cloud-9-setup">7. Cloud 9 Setup<a class="headerlink" href="#7-cloud-9-setup" title="Permanent link">&para;</a></h2>
 <p>Open <a href="https://us-east-1.console.aws.amazon.com/cloud9/home?region=us-east-1">Cloud9</a> , select the host <strong>msk-labs-default-Cloud9EC2Bastion</strong> and install following tools:</p>
 <h3 id="install-kafka-tools">Install kafka tools<a class="headerlink" href="#install-kafka-tools" title="Permanent link">&para;</a></h3>

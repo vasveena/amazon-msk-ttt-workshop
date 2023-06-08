@@ -328,6 +328,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#mandatory-step" class="md-nav__link">
+    Mandatory step:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#custom-configuration" class="md-nav__link">
     Custom Configuration
   </a>
@@ -842,6 +849,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#mandatory-step" class="md-nav__link">
+    Mandatory step:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#custom-configuration" class="md-nav__link">
     Custom Configuration
   </a>
@@ -909,6 +923,31 @@
 
 <h1 id="overview"><strong>Overview</strong><a class="headerlink" href="#overview" title="Permanent link">&para;</a></h1>
 <p><strong>This module will walk you through how to use the Console to create a custom configuration and an Amazon MSK Cluster.</strong></p>
+<h2 id="mandatory-step"><strong>Mandatory step</strong>:<a class="headerlink" href="#mandatory-step" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Download the <a href="https://static.us-east-1.prod.workshops.aws/public/2d05a269-c2a5-45ec-9b7d-bc70cf90a296/static/prepare/mskid-full.yml">CloudFormation template</a></p>
+</li>
+<li>
+<p>Navigate to the <a href="https://us-east-1.console.aws.amazon.com/cloudformation/home">CloudFormation Console</a>  and deploy the CloudFormation using AWS Console by clicking <strong>Create stack</strong> on the top right and choose <strong>With new resources (standard)</strong> option</p>
+</li>
+<li>
+<p>Select Upload a template file and choose the mskid-full.yml file you downloaded and click <strong>Next</strong>
+<img alt="mandatory-1" src="../images/mandatory1.png" /></p>
+</li>
+<li>Provide Stack name: <strong>msk-labs-default</strong> and click <strong>Next</strong>
+<img alt="mandatory-2" src="../images/mandatory2.png" /></li>
+<li>
+<p>Scroll down completely and click <strong>Next</strong></p>
+</li>
+<li>
+<p>Scroll down completely and Check box both options in <strong>Capabilities</strong> section
+<img alt="mandatory-3" src="../images/mandatory3.png" /></p>
+</li>
+<li>
+<p>click <strong>Submit</strong></p>
+</li>
+</ol>
 <h2 id="custom-configuration">Custom Configuration<a class="headerlink" href="#custom-configuration" title="Permanent link">&para;</a></h2>
 <p>The custom configuration will enable us to provide a special configuration to the cluster. Review the available options to make sure you have what you need. For more information about configuration properties, see <a href="https://kafka.apache.org/documentation/#configuration">Apache Kafka Configuration</a>.</p>
 <p>To learn how you can create a custom MSK configuration, list all configurations, or describe them, see <a href="https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-operations.html">Amazon MSK configuration operations</a>. To create an MSK cluster with a custom MSK configuration, or to update a cluster with a new custom configuration, see Amazon MSK: <a href="https://docs.aws.amazon.com/msk/latest/developerguide/operations.html">How it works</a>.</p>
