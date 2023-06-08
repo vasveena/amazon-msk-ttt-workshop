@@ -2,6 +2,24 @@
 
 **This module will walk you through how to use the Console to create a custom configuration and an Amazon MSK Cluster.**
 
+## **Mandatory step**: 
+
+1. Download the [CloudFormation template](https://static.us-east-1.prod.workshops.aws/public/2d05a269-c2a5-45ec-9b7d-bc70cf90a296/static/prepare/mskid-full.yml)
+
+2. Navigate to the [CloudFormation Console](https://us-east-1.console.aws.amazon.com/cloudformation/home)  and deploy the CloudFormation using AWS Console by clicking **Create stack** on the top right and choose **With new resources (standard)** option
+
+3. Select Upload a template file and choose the mskid-full.yml file you downloaded and click **Next**
+![mandatory-1](images/mandatory1.png)
+4. Provide Stack name: **msk-labs-default** and click **Next**
+![mandatory-2](images/mandatory2.png)
+5. Scroll down completely and click **Next**
+
+6. Scroll down completely and Check box both options in **Capabilities** section
+![mandatory-3](images/mandatory3.png)
+
+7. click **Submit**
+
+
 ## Custom Configuration
 
 The custom configuration will enable us to provide a special configuration to the cluster. Review the available options to make sure you have what you need. For more information about configuration properties, see [Apache Kafka Configuration](https://kafka.apache.org/documentation/#configuration).

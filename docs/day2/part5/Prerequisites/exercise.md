@@ -43,7 +43,7 @@ This is used to configure Athena result location.
 ## 4. Setting up IAM
 This is used to create IAM policies and IAM role for the redshift cluster
 
-### Create IAM Policies
+### Create IAM Policy
 Create an IAM Policy, which provides permission for communication with the Amazon MSK cluster. The policy you need depends on the authentication method used on your cluster, if you use Amazon MSK. See [Authentication and Authorization for Apache Kafka APIs](https://docs.aws.amazon.com/msk/latest/developerguide/kafka_apis_iam.html) for authentication methods available in Amazon MSK.
 
 1. Navigate to [IAM Console](https://us-east-1.console.aws.amazon.com/iamv2/home?region=us-east-1#/policies), Click on left pane and choose **Policies** in **Acess management** section
@@ -67,40 +67,11 @@ Create an IAM Policy, which provides permission for communication with the Amazo
         }
 
 5. Click **Next**
-6. In **Policy details**, provide below details:
+6. In **Policy details**, provide below details
 >* Policy name: MSK-unauthenticated-access
 >* Description: An IAM policy for Amazon MSK using unauthenticated access
-7. Click **Create policy**
 
-An IAM policy for Amazon MSK when using IAM authentication:
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "MSKIAMpolicy",
-            "Effect": "Allow",
-            "Action": [
-                "kafka-cluster:ReadData",
-                "kafka-cluster:DescribeTopic",
-                "kafka-cluster:Connect"
-            ],
-            "Resource": [
-                "arn:aws:kafka:*:0123456789:cluster/*/*",
-                "arn:aws:kafka:*:0123456789:topic/*/*/*"
-            ]
-        },
-        {
-            "Sid": "MSKPolicy",
-            "Effect": "Allow",
-            "Action": [
-                "kafka:GetBootstrapBrokers"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
+7. Click **Create policy**
 
 ### Create IAM Role
 Create an IAM role with a trust policy that allows your Amazon Redshift cluster to assume the role. For information about how to configure the trust policy for the IAM role, see [Authorizing Amazon Redshift to access other AWS services on your behalf](https://docs.aws.amazon.com/redshift/latest/mgmt/authorizing-redshift-service.html). 
@@ -121,8 +92,8 @@ Create an IAM role with a trust policy that allows your Amazon Redshift cluster 
 1. Navigate to [Redshift Console](https://us-east-1.console.aws.amazon.com/redshiftv2/home?region=us-east-1#subnet-groups), Click on left pane and choose **Subnet groups** in **Configurations** section
 2. Click **Create cluster subnet group**
 3. In **Cluster subnet group details**, provide below configuration details:
-> Name: msk-redshift-vpc
-> Description: This subnet group contains msk and redshift subnet groups 
+>* Name: msk-redshift-vpc-subnet-group
+>* Description: This subnet group contains msk and redshift subnet groups 
 
 4. In **Add subnets** section, go to **VPC** drop down and choose **MSKVPC**
 5. Click on **Add all the subnets for this VPC**
@@ -130,6 +101,33 @@ Create an IAM role with a trust policy that allows your Amazon Redshift cluster 
 
 ## 6. Create Redshift Cluster
 
+1. Navigate to [Redshift Console](https://us-east-1.console.aws.amazon.com/redshiftv2/home?region=us-east-1#create-cluster), Click on left pane and choose **Provisioned clusters dashboard** and click on **Create cluster**
+2. In **Cluster configuration**, provide the below details:
+
+        Cluster identifier              : redshift-cluster-1
+        Choose the size of the cluster  : I'll choose
+        Node type                       : dc2.large
+        Number of nodes                 : 1
+
+3. In **Database configurations**, provide the below details:
+
+        Admin user name     : awsuser
+        Admin user password : < Password >
+
+4. In **Associated IAM roles**, click on **Associate IAM roles**
+5. Select the radio button beside the IAM role **msk-redshift-role** and click **Associate IAM roles**
+6. In **Additional configurations**, toggle the **Use defaults** option.
+7. Expand **Network and security** section and provide below configuration:
+
+        Virtual private cloud (VPC) : MSKVPC
+        VPC security groups         : msk-labs-default-MSKSecurityGroup
+        Cluster subnet group        : msk-redshift-vpc-subnet-group
+        Availability Zone           : us-east-1a
+        Enhanced VPC routing        : Turn off
+        Publicly accessible         : Check Box (True)
+        Elastic IP address          : None
+
+8. Click **Create cluster**
 
 ## 7. Cloud 9 Setup
 Open [Cloud9](https://us-east-1.console.aws.amazon.com/cloud9/home?region=us-east-1) , select the host **msk-labs-default-Cloud9EC2Bastion** and install following tools:

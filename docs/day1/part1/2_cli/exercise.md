@@ -165,7 +165,7 @@ You can check on your cluster configuration and status by using the cli and the 
 
 Use the ARN and get the cluster configuration and state, changing the example ARN to the one from the command above:
 
-> aws kafka describe-cluster --cluster-arn arn:aws:kafka:us-east-1:xyz:cluster/MSKWorkshop/20a94343-552f-4298-9076-99673162e023-6 | grep -i state
+> aws kafka describe-cluster --cluster-arn arn:aws:kafka:us-east-1:< AWS_Account_Number >:cluster/MSKWorkshop/20a94343-552f-4298-9076-99673162e023-6 | grep -i state
 
 ![cli-7](images/cli-7.png)
 

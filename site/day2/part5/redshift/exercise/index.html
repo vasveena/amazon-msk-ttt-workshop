@@ -58,6 +58,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#msk-integration-with-redshift" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -711,10 +716,43 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          4 - Integration with Redshift
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         4 - Integration with Redshift
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#solution-overview" class="md-nav__link">
+    Solution overview
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -751,6 +789,23 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#solution-overview" class="md-nav__link">
+    Solution overview
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -768,9 +823,33 @@
   
 
 
-  <h1>4 - Integration with Redshift</h1>
+<h1 id="msk-integration-with-redshift">MSK Integration with Redshift<a class="headerlink" href="#msk-integration-with-redshift" title="Permanent link">&para;</a></h1>
+<p>In this lab, we will analyze real-time streaming data in Amazon MSK with Amazon Redshift.</p>
+<h2 id="solution-overview">Solution overview<a class="headerlink" href="#solution-overview" title="Permanent link">&para;</a></h2>
+<p>The purpose of Amazon Redshift streaming ingestion is to simplify the process for directly ingesting stream data from a streaming service into Amazon Redshift. This works with Amazon MSK and Amazon MSK Serverless. Amazon Redshift streaming ingestion removes the need to stage an Amazon MSK topic in Amazon S3 before ingesting the stream data into Amazon Redshift.</p>
+<p>On a technical level, streaming ingestion, from Amazon Managed Streaming for Apache Kafka, provides low-latency, high-speed ingestion of stream or topic data into an Amazon Redshift materialized view. Following setup, using materialized view refresh, you can take in large data volumes.</p>
+<p>Set up Amazon Redshift streaming ingestion for Amazon MSK by performing the following steps:</p>
+<ul>
+<li>Create an external schema that maps to the streaming data source.</li>
+<li>Create a materialized view that references the external schema.</li>
+</ul>
+<blockquote>
+<p>Streaming ingestion and Amazon Redshift Serverless - The configuration steps in this topic apply both to provisioned Amazon Redshift clusters and to Amazon Redshift Serverless. For more information, see Streaming ingestion considerations.</p>
+</blockquote>
+<ol>
+<li>Navigate to <a href="https://us-east-1.console.aws.amazon.com/sqlworkbench/home?region=us-east-1#?region=us-east-1">Redshift query editor v2</a></li>
+<li>In the left pane, choose the redshift cluster: redshift-cluster-1</li>
+<li>Once it is explanded, go to editor section and create an external schema to map to the Amazon MSK cluster.</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>CREATE EXTERNAL SCHEMA MySchema
+FROM MSK
+IAM_ROLE default
+AUTHENTICATION none 
+CLUSTER_ARN &#39;msk-cluster-arn&#39;;
+</code></pre></div>
 
-
+<p>in Cluster identifier
+redshift-cluster</p>
 
 
 
