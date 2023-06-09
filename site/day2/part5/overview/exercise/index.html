@@ -15,7 +15,7 @@
         <link rel="next" href="../../Prerequisites/exercise/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.13">
     
     
       
@@ -59,6 +59,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#msk-integration-with-athena-and-redshift" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -671,6 +676,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         1 - Architecture Introduction
@@ -753,6 +760,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -770,9 +779,12 @@
   
 
 
-  <h1>1 - Architecture Introduction</h1>
-
-
+<h1 id="msk-integration-with-athena-and-redshift"><strong>MSK Integration with Athena and Redshift</strong><a class="headerlink" href="#msk-integration-with-athena-and-redshift" title="Permanent link">&para;</a></h1>
+<p>Integrating MSK with Athena and Redshift helps in building real-time analytics solution on streaming data, enabling timely insights and data-driven decision-making. </p>
+<p>Amazon Athena provides serverless interactive queries on data stored in Amazon S3. By integrating MSK with Athena, you can directly query the data in  yout Kafka topics, without the need for additional data movement or transformations. This simplifies the data processing pipeline and reduces latency in accessing and analyzing the data. 
+Leran more about <a href="https://docs.aws.amazon.com/athena/latest/ug/connectors-msk.html">Amazon Athena MSK Connector</a>.</p>
+<p>Amazon Redshift is a fully managed data warehousing service that offers high-performance analysis of large-scale data sets. By integrating MSK with Redshift, you can stream data from Kafka into Redshift for near-real-time analysis. This allows you to leverage Redshift's advanced anlaytics capabilities and perform complex queries on the streaming data. 
+Learn more about <a href="https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-streaming-ingestion-getting-started-MSK.html">Integrating MSK with Redshift</a>.</p>
 
 
 
@@ -813,7 +825,7 @@
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["tabs"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.b4d07000.min.js"></script>
       
     
   </body>

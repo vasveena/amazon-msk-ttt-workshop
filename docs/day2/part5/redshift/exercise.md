@@ -17,8 +17,14 @@ Set up Amazon Redshift streaming ingestion for Amazon MSK by performing the foll
 ## [Fetching IAM Role info](#fetch-iam-role-arn)
 
 1. Navigate to [Redshift console](https://us-east-1.console.aws.amazon.com/redshiftv2/home?region=us-east-1#cluster-details?cluster=redshift-cluster-1&tab=properties)
+
+![rs1](images/rs1.png)
 2. Scroll down to **Associated IAM roles** and click on the role **msk-redshift-role**
+
+![rs2](images/rs2.png)
 3. Copy the **ARN** from the Summary section. (Paste it in a note-pad)
+
+![rs3](images/rs3.png)
 
 ## [Fetching MSK cluster info](#fetch-msk-arn)
 
@@ -26,9 +32,13 @@ Set up Amazon Redshift streaming ingestion for Amazon MSK by performing the foll
 2. Click on the Cluster name - **MSKCluster-msk-labs-default**
 3. Copy the **ARN** from the Cluster summary section. (Paste it in a note-pad)
 
+![rs4](images/rs4.png)
+
 ## Create an external schema
 
 1. Navigate to [Redshift query editor v2](https://us-east-1.console.aws.amazon.com/sqlworkbench/home?region=us-east-1#?region=us-east-1)
+
+![rs5](images/rs5.png) <br>
 2. In the left pane, choose the redshift cluster: redshift-cluster-1
 3. Once it is explanded, go to editor section and create an external schema to map to the Amazon MSK cluster.
 
@@ -62,6 +72,7 @@ AUTHENTICATION none
 CLUSTER_ARN 'arn:aws:kafka:us-east-1:< AWS_Account_Number >:cluster/MSKCluster-msk-labs-default/0ae312ea-a86b-44dd-xxxxxxxxxxxxxxxx';
 ```
 
+![rs6](images/rs6.png)
 Once you execute this command you should get Returned rows as 0 ( RequestID should appear in green)
 
 ## Create a Materialized view
@@ -84,10 +95,12 @@ Once you execute this command you should get Returned rows as 0 ( RequestID shou
         FROM msk_schema.orders;
 -> Once you execute this command you should get Returned rows as 0 ( RequestID should appear in green)
 
+![rs7](images/rs7.png)
 4. Refresh the view, which invokes Amazon Redshift to read from the topic and load data into the materialized view.
 
-        REFRESH MATERIALIZED VIEW msk_topic_orders;
-
+```
+ REFRESH MATERIALIZED VIEW msk_topic_orders;
+ ``` <br>
 5. Query data in the materialized view:
 
         select data from msk_topic_orders;

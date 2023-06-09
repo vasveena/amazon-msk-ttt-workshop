@@ -15,7 +15,7 @@
         <link rel="next" href="../../redshift/exercise/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.13">
     
     
       
@@ -766,19 +766,6 @@
     Creating Schema in Glue Stream schema registries
   </a>
   
-    <nav class="md-nav" aria-label="Creating Schema in Glue Stream schema registries">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#first-schema-version" class="md-nav__link">
-    First schema version
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -790,19 +777,6 @@
   <a href="#2-configure-the-athena-connector-for-msk" class="md-nav__link">
     2. Configure the Athena connector for MSK
   </a>
-  
-    <nav class="md-nav" aria-label="2. Configure the Athena connector for MSK">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fetch-msk-configuration" class="md-nav__link">
-    Fetch MSK Configuration
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -915,19 +889,6 @@
     Creating Schema in Glue Stream schema registries
   </a>
   
-    <nav class="md-nav" aria-label="Creating Schema in Glue Stream schema registries">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#first-schema-version" class="md-nav__link">
-    First schema version
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -939,19 +900,6 @@
   <a href="#2-configure-the-athena-connector-for-msk" class="md-nav__link">
     2. Configure the Athena connector for MSK
   </a>
-  
-    <nav class="md-nav" aria-label="2. Configure the Athena connector for MSK">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fetch-msk-configuration" class="md-nav__link">
-    Fetch MSK Configuration
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1004,26 +952,30 @@
 <p>In this section, we’ll cover the steps necessary to set up your MSK cluster to work with Athena to run SQL queries on your Kafka topics.</p>
 <h3 id="1-define-the-schema-of-your-kafka-topics-with-aws-glue-schema-registry">1. Define the schema of your Kafka topics with AWS Glue Schema Registry<a class="headerlink" href="#1-define-the-schema-of-your-kafka-topics-with-aws-glue-schema-registry" title="Permanent link">&para;</a></h3>
 <p>To run SQL queries on your Kafka topics, you’ll first need to define the schema of your topics as Athena uses this metadata for query planning. AWS Glue makes it easy to do this with its <a href="https://us-east-1.console.aws.amazon.com/glue/home?region=us-east-1#/v2/data-catalog/schemaRegistries">Schema Registry feature</a> for streaming data sources.</p>
+<p><img alt="athena1" src="../images/athena1.png" /></p>
 <h4 id="creating-glue-stream-schema-registries">Creating Glue Stream schema registries<a class="headerlink" href="#creating-glue-stream-schema-registries" title="Permanent link">&para;</a></h4>
 <ol>
 <li>In Stream schema registries, click on <strong>Add registry</strong></li>
-<li>Provide the below configuration:<blockquote>
+</ol>
+<p><img alt="athena2" src="../images/athena2.png" />
+2. Provide the below configuration:</p>
+<blockquote>
 <ul>
 <li>Name: customer_schema</li>
 <li>Description: {AthenaFederationMSK}</li>
 </ul>
 </blockquote>
-</li>
-<li>Click <strong>Add registry</strong></li>
-</ol>
+<p>3.Click <strong>Add registry</strong></p>
+<p><img alt="athena3" src="../images/athena3.png" /></p>
 <p>Schema Registry allows you to centrally discover, control, and evolve streaming data schemas for use in analytics applications such as Athena. With AWS Glue Schema Registry, you can manage and enforce schemas on your data streaming applications using convenient integrations with Apache Kafka. To learn more, see <a href="https://docs.aws.amazon.com/glue/latest/dg/schema-registry-integrations.html">AWS Glue Schema Registry</a> and <a href="https://docs.aws.amazon.com/glue/latest/dg/schema-registry-gs.html">Getting started with Schema Registry</a>.</p>
 <p>If configured to do so, the producer of data can auto-register its schema and changes to it with AWS Glue. This is especially useful in use cases where the contents of the data is likely to change over time. However, you can also specify the schema manually, resembling the following JSON structure.</p>
 <h4 id="creating-schema-in-glue-stream-schema-registries">Creating Schema in Glue Stream schema registries<a class="headerlink" href="#creating-schema-in-glue-stream-schema-registries" title="Permanent link">&para;</a></h4>
 <ol>
 <li>Choose the Stream schehma registry : <strong><a href="https://us-east-1.console.aws.amazon.com/glue/home?region=us-east-1#/v2/data-catalog/schemaRegistries/view/msk-glue-registry">msk-glue-registry</a></strong></li>
 <li>Click <strong>Create schema</strong></li>
-<li>
-<p>Provide the below configuration</p>
+</ol>
+<p><img alt="athena4" src="../images/athena4.png" />
+3. Provide the below configuration</p>
 <blockquote>
 <ul>
 <li>Schema name: orders</li>
@@ -1033,32 +985,31 @@
 <li>Description: {AthenaFederationMSK}</li>
 </ul>
 </blockquote>
-<h5 id="first-schema-version">First schema version<a class="headerlink" href="#first-schema-version" title="Permanent link">&para;</a></h5>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="s">&quot;topicName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;orders&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s">&quot;dataFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;json&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;customer_id&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;mapping&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;customer_id&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VARCHAR&quot;</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;item_id&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;mapping&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;item_id&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;INTEGER&quot;</span>
+<p><img alt="athena5" src="../images/athena5.png" /></p>
+<div class="codehilite"><pre><span></span><code><span class="err">#####</span><span class="w"> </span><span class="nx">First</span><span class="w"> </span><span class="nx">schema</span><span class="w"> </span><span class="nx">version</span>
+
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="s">&quot;topicName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;orders&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;dataFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;json&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;customer_id&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;mapping&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;customer_id&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VARCHAR&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;item_id&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;mapping&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;item_id&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;INTEGER&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
 <span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 </code></pre></div>
 
-</li>
-<li>
-<p>Click <strong>Create schema and version</strong></p>
-</li>
-</ol>
+<p><img alt="athena6" src="../images/athena6.png" />  <br />
+4. Click <strong>Create schema and version</strong></p>
 <blockquote>
 <p>For additional information on schema set up, see Schema examples for the <a href="https://docs.aws.amazon.com/athena/latest/ug/connectors-msk.html#connectors-msk-setup">AWS Glue Schema Registry</a>.</p>
 </blockquote>
@@ -1067,51 +1018,81 @@
 <p>In Athena, federated data source connectors are applications that run on AWS Lambda and handle communication between your target data source and Athena. When a query runs on a federated source, Athena calls the Lambda function and tasks it with running the parts of your query that are specific to that source. To learn more about the query execution workflow, see <a href="https://docs.aws.amazon.com/athena/latest/ug/connect-to-a-data-source.html">Using Amazon Athena Federated Query</a> in the Amazon Athena User Guide.</p>
 <ol>
 <li>Navigate to <a href="https://us-east-1.console.aws.amazon.com/athena/home?region=us-east-1#/data-sources">Athena console</a> and selecting Data sources on the left navigation, then choose Create data source</li>
-<li>Click on <strong>Create Data sources</strong></li>
-<li>Choose a data source: Type <strong>MSK</strong></li>
-<li>Choose the radio button beside the connector <strong>Amazon MSK</strong> and click <strong>Next</strong></li>
-<li>Enter the following details in Data source details section:<blockquote>
+</ol>
+<p><img alt="athena7" src="../images/athena7.png" /> <br>
+2. Click on <strong>Create Data sources</strong></p>
+<p><img alt="athena8" src="../images/athena8.png" />
+3. Choose a data source: Type <strong>MSK</strong></p>
+<p><img alt="athena9" src="../images/athena9.png" />
+4. Choose the radio button beside the connector <strong>Amazon MSK</strong> and click <strong>Next</strong> <br>
+5. Enter the following details in Data source details section:</p>
+<blockquote>
 <ul>
 <li>Data source name: msk</li>
 <li>Description - To connect to amazon msk cluster</li>
 </ul>
 </blockquote>
-</li>
-<li>Under Connection details section, select <strong>Create Lambda function</strong>. This will bring you to the AWS Lambda console where you’ll provide additional configuration properties</li>
-<li>
-<p>Scroll down to <strong>Application settings</strong> and provide below details </p>
-<h5 id="fetch-msk-configuration">Fetch MSK Configuration<a class="headerlink" href="#fetch-msk-configuration" title="Permanent link">&para;</a></h5>
+<p><img alt="athena10" src="../images/athena10.png" />
+6. Under Connection details section, select <strong>Create Lambda function</strong>. This will bring you to the AWS Lambda console where you’ll provide additional configuration properties</p>
+<p><img alt="athena11" src="../images/athena11.png" />
+7. Scroll down to <strong>Application settings</strong> and provide below details </p>
+<p><img alt="athena12" src="../images/athena12.png" /></p>
+<div class="codehilite"><pre><span></span><code>##### Fetch MSK Configuration
+</code></pre></div>
+
 <blockquote>
 <ul>
 <li>To get some of the details you will have to navigate to <a href="https://us-east-1.console.aws.amazon.com/msk/home?region=us-east-1#/clusters">MSK console</a> and click on cluster name as <strong>MSKCluster-msk-labs-default</strong></li>
 <li>In Cluster summary, Click on <strong>View client Information</strong></li>
+</ul>
+</blockquote>
+<p><img alt="athena13" src="../images/athena13.png" /></p>
+<blockquote>
+<ul>
 <li>Copy any one of the broker-ids(connection string for the private endpoint) from Authentication type - <strong>Plaintext</strong> and paste it in the Lambda configuration <strong>"KafkaEndpoint"</strong><blockquote>
 <p>Note: You will get three endpoints for each of the brokers. You only need one broker endpoint for the following step. (Paste this in KafkaEndpoint) and click <strong>Done</strong></p>
 </blockquote>
 </li>
+</ul>
+</blockquote>
+<p><img alt="athena14" src="../images/athena14.png" /></p>
+<blockquote>
+<ul>
 <li>Click on <strong>Properties Tab</strong> and scroll down to <strong>Networking settings</strong></li>
+</ul>
+</blockquote>
+<p><img alt="athena16" src="../images/athena16.png" /></p>
+<blockquote>
+<ul>
 <li>In <strong>Networking settings</strong>, under <strong>Primary VPC configuration</strong> look for <strong>Subnets</strong> and <strong>Security groups</strong> applied.</li>
+</ul>
+</blockquote>
+<p><img alt="athena17" src="../images/athena17.png" /></p>
+<blockquote>
+<ul>
 <li>Copy <strong>security-group-id</strong> and one <strong>subnet-id</strong>, paste them in the below configuration accordingly</li>
 </ul>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>KafkaEndpoint: &lt;paste the broker-id here&gt;
-LambdaFunctionName: msk-athena-lambda-function
-SecurityGroupIds: &lt;paste the security-group-id here&gt;
-SpillBucket: msk-athena-bucket-&lt;paste the AWS-Account-Number&gt;
-SpillPrefix: msk-athena-spill
-SubnetIds: &lt;paste the subnet-id here &gt;
+<div class="codehilite"><pre><span></span><code>    KafkaEndpoint: &lt;paste the broker-id here&gt;
+    LambdaFunctionName: msk-athena-lambda-function
+    SecurityGroupIds: &lt;paste the security-group-id here&gt;
+    SpillBucket: msk-athena-bucket-&lt;paste the AWS-Account-Number&gt;
+    SpillPrefix: msk-athena-spill
+    SubnetIds: &lt;paste the subnet-id here &gt;
 </code></pre></div>
 
-</li>
-<li>
-<p>Click on <strong>I acknowledge that this app creates custom IAM roles and resource policies</strong>.</p>
-</li>
-<li>Click <strong>Deploy</strong> (wait for a minute to auto-refresh the page)</li>
-<li>Close the Lambda page and go back to previous tab (Athena Console - Enter data source details)</li>
-<li>In Connection details, use the refresh button and choose <strong>Lambda function</strong> which we created in the previous step ( <strong>msk-athena-lambda-function</strong> ) </li>
-<li>Click <strong>Next</strong> </li>
-<li>Review the details and click <strong>Create data source</strong></li>
-</ol>
+<p><img alt="athena15" src="../images/athena15.png" /></p>
+<p><img alt="athena18" src="../images/athena18.png" /> <br>
+8. Click on <strong>I acknowledge that this app creates custom IAM roles and resource policies</strong>. <br>
+9. Click <strong>Deploy</strong> (wait for a minute to auto-refresh the page)</p>
+<p><img alt="athena19" src="../images/athena19.png" />
+10. Close the Lambda page and go back to previous tab (Athena Console - Enter data source details) <br>
+11. In Connection details, use the refresh button and choose <strong>Lambda function</strong> which we created in the previous step ( <strong>msk-athena-lambda-function</strong> ) </p>
+<p><img alt="athena20" src="../images/athena20.png" /></p>
+<p><img alt="athena21" src="../images/athena21.png" />
+12. Click <strong>Next</strong> <br>
+13. Review the details and click <strong>Create data source</strong></p>
+<p><img alt="athena22" src="../images/athena22.png" /></p>
 <h3 id="3-run-queries-on-streaming-data-using-athena">3. Run queries on streaming data using Athena<a class="headerlink" href="#3-run-queries-on-streaming-data-using-athena" title="Permanent link">&para;</a></h3>
 <p>With your MSK data connector set up, you can now run SQL queries on the data. Let’s explore a few use cases in more detail.</p>
 <p>Use case: interactive analysis
@@ -1119,20 +1100,21 @@ If you want to run queries that aggregate, group, or filter your MSK data, you c
 <ol>
 <li>Navigate to <a href="https://us-east-1.console.aws.amazon.com/athena/home?region=us-east-1#/query-editor">Athena Console</a></li>
 <li>Under <strong>Editor</strong> tab, in <strong>Data</strong> section, you will observe the following:</li>
-<li>Choose <strong>msk</strong> from the drop down.</li>
-<li>Choose <strong>customer_schema</strong> from the database</li>
 </ol>
+<p><img alt="athena23" src="../images/athena23.png" />
+3. Choose <strong>msk</strong> from the drop down. <br>
+4. Choose <strong>customer_schema</strong> from the database</p>
+<p><img alt="athena24" src="../images/athena24.png" /></p>
 <p>Before running any queries, it may be helpful to validate the schema and data types available within your Kafka topics. To do this, run the <strong>DESCRIBE</strong> command on your Kafka topic, which appears in Athena as a table, as shown below. In this query, the <strong>orders</strong> table corresponds to the topic you specified in the Schema Registry <strong>customer_schema</strong>.</p>
 <blockquote>
 <p>DESCRIBE msk.customer_schema.orders</p>
 </blockquote>
-<p>Now that you know the contents of your topic, you can begin to develop analytical queries. A sample query for a hypothetical Kafka topic containing e-commerce order data is shown below:</p>
-<div class="codehilite"><pre><span></span><code>SELECT customer_id, count(order_total) 
-FROM msk.customer_schema.orders
-GROUP BY customer_id order by 2 desc 
+<p><img alt="athena25" src="../images/athena25.png" /></p>
+<p>Now that you know the contents of your topic, you can begin to develop analytical queries. A sample query for querying all data in a topic is:</p>
+<div class="codehilite"><pre><span></span><code>select * from msk.customer_schema.orders;
 </code></pre></div>
 
-<p>In a real world scenario, because the orders table (and underlying Kafka topic) can contain an unbounded stream of data, the query above is likely to return a different value for count(order_total) with each execution of the query.</p>
+<p><img alt="athena26" src="../images/athena26.png" /></p>
 <p>You can proceed to next lab!</p>
 
 
@@ -1174,7 +1156,7 @@ GROUP BY customer_id order by 2 desc
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["tabs"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.b4d07000.min.js"></script>
       
     
   </body>
