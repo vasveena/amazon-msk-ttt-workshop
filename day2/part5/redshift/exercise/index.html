@@ -895,21 +895,26 @@
 <h2 id="fetching-iam-role-info"><a href="#fetch-iam-role-arn">Fetching IAM Role info</a><a class="headerlink" href="#fetching-iam-role-info" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Navigate to <a href="https://us-east-1.console.aws.amazon.com/redshiftv2/home?region=us-east-1#cluster-details?cluster=redshift-cluster-1&amp;tab=properties">Redshift console</a></li>
-<li>Scroll down to <strong>Associated IAM roles</strong> and click on the role <strong>msk-redshift-role</strong></li>
-<li>Copy the <strong>ARN</strong> from the Summary section. (Paste it in a note-pad)</li>
 </ol>
+<p><img alt="rs1" src="../images/rs1.png" />
+2. Scroll down to <strong>Associated IAM roles</strong> and click on the role <strong>msk-redshift-role</strong></p>
+<p><img alt="rs2" src="../images/rs2.png" />
+3. Copy the <strong>ARN</strong> from the Summary section. (Paste it in a note-pad)</p>
+<p><img alt="rs3" src="../images/rs3.png" /></p>
 <h2 id="fetching-msk-cluster-info"><a href="#fetch-msk-arn">Fetching MSK cluster info</a><a class="headerlink" href="#fetching-msk-cluster-info" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Navigate to <a href="https://us-east-1.console.aws.amazon.com/msk/home?region=us-east-1#/clusters">MSK Console</a></li>
 <li>Click on the Cluster name - <strong>MSKCluster-msk-labs-default</strong></li>
 <li>Copy the <strong>ARN</strong> from the Cluster summary section. (Paste it in a note-pad)</li>
 </ol>
+<p><img alt="rs4" src="../images/rs4.png" /></p>
 <h2 id="create-an-external-schema">Create an external schema<a class="headerlink" href="#create-an-external-schema" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Navigate to <a href="https://us-east-1.console.aws.amazon.com/sqlworkbench/home?region=us-east-1#?region=us-east-1">Redshift query editor v2</a></li>
-<li>In the left pane, choose the redshift cluster: redshift-cluster-1</li>
-<li>Once it is explanded, go to editor section and create an external schema to map to the Amazon MSK cluster.</li>
 </ol>
+<p><img alt="rs5" src="../images/rs5.png" /> <br>
+2. In the left pane, choose the redshift cluster: redshift-cluster-1
+3. Once it is explanded, go to editor section and create an external schema to map to the Amazon MSK cluster.</p>
 <div class="codehilite"><pre><span></span><code>CREATE EXTERNAL SCHEMA MySchema
 FROM MSK
 IAM_ROLE { default | &#39;iam-role-arn&#39; }
@@ -938,7 +943,8 @@ CLUSTER_ARN &#39;msk-cluster-arn&#39;;
 <span class="nt">CLUSTER_ARN</span><span class="w"> </span><span class="s1">&#39;arn:aws:kafka:us-east-1:&lt; AWS_Account_Number &gt;:cluster/MSKCluster-msk-labs-default/0ae312ea-a86b-44dd-xxxxxxxxxxxxxxxx&#39;</span><span class="o">;</span>
 </code></pre></div>
 
-<p>Once you execute this command you should get Returned rows as 0 ( RequestID should appear in green)</p>
+<p><img alt="rs6" src="../images/rs6.png" />
+Once you execute this command you should get Returned rows as 0 ( RequestID should appear in green)</p>
 <h2 id="create-a-materialized-view">Create a Materialized view<a class="headerlink" href="#create-a-materialized-view" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Navigate to <a href="https://us-east-1.console.aws.amazon.com/sqlworkbench/home?region=us-east-1#?region=us-east-1">Redshift query editor v2</a></li>
@@ -959,20 +965,15 @@ CLUSTER_ARN &#39;msk-cluster-arn&#39;;
 
 <p>-&gt; Once you execute this command you should get Returned rows as 0 ( RequestID should appear in green)</p>
 </li>
-<li>
-<p>Refresh the view, which invokes Amazon Redshift to read from the topic and load data into the materialized view.</p>
-<div class="codehilite"><pre><span></span><code>REFRESH MATERIALIZED VIEW msk_topic_orders;
-</code></pre></div>
-
-</li>
-<li>
-<p>Query data in the materialized view:</p>
-<div class="codehilite"><pre><span></span><code>select data from msk_topic_orders;
+</ol>
+<p><img alt="rs7" src="../images/rs7.png" />
+4. Refresh the view, which invokes Amazon Redshift to read from the topic and load data into the materialized view.</p>
+<p><code>REFRESH MATERIALIZED VIEW msk_topic_orders;</code> <br>
+5. Query data in the materialized view:</p>
+<div class="codehilite"><pre><span></span><code>    select data from msk_topic_orders;
 </code></pre></div>
 
 <p>-&gt; The materialized view is updated directly from the topic when REFRESH is run. You create a materialized view that maps to the Kafka topic data source. You can perform filtering and aggregations on the data as part of the materialized view definition. Your streaming ingestion materialized view (base materialized view) can reference only one Kafka topic, but you can create additional materialized views that join with the base materialized view and with other materialized views or tables.        </p>
-</li>
-</ol>
 <p><strong>You have reached the end of workshop!</strong></p>
 
 
