@@ -98,12 +98,14 @@ Once you execute this command you should get Returned rows as 0 ( RequestID shou
 ![rs7](images/rs7.png)
 4. Refresh the view, which invokes Amazon Redshift to read from the topic and load data into the materialized view.
 
-```
- REFRESH MATERIALIZED VIEW msk_topic_orders;
- ``` <br>
+         REFRESH MATERIALIZED VIEW msk_topic_orders;
+ <br>
+![rs8](images/rs8.png)
 5. Query data in the materialized view:
 
         select data from msk_topic_orders;
+
+![rs9](images/rs9.png)
 -> The materialized view is updated directly from the topic when REFRESH is run. You create a materialized view that maps to the Kafka topic data source. You can perform filtering and aggregations on the data as part of the materialized view definition. Your streaming ingestion materialized view (base materialized view) can reference only one Kafka topic, but you can create additional materialized views that join with the base materialized view and with other materialized views or tables.        
 
 **You have reached the end of workshop!**

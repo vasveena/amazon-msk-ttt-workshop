@@ -37,7 +37,7 @@ If configured to do so, the producer of data can auto-register its schema and ch
 
 #### Creating Schema in Glue Stream schema registries
 
-1. Choose the Stream schehma registry : **[msk-glue-registry](https://us-east-1.console.aws.amazon.com/glue/home?region=us-east-1#/v2/data-catalog/schemaRegistries/view/msk-glue-registry)**
+1. Choose the Stream schehma registry : **[customer_schema](https://us-east-1.console.aws.amazon.com/glue/home?region=us-east-1#/v2/data-catalog/schemaRegistries/view/customer_schema)**
 2. Click **Create schema**
 
 ![athena4](images/athena4.png)
