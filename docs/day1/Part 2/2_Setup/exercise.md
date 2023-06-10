@@ -22,23 +22,30 @@ To enable open monitoring, make sure that the cluster is in the ACTIVE state.
 Start by creating a new security group called "MSK_Monitoring" without any rules.
 
 1. Navigate to the EC2 service and choose the "Security Groups" option in the left-side menu.
+![Security_Group](images/Security_Group.png)
 2. At the top of the screen, click on "Create Security Group."
+![Create_Security_Group](images/Create_Security_Group.png)
 3. Provide the name "MSK_Monitoring" for the security group.
 4. Add a description explaining that it allows access to MSK monitoring from monitoring services.
 5. Make sure to select the VPC (Virtual Private Cloud) where your Amazon MSK Cluster is deployed, which is referred to as "MSKVPC."
 6. After confirming the settings, click on "Create" without adding any specific rules.
+![Other_Security_Group](images/Other_Security_Group.png)
 
 ## **Step 2.2 Modify the MSK Workshop Service**
 
 1. Access the EC2 service and navigate to the "Security Groups" section.
+![Security_Group](images/Security_Group.png)
 2. Locate the security group named "MSKWorkshop-KafkaService" and select it.
-3. In the bottom pane, click on the "Edit" button to modify the security group's rules.
+3. Click on the "Actions" button and then select "Edit inbound rules" to modify the security group's rules.
+![Edit_Inbound](images/Edit_Inbound.png)
 4. Add a new rule with the following specifications:
 
 Type: Custom TCP
 Port: 11001-11002
 Source: Select the "MSK_Monitoring" security group
 Description: Specify "Prometheus monitoring"
+
+![PrometheusSG](images/PrometheusSG.png)
 
 By following these steps, you will open the "MSKWorkshop-KafkaService" security group, add a custom TCP rule for ports 11001 to 11002, allowing access from the "MSK_Monitoring" security group. The purpose of this rule is to enable Prometheus monitoring.
 
@@ -48,7 +55,8 @@ By following these steps, you will open the "MSKWorkshop-KafkaService" security 
 2. Locate your Cloud9 host with the name "aws-cloud9-msklab.." in the list of instances.
 3. Click on "Actions" from the top bar.
 4. From the dropdown menu, select "Security" and then choose "Change Security Groups."
+![ChangeSG](images/ChangeSG.png)
 5. Search for the "MSK_Monitoring" security group and select it.
 6. Click on "Add security group" to include the "MSK_Monitoring" group in the Cloud9 instance's security configuration.
 7. Finally, press "Save" in the bottom right corner to save the changes.
-
+![ChangeSG2](images/ChangeSG2.png)
