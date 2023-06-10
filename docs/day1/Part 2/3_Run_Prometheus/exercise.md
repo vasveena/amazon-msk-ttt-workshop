@@ -64,6 +64,58 @@ sudo docker run -d -p 9090:9090 --name=prometheus -v /home/ec2-user/environment/
 This command will pull down the Prometheus container, run it, and mount the configuration files created earlier into the container. Additionally, it will expose the Prometheus service on port 9090. 
 Before running Prometheus on Docker, please double-check and ensure the correct path to your configuration files. Make sure the path you provide in the command reflects the actual location of the configuration files on your system.
 
+
+### Docker Basics
+The container will run in the background, allowing other tasks to proceed concurrently. To check the logs, execute the following command:
+
+```shell
+sudo docker logs <containerID>
+```
+
+To terminate the container, you can use the following command:
+
+```shell
+sudo docker stop prometheus
+```
+
+To completely remove the container, you must first stop it using the command mentioned earlier. Once the container is stopped, you can proceed to remove it using the following command:
+
+```shell
+sudo docker rm prometheus
+```
+
+## Update Security Group on your Cloud9 instance for Prometheus and Grafana
+
+To configure the inbound rules for the AWS Cloud9 security group, follow these steps:
+
+1. Open the EC2 service in the AWS Management Console.
+2. Select "Security Groups" from the navigation menu.
+3. Locate and select the checkbox next to the security group named "aws-cloud9-msklab...".
+4. Click on the "Actions" button and choose "Edit Inbound Rules" from the dropdown menu.
+![Edit_Inbound_C9](images/Edit_Inbound_C9.png)
+5. Click on the "Add Rule" button to add the following rules:
+
+```
+Rule 1 - Prometheus:
+
+Type: Custom TCP
+Port Range: 9090
+Source: MyIP and add the security group "aws-cloud9-msklab..." (the group you're editing) as well
+Description: Prometheus
+
+Rule 2 - Grafana:
+
+Type: Custom TCP
+Port Range: 3000
+Source: MyIP
+Description: Grafana
+```
+
+Once you have added both rules, click on the "Save Rules" button located at the bottom right corner of the window.
+
+![Edit_Inbound_C9_2](images/Edit_Inbound_C9_2.png)
+
+
 ## Connect to Prometheus User Interface
 
 To obtain the IPv4 Public IP address of your AWS Cloud9 instance, follow these steps:
