@@ -21,7 +21,9 @@ This command starts a Docker container named "grafana" based on the Grafana imag
 Now, we need to configure a Data Source to fetch Time Series data from Prometheus. Follow these steps:
 
 1. Click on the "Add Data Source" option.
+![Add_Source](images/Add_Source.png)
 2. Hover over the "Prometheus" option and click on the "Select" button.
+![Prometheus_Source](images/Prometheus_Source.png)
 3. Fill out the configuration details as follows:
 
 URL: Enter http://$CLOUD9_INTERNAL:9090.
@@ -30,6 +32,8 @@ Access: Keep the default setting as "Server".
 ```
 Please note that when configuring the URL for the Prometheus Data Source, you should use the Private IPv4 address of your Cloud9 environment. This address ensures that the communication between Grafana and Prometheus remains within the private network. Replace the placeholder $CLOUD9_INTERNAL with the actual Private IPv4 address of your Cloud9 environment when filling out the configuration.
 ```
+
+![Internal_Config](images/Internal_Config.png)
 
 4. Click on "Save and Test". If everything is set up correctly, the test results should come back as green, indicating that the Data Source is functioning properly. If you encounter an error, double-check if your security groups were properly set up during the preparation step.
 
@@ -40,16 +44,15 @@ Please note that when configuring the URL for the Prometheus Data Source, you sh
 1. Download [this file](https://static.us-east-1.prod.workshops.aws/public/e5fd5787-41ca-4fb6-892c-83ed614aa24f/static/openmonitoring/msk_grafana_dashboard.json) to your workstation. This file contains the configuration for a basic Grafana dashboard that provides an overview of your MSK cluster using metrics collected by Prometheus.
 2. Return to the Grafana user interface in your web browser.
 3. In the left pane, click on the Dashboard icon, typically represented by four squares.
-4. Click on the "Browse" option.
+![Dashboard](images/Dashboard.png)
+4. Click on the "New" option.
 5. Click on the "Import" button.
-6. On the top right of the screen, click on "Upload .json file."
+![Import](images/Import.png)
+6. On the top of the screen, click on "Upload .json file."
 7. Select the JSON file you previously downloaded (msk_grafana_dashboard.json) from your workstation.
+![Import_Json](images/Import_Json.png)
 8. After clicking the "Import" button and successfully uploading the JSON file, you will be directed to a screen that displays the imported Grafana dashboard. This screen will resemble the provided screenshot, showing the newly imported dashboard for your MSK cluster.
 
 The displayed Grafana dashboard is designed to showcase the metrics collected from your Amazon MSK cluster through the Prometheus service. It provides visual representations and insights into various aspects of your MSK cluster's performance, allowing you to monitor and analyze key metrics in real-time. With this dashboard, you can gain a thorough understanding of the health and behavior of your MSK cluster, facilitating effective management and troubleshooting.
 
-
-
-
-
-
+![Final_Dashboard](images/Final_Dashboard.png)
