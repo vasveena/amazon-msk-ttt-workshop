@@ -16,7 +16,11 @@ nav:
       - 3 - Launching MSK cluster (Provisoned)(Console): 'day1/part1/1_provisoned/exercise.md'
       - 4 - Launching MSK cluster (Provisoned)(CLI): 'day1/part1/2_cli/exercise.md'
   - Part 2: 
-    - Open Monitoring Lab 
+    - Open Monitoring Lab:
+      - 1 - Overview: 'day1/part2/1_Intro/exercise.md'
+      - 2 - Setup: 'day1/part1/2_Setup/exercise.md'
+      - 3 - Run Prometheus: 'day1/part2/3_Run_Prometheus/exercise.md'
+      - 4 - Run Grafana: 'day1/part2/4_Run_Grafana/exercise.md'
   - Part 3: 
     - Kafka Migration Lab - MSK to MSK Serverless
   - Part 4: 
