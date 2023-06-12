@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../../1_Intro/exercise/">
+        <link rel="prev" href="../../intro/exercise/">
       
       
-        <link rel="next" href="../../3_Producer/exercise/">
+        <link rel="next" href="../../run_prometheus/exercise/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.13">
     
     
       
-        <title>2 - Setup MSK Serverless cluster - Amazon MSK Train-The-Trainer Workshop</title>
+        <title>2 - Setup - Amazon MSK Train-The-Trainer Workshop</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup-msk-serverless-cluster" class="md-skip">
+        <a href="#step-1-enabling-open-monitoring-for-an-existing-amazon-msk-cluster" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2 - Setup MSK Serverless cluster
+              2 - Setup
             
           </span>
         </div>
@@ -290,7 +290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part1/overview/exercise/" class="md-nav__link">
+      <a href="../../../part1/overview/exercise/" class="md-nav__link">
         1 - Overview
       </a>
     </li>
@@ -304,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part1/Prerequisites/exercise/" class="md-nav__link">
+      <a href="../../../part1/Prerequisites/exercise/" class="md-nav__link">
         2 - Prerequisites
       </a>
     </li>
@@ -318,7 +318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part1/1_provisoned/exercise/" class="md-nav__link">
+      <a href="../../../part1/1_provisoned/exercise/" class="md-nav__link">
         3 - Launching MSK cluster (Provisoned)(Console)
       </a>
     </li>
@@ -332,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part1/2_cli/exercise/" class="md-nav__link">
+      <a href="../../../part1/2_cli/exercise/" class="md-nav__link">
         4 - Launching MSK cluster (Provisoned)(CLI)
       </a>
     </li>
@@ -359,14 +359,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
       
       
       
@@ -375,7 +377,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Part 2
@@ -386,14 +388,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
       
       
       
@@ -402,7 +406,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_4_1">
           <span class="md-nav__icon md-icon"></span>
           Open Monitoring Lab
@@ -415,7 +419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part2/intro/exercise/" class="md-nav__link">
+      <a href="../../intro/exercise/" class="md-nav__link">
         1 - Overview
       </a>
     </li>
@@ -427,11 +431,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../../day1/part2/setup/exercise/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         2 - Setup
       </a>
+      
     </li>
   
 
@@ -443,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part2/run_prometheus/exercise/" class="md-nav__link">
+      <a href="../../run_prometheus/exercise/" class="md-nav__link">
         3 - Run Prometheus
       </a>
     </li>
@@ -457,7 +471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part2/run_grafana/exercise/" class="md-nav__link">
+      <a href="../../run_grafana/exercise/" class="md-nav__link">
         4 - Run Grafana
       </a>
     </li>
@@ -533,16 +547,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
       
       
       
@@ -551,7 +563,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           Part 4
@@ -562,16 +574,14 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
       
       
       
@@ -580,7 +590,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_6_1">
           <span class="md-nav__icon md-icon"></span>
           Building a Serverless Apache Kafka Data Pipeline
@@ -593,7 +603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../1_Intro/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/1_Intro/exercise/" class="md-nav__link">
         1 - Introduction
       </a>
     </li>
@@ -605,21 +615,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../day2/part4/2_Setup/exercise/" class="md-nav__link">
         2 - Setup MSK Serverless cluster
       </a>
-      
     </li>
   
 
@@ -631,7 +631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../3_Producer/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/3_Producer/exercise/" class="md-nav__link">
         3 - Produce clickstream data to MSK Serverless using Elastic Container Service
       </a>
     </li>
@@ -645,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../4_LambdaConsumer/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/4_LambdaConsumer/exercise/" class="md-nav__link">
         4 - Consume data from MSK Serverless using Lambda
       </a>
     </li>
@@ -659,7 +659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../5_QS_Dashboard/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/5_QS_Dashboard/exercise/" class="md-nav__link">
         5 - Create Quicksight Dashboard
       </a>
     </li>
@@ -673,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../6_KDA_Consumer/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/6_KDA_Consumer/exercise/" class="md-nav__link">
         6 - Consume using Kinesis Data Analytics and write to Amazon OpenSearch Service
       </a>
     </li>
@@ -756,7 +756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../part5/overview/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part5/overview/exercise/" class="md-nav__link">
         1 - Architecture Introduction
       </a>
     </li>
@@ -770,7 +770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../part5/Prerequisites/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part5/Prerequisites/exercise/" class="md-nav__link">
         2 - Prerequisites
       </a>
     </li>
@@ -784,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../part5/athena/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part5/athena/exercise/" class="md-nav__link">
         3 - Integration with Athena
       </a>
     </li>
@@ -798,7 +798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../part5/redshift/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part5/redshift/exercise/" class="md-nav__link">
         4 - Integration with Redshift
       </a>
     </li>
@@ -855,77 +855,62 @@
   
 
 
-<h1 id="setup-msk-serverless-cluster"><strong>Setup MSK Serverless cluster</strong><a class="headerlink" href="#setup-msk-serverless-cluster" title="Permanent link">&para;</a></h1>
-<h1 id="msk-serverless-overview"><strong>MSK Serverless Overview</strong><a class="headerlink" href="#msk-serverless-overview" title="Permanent link">&para;</a></h1>
-<p>Apache Kafka is a distributed event store and stream-processing platform. Kafka provides a mechanism to decouple data processing from the source and target destinations as it's highly scalable and resilient. Kafka is very customizable, based on your workload, which introduces operational overhead.</p>
-<p>With serverless Kafka the tradeoff is you lose the flexibility of being able to configure the capacity of your cluster while gaining the ability to use Kafka through a single interface that just provides an endpoint for clients.</p>
-<p>In this module we will stand up a Serverless Apache Kafka Cluster by navigating through the AWS Console.</p>
-<h1 id="create-msk-serverless-cluster"><strong>Create MSK Serverless Cluster</strong><a class="headerlink" href="#create-msk-serverless-cluster" title="Permanent link">&para;</a></h1>
-<p>Navigate to <a href="https://us-east-2.console.aws.amazon.com/msk/">Amazon MSK console page</a> and click the <strong>Create cluster</strong> button on the top right.</p>
-<p><img alt="serv1" src="../images/serv1.png" /></p>
-<h2 id="cluster-settings"><strong>Cluster Settings</strong><a class="headerlink" href="#cluster-settings" title="Permanent link">&para;</a></h2>
-<p>Choose <strong>Custom create</strong> to customize cluster networking and other settings. Provide the <strong>Cluster name</strong>.</p>
-<p><img alt="serv2" src="../images/serv2.png" /></p>
-<p>Ensure cluster type is selected as <strong>Serverless</strong> and click <strong>Next</strong> button.</p>
-<p><img alt="serv3" src="../images/serv3.png" /></p>
-<h2 id="networking"><strong>Networking</strong><a class="headerlink" href="#networking" title="Permanent link">&para;</a></h2>
-<p>In the VPC Configuration section, click <strong>Add subnet</strong> button to have cluster spread across 3 Availability Zones</p>
-<p><img alt="serv4" src="../images/serv4.png" /></p>
-<p>Select <strong>MMVPC</strong> from the VPC dropdown. For Subnets, select the zones <strong>us-east-2a, us-east-2b, us-east-2c</strong> and choose Subnets with name starting <strong>PrivateSubnetMSK</strong> from dropdown for each zone.</p>
-<p><img alt="serv5" src="../images/serv5.png" /></p>
-<p>Choose <strong>Custom security groups</strong>, remove the default security group and choose security group with name <strong>MSK Security Group</strong> from dropdown list and click <strong>Next</strong> button.</p>
-<p><img alt="serv6" src="../images/serv6.png" /></p>
-<h2 id="security"><strong>Security</strong><a class="headerlink" href="#security" title="Permanent link">&para;</a></h2>
-<p>MSK Serverless defaults to <strong>IAM role-based authentication</strong>. Click <strong>Next</strong> to proceed.</p>
-<p><img alt="serv7" src="../images/serv7.png" /></p>
-<h2 id="metrics-and-tags"><strong>Metrics and tags</strong><a class="headerlink" href="#metrics-and-tags" title="Permanent link">&para;</a></h2>
-<p>Leave it to default and click <strong>Next</strong> to proceed.</p>
-<p><img alt="serv8" src="../images/serv8.png" /></p>
-<h2 id="review-and-create"><strong>Review and create</strong><a class="headerlink" href="#review-and-create" title="Permanent link">&para;</a></h2>
-<p>Review the configuration and click <strong>Create cluster</strong> button.</p>
-<p><img alt="serv9" src="../images/serv9.png" /></p>
-<p>Wait for couple of minutes for cluster to be created and available to use. Wait for cluster status to change from <strong>Creating</strong> to <strong> Active</strong></p>
-<p><img alt="serv10" src="../images/serv10.png" />
-<img alt="serv11" src="../images/serv11.png" /></p>
-<h2 id="copy-cluster-endpoint"><strong>Copy Cluster Endpoint</strong><a class="headerlink" href="#copy-cluster-endpoint" title="Permanent link">&para;</a></h2>
-<p>Click on the <strong>View client information</strong> button and copy the details of cluster endpoint and save it on notepad for later use.</p>
-<p><img alt="serv12" src="../images/serv12.png" />
-<img alt="serv13" src="../images/serv13.png" /></p>
-<h1 id="create-msk-topics"><strong>Create MSK Topics</strong><a class="headerlink" href="#create-msk-topics" title="Permanent link">&para;</a></h1>
-<p>Now that the cluster is ready and available to use, we need to create Kafka topics to produce and consume data. Please follow instructions below to create Kafka topics needed for this workshop.</p>
-<h2 id="connect-to-kafka-client"><strong>Connect to Kafka Client</strong><a class="headerlink" href="#connect-to-kafka-client" title="Permanent link">&para;</a></h2>
-<p>Navigate to <a href="https://us-east-2.console.aws.amazon.com/ec2/v2/home">Amazon EC2 console</a>page.</p>
-<p>On the EC2 home page click on <strong>Instances(running)</strong> link as show in below image.</p>
-<p><img alt="serv14" src="../images/serv14.png" /></p>
-<p>On the EC2 instances page select the checkbox for the instance named <strong>KafkaClientInstance</strong> and click on <strong>Connec</strong>t button on top right as shown in below image.</p>
-<p><img alt="serv15" src="../images/serv15.png" /></p>
-<p>On the page <strong>Connect to instance</strong>, ensure you select the <strong>Session Manager</strong> tab and click on the <strong>Connect</strong> button.</p>
-<p><img alt="serv16" src="../images/serv16.png" /></p>
-<p>This would open a new tab with EC2 terminal.</p>
-<h2 id="create-topics"><strong>Create Topics</strong><a class="headerlink" href="#create-topics" title="Permanent link">&para;</a></h2>
-<p>On the Terminal, please execute below command to change to ec2-user by running the below command:</p>
-<div class="codehilite"><pre><span></span><code>sudo su - ec2-user
+<h1 id="step-1-enabling-open-monitoring-for-an-existing-amazon-msk-cluster"><strong>Step 1 - Enabling open monitoring for an existing Amazon MSK cluster</strong><a class="headerlink" href="#step-1-enabling-open-monitoring-for-an-existing-amazon-msk-cluster" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><code>To enable open monitoring, make sure that the cluster is in the ACTIVE state.
 </code></pre></div>
 
-<p><img alt="serv17" src="../images/serv17.png" /></p>
-<p>Please execute below command to set your MSK cluster broker endpoint to the shell variable BS. Please replace<strong>YOUR_CLUSTER_ENDPOINT</strong> in below command with the endpoint you copied in the last step of previous section as shown in the image.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">BS</span><span class="o">=</span><span class="n">YOUR_CLUSTER_ENDPOINT</span>
-</code></pre></div>
-
-<p><img alt="serv18" src="../images/serv18.png" /></p>
-<p>Execute command below to create the topics needed for workshop as shown in image</p>
-<div class="codehilite"><pre><span></span><code>./create-topics.sh
-</code></pre></div>
-
-<p>You will see warnings printed to the terminal like below. You may ignore them.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">SLF4J</span><span class="p">:</span><span class="w"> </span><span class="n">Failed</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="s2">&quot;org.slf4j.impl.StaticLoggerBinder&quot;</span><span class="o">.</span>
-<span class="n">SLF4J</span><span class="p">:</span><span class="w"> </span><span class="n">Defaulting</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">no</span><span class="o">-</span><span class="n">operation</span><span class="w"> </span><span class="p">(</span><span class="n">NOP</span><span class="p">)</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="n">implementation</span>
-<span class="n">SLF4J</span><span class="p">:</span><span class="w"> </span><span class="n">See</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">slf4j</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">codes</span><span class="o">.</span><span class="n">html</span><span class="c1">#StaticLoggerBinder for further details.</span>
-</code></pre></div>
-
-<p><img alt="serv19" src="../images/serv19.png" /></p>
-<p>You should see the four MSK topics (<strong>clickstream, Departments_Agg, ClickEvents_UserId_Agg_Result, User_Sessions_Aggregates_With_Order_Checkout</strong>) created.</p>
-<p><img alt="serv20" src="../images/serv20.png" /></p>
+<p><strong>Using the AWS Management Console</strong>
+1. Sign in to the AWS Management Console, and open the Amazon MSK console at https://console.aws.amazon.com/msk/home?region=us-east-1#/home/.
+2. Choose the name of the cluster that you want to update. This takes you to a page the contains details for the cluster.
+<img alt="Intro_Choose_Cluster" src="../images/Intro_Choose_Cluster.png" />
+3. On the Properties tab, scroll down to find the Monitoring section.
+<img alt="Properties" src="../images/Properties.png" />
+4. Choose Edit.
+<img alt="Edit_Monitoring" src="../images/Edit_Monitoring.png" />
+5. Select the check box next to Enable open monitoring with Prometheus.
+<img alt="Enable" src="../images/Enable.png" />
+6. Choose Save changes.</p>
+<h1 id="step-2-create-security-group-rules-to-allow-monitoring-access"><strong>Step 2 - Create Security group rules to allow monitoring access</strong><a class="headerlink" href="#step-2-create-security-group-rules-to-allow-monitoring-access" title="Permanent link">&para;</a></h1>
+<h2 id="step-21-create-new-security-group"><strong>Step 2.1 Create new security group</strong><a class="headerlink" href="#step-21-create-new-security-group" title="Permanent link">&para;</a></h2>
+<p>Start by creating a new security group called "MSK_Monitoring" without any rules.</p>
+<ol>
+<li>Navigate to the EC2 service and choose the "Security Groups" option in the left-side menu.
+<img alt="Security_Group" src="../images/Security_Group.png" /></li>
+<li>At the top of the screen, click on "Create Security Group."
+<img alt="Create_Security_Group" src="../images/Create_Security_Group.png" /></li>
+<li>Provide the name "MSK_Monitoring" for the security group.</li>
+<li>Add a description explaining that it allows access to MSK monitoring from monitoring services.</li>
+<li>Make sure to select the VPC (Virtual Private Cloud) where your Amazon MSK Cluster is deployed, which is referred to as "MSKVPC."</li>
+<li>After confirming the settings, click on "Create" without adding any specific rules.
+<img alt="Other_Security_Group" src="../images/Other_Security_Group.png" /></li>
+</ol>
+<h2 id="step-22-modify-the-msk-workshop-service"><strong>Step 2.2 Modify the MSK Workshop Service</strong><a class="headerlink" href="#step-22-modify-the-msk-workshop-service" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Access the EC2 service and navigate to the "Security Groups" section.
+<img alt="Security_Group" src="../images/Security_Group.png" /></li>
+<li>Locate the security group named "MSKWorkshop-KafkaService" and select it.</li>
+<li>Click on the "Actions" button and then select "Edit inbound rules" to modify the security group's rules.
+<img alt="Edit_Inbound" src="../images/Edit_Inbound.png" /></li>
+<li>Add a new rule with the following specifications:</li>
+</ol>
+<p>Type: Custom TCP
+Port: 11001-11002
+Source: Select the "MSK_Monitoring" security group
+Description: Specify "Prometheus monitoring"</p>
+<p><img alt="PrometheusSG" src="../images/PrometheusSG.png" /></p>
+<p>By following these steps, you will open the "MSKWorkshop-KafkaService" security group, add a custom TCP rule for ports 11001 to 11002, allowing access from the "MSK_Monitoring" security group. The purpose of this rule is to enable Prometheus monitoring.</p>
+<h2 id="step-23-attach-the-msk_monitoring-sg-to-your-cloud9-instance"><strong>Step 2.3 Attach the MSK_Monitoring SG to your Cloud9 instance</strong><a class="headerlink" href="#step-23-attach-the-msk_monitoring-sg-to-your-cloud9-instance" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Open the EC2 console and navigate to the "Instances" section.</li>
+<li>Locate your Cloud9 host with the name "aws-cloud9-msklab.." in the list of instances.</li>
+<li>Click on "Actions" from the top bar.</li>
+<li>From the dropdown menu, select "Security" and then choose "Change Security Groups."
+<img alt="ChangeSG" src="../images/ChangeSG.png" /></li>
+<li>Search for the "MSK_Monitoring" security group and select it.</li>
+<li>Click on "Add security group" to include the "MSK_Monitoring" group in the Cloud9 instance's security configuration.</li>
+<li>Finally, press "Save" in the bottom right corner to save the changes.
+<img alt="ChangeSG2" src="../images/ChangeSG2.png" /></li>
+</ol>
 
 
 

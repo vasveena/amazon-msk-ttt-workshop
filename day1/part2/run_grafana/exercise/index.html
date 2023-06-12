@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../../1_Intro/exercise/">
+        <link rel="prev" href="../../run_prometheus/exercise/">
       
       
-        <link rel="next" href="../../3_Producer/exercise/">
+        <link rel="next" href="../../../../day2/part4/1_Intro/exercise/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.13">
     
     
       
-        <title>2 - Setup MSK Serverless cluster - Amazon MSK Train-The-Trainer Workshop</title>
+        <title>4 - Run Grafana - Amazon MSK Train-The-Trainer Workshop</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup-msk-serverless-cluster" class="md-skip">
+        <a href="#run-grafana-using-docker" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2 - Setup MSK Serverless cluster
+              4 - Run Grafana
             
           </span>
         </div>
@@ -290,7 +290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part1/overview/exercise/" class="md-nav__link">
+      <a href="../../../part1/overview/exercise/" class="md-nav__link">
         1 - Overview
       </a>
     </li>
@@ -304,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part1/Prerequisites/exercise/" class="md-nav__link">
+      <a href="../../../part1/Prerequisites/exercise/" class="md-nav__link">
         2 - Prerequisites
       </a>
     </li>
@@ -318,7 +318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part1/1_provisoned/exercise/" class="md-nav__link">
+      <a href="../../../part1/1_provisoned/exercise/" class="md-nav__link">
         3 - Launching MSK cluster (Provisoned)(Console)
       </a>
     </li>
@@ -332,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part1/2_cli/exercise/" class="md-nav__link">
+      <a href="../../../part1/2_cli/exercise/" class="md-nav__link">
         4 - Launching MSK cluster (Provisoned)(CLI)
       </a>
     </li>
@@ -359,14 +359,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
       
       
       
@@ -375,7 +377,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Part 2
@@ -386,14 +388,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
       
       
       
@@ -402,7 +406,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_4_1">
           <span class="md-nav__icon md-icon"></span>
           Open Monitoring Lab
@@ -415,7 +419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part2/intro/exercise/" class="md-nav__link">
+      <a href="../../intro/exercise/" class="md-nav__link">
         1 - Overview
       </a>
     </li>
@@ -429,7 +433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part2/setup/exercise/" class="md-nav__link">
+      <a href="../../setup/exercise/" class="md-nav__link">
         2 - Setup
       </a>
     </li>
@@ -443,7 +447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part2/run_prometheus/exercise/" class="md-nav__link">
+      <a href="../../run_prometheus/exercise/" class="md-nav__link">
         3 - Run Prometheus
       </a>
     </li>
@@ -455,11 +459,59 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../../day1/part2/run_grafana/exercise/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          4 - Run Grafana
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         4 - Run Grafana
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configure-grafana" class="md-nav__link">
+    Configure Grafana
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-grafana-dashboard" class="md-nav__link">
+    Import Grafana Dashboard
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -533,16 +585,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
       
       
       
@@ -551,7 +601,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           Part 4
@@ -562,16 +612,14 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
       
       
       
@@ -580,7 +628,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_6_1">
           <span class="md-nav__icon md-icon"></span>
           Building a Serverless Apache Kafka Data Pipeline
@@ -593,7 +641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../1_Intro/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/1_Intro/exercise/" class="md-nav__link">
         1 - Introduction
       </a>
     </li>
@@ -605,21 +653,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../day2/part4/2_Setup/exercise/" class="md-nav__link">
         2 - Setup MSK Serverless cluster
       </a>
-      
     </li>
   
 
@@ -631,7 +669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../3_Producer/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/3_Producer/exercise/" class="md-nav__link">
         3 - Produce clickstream data to MSK Serverless using Elastic Container Service
       </a>
     </li>
@@ -645,7 +683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../4_LambdaConsumer/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/4_LambdaConsumer/exercise/" class="md-nav__link">
         4 - Consume data from MSK Serverless using Lambda
       </a>
     </li>
@@ -659,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../5_QS_Dashboard/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/5_QS_Dashboard/exercise/" class="md-nav__link">
         5 - Create Quicksight Dashboard
       </a>
     </li>
@@ -673,7 +711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../6_KDA_Consumer/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/6_KDA_Consumer/exercise/" class="md-nav__link">
         6 - Consume using Kinesis Data Analytics and write to Amazon OpenSearch Service
       </a>
     </li>
@@ -756,7 +794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../part5/overview/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part5/overview/exercise/" class="md-nav__link">
         1 - Architecture Introduction
       </a>
     </li>
@@ -770,7 +808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../part5/Prerequisites/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part5/Prerequisites/exercise/" class="md-nav__link">
         2 - Prerequisites
       </a>
     </li>
@@ -784,7 +822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../part5/athena/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part5/athena/exercise/" class="md-nav__link">
         3 - Integration with Athena
       </a>
     </li>
@@ -798,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../part5/redshift/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part5/redshift/exercise/" class="md-nav__link">
         4 - Integration with Redshift
       </a>
     </li>
@@ -839,6 +877,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configure-grafana" class="md-nav__link">
+    Configure Grafana
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-grafana-dashboard" class="md-nav__link">
+    Import Grafana Dashboard
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -855,77 +915,60 @@
   
 
 
-<h1 id="setup-msk-serverless-cluster"><strong>Setup MSK Serverless cluster</strong><a class="headerlink" href="#setup-msk-serverless-cluster" title="Permanent link">&para;</a></h1>
-<h1 id="msk-serverless-overview"><strong>MSK Serverless Overview</strong><a class="headerlink" href="#msk-serverless-overview" title="Permanent link">&para;</a></h1>
-<p>Apache Kafka is a distributed event store and stream-processing platform. Kafka provides a mechanism to decouple data processing from the source and target destinations as it's highly scalable and resilient. Kafka is very customizable, based on your workload, which introduces operational overhead.</p>
-<p>With serverless Kafka the tradeoff is you lose the flexibility of being able to configure the capacity of your cluster while gaining the ability to use Kafka through a single interface that just provides an endpoint for clients.</p>
-<p>In this module we will stand up a Serverless Apache Kafka Cluster by navigating through the AWS Console.</p>
-<h1 id="create-msk-serverless-cluster"><strong>Create MSK Serverless Cluster</strong><a class="headerlink" href="#create-msk-serverless-cluster" title="Permanent link">&para;</a></h1>
-<p>Navigate to <a href="https://us-east-2.console.aws.amazon.com/msk/">Amazon MSK console page</a> and click the <strong>Create cluster</strong> button on the top right.</p>
-<p><img alt="serv1" src="../images/serv1.png" /></p>
-<h2 id="cluster-settings"><strong>Cluster Settings</strong><a class="headerlink" href="#cluster-settings" title="Permanent link">&para;</a></h2>
-<p>Choose <strong>Custom create</strong> to customize cluster networking and other settings. Provide the <strong>Cluster name</strong>.</p>
-<p><img alt="serv2" src="../images/serv2.png" /></p>
-<p>Ensure cluster type is selected as <strong>Serverless</strong> and click <strong>Next</strong> button.</p>
-<p><img alt="serv3" src="../images/serv3.png" /></p>
-<h2 id="networking"><strong>Networking</strong><a class="headerlink" href="#networking" title="Permanent link">&para;</a></h2>
-<p>In the VPC Configuration section, click <strong>Add subnet</strong> button to have cluster spread across 3 Availability Zones</p>
-<p><img alt="serv4" src="../images/serv4.png" /></p>
-<p>Select <strong>MMVPC</strong> from the VPC dropdown. For Subnets, select the zones <strong>us-east-2a, us-east-2b, us-east-2c</strong> and choose Subnets with name starting <strong>PrivateSubnetMSK</strong> from dropdown for each zone.</p>
-<p><img alt="serv5" src="../images/serv5.png" /></p>
-<p>Choose <strong>Custom security groups</strong>, remove the default security group and choose security group with name <strong>MSK Security Group</strong> from dropdown list and click <strong>Next</strong> button.</p>
-<p><img alt="serv6" src="../images/serv6.png" /></p>
-<h2 id="security"><strong>Security</strong><a class="headerlink" href="#security" title="Permanent link">&para;</a></h2>
-<p>MSK Serverless defaults to <strong>IAM role-based authentication</strong>. Click <strong>Next</strong> to proceed.</p>
-<p><img alt="serv7" src="../images/serv7.png" /></p>
-<h2 id="metrics-and-tags"><strong>Metrics and tags</strong><a class="headerlink" href="#metrics-and-tags" title="Permanent link">&para;</a></h2>
-<p>Leave it to default and click <strong>Next</strong> to proceed.</p>
-<p><img alt="serv8" src="../images/serv8.png" /></p>
-<h2 id="review-and-create"><strong>Review and create</strong><a class="headerlink" href="#review-and-create" title="Permanent link">&para;</a></h2>
-<p>Review the configuration and click <strong>Create cluster</strong> button.</p>
-<p><img alt="serv9" src="../images/serv9.png" /></p>
-<p>Wait for couple of minutes for cluster to be created and available to use. Wait for cluster status to change from <strong>Creating</strong> to <strong> Active</strong></p>
-<p><img alt="serv10" src="../images/serv10.png" />
-<img alt="serv11" src="../images/serv11.png" /></p>
-<h2 id="copy-cluster-endpoint"><strong>Copy Cluster Endpoint</strong><a class="headerlink" href="#copy-cluster-endpoint" title="Permanent link">&para;</a></h2>
-<p>Click on the <strong>View client information</strong> button and copy the details of cluster endpoint and save it on notepad for later use.</p>
-<p><img alt="serv12" src="../images/serv12.png" />
-<img alt="serv13" src="../images/serv13.png" /></p>
-<h1 id="create-msk-topics"><strong>Create MSK Topics</strong><a class="headerlink" href="#create-msk-topics" title="Permanent link">&para;</a></h1>
-<p>Now that the cluster is ready and available to use, we need to create Kafka topics to produce and consume data. Please follow instructions below to create Kafka topics needed for this workshop.</p>
-<h2 id="connect-to-kafka-client"><strong>Connect to Kafka Client</strong><a class="headerlink" href="#connect-to-kafka-client" title="Permanent link">&para;</a></h2>
-<p>Navigate to <a href="https://us-east-2.console.aws.amazon.com/ec2/v2/home">Amazon EC2 console</a>page.</p>
-<p>On the EC2 home page click on <strong>Instances(running)</strong> link as show in below image.</p>
-<p><img alt="serv14" src="../images/serv14.png" /></p>
-<p>On the EC2 instances page select the checkbox for the instance named <strong>KafkaClientInstance</strong> and click on <strong>Connec</strong>t button on top right as shown in below image.</p>
-<p><img alt="serv15" src="../images/serv15.png" /></p>
-<p>On the page <strong>Connect to instance</strong>, ensure you select the <strong>Session Manager</strong> tab and click on the <strong>Connect</strong> button.</p>
-<p><img alt="serv16" src="../images/serv16.png" /></p>
-<p>This would open a new tab with EC2 terminal.</p>
-<h2 id="create-topics"><strong>Create Topics</strong><a class="headerlink" href="#create-topics" title="Permanent link">&para;</a></h2>
-<p>On the Terminal, please execute below command to change to ec2-user by running the below command:</p>
-<div class="codehilite"><pre><span></span><code>sudo su - ec2-user
+<h1 id="run-grafana-using-docker"><strong>Run Grafana using Docker</strong><a class="headerlink" href="#run-grafana-using-docker" title="Permanent link">&para;</a></h1>
+<p>Our plan involves utilizing Grafana, an effective tool for visualizing and creating dashboards, to display the metrics of an MSK cluster and its topics. These metrics are collected by Prometheus, which provides a functional interface for reviewing individual metrics. However, when operating Amazon MSK in a production environment, it is preferable to have comprehensive and visually appealing dashboards.</p>
+<p>To simplify the process, we will use Docker to run Grafana within the Cloud9 IDE environment. This approach ensures simplicity and ease of use.</p>
+<ol>
+<li>Launch a shell within the Cloud9 environment.</li>
+<li>Initiate Grafana using Docker by executing the following command:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>--name<span class="o">=</span>grafana<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;GF_INSTALL_PLUGINS=grafana-clock-panel&quot;</span><span class="w"> </span>grafana/grafana
 </code></pre></div>
 
-<p><img alt="serv17" src="../images/serv17.png" /></p>
-<p>Please execute below command to set your MSK cluster broker endpoint to the shell variable BS. Please replace<strong>YOUR_CLUSTER_ENDPOINT</strong> in below command with the endpoint you copied in the last step of previous section as shown in the image.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">BS</span><span class="o">=</span><span class="n">YOUR_CLUSTER_ENDPOINT</span>
+<p>This command starts a Docker container named "grafana" based on the Grafana image. The container is set to run in detached mode (-d), and it maps port 3000 of the container to port 3000 of the host.</p>
+<ol>
+<li>Access Grafana by opening a web browser and entering the Cloud9 public IP Address followed by port 3000 (http://$CLOUD9_EXTERNAL:3000). This allows you to connect to the Grafana user interface.</li>
+<li>Log in to Grafana using the username "admin" and password "admin".</li>
+</ol>
+<h2 id="configure-grafana"><strong>Configure Grafana</strong><a class="headerlink" href="#configure-grafana" title="Permanent link">&para;</a></h2>
+<p>Now, we need to configure a Data Source to fetch Time Series data from Prometheus. Follow these steps:</p>
+<ol>
+<li>Click on the "Add Data Source" option.
+<img alt="Add_Source" src="../images/Add_Source.png" /></li>
+<li>Hover over the "Prometheus" option and click on the "Select" button.
+<img alt="Prometheus_Source" src="../images/Prometheus_Source.png" /></li>
+<li>Fill out the configuration details as follows:</li>
+</ol>
+<p>URL: Enter http://$CLOUD9_INTERNAL:9090.
+Access: Keep the default setting as "Server".</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">Please</span><span class="w"> </span><span class="nx">note</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="nx">when</span><span class="w"> </span><span class="nx">configuring</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">URL</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Prometheus</span><span class="w"> </span><span class="nx">Data</span><span class="w"> </span><span class="nx">Source</span><span class="p">,</span><span class="w"> </span><span class="nx">you</span><span class="w"> </span><span class="nx">should</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Private</span><span class="w"> </span><span class="nx">IPv4</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">your</span><span class="w"> </span><span class="nx">Cloud9</span><span class="w"> </span><span class="nx">environment</span><span class="p">.</span><span class="w"> </span><span class="nx">This</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="nx">ensures</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">communication</span><span class="w"> </span><span class="nx">between</span><span class="w"> </span><span class="nx">Grafana</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">Prometheus</span><span class="w"> </span><span class="nx">remains</span><span class="w"> </span><span class="nx">within</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="w"> </span><span class="nx">Replace</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">placeholder</span><span class="w"> </span><span class="err">$</span><span class="nx">CLOUD9_INTERNAL</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">actual</span><span class="w"> </span><span class="nx">Private</span><span class="w"> </span><span class="nx">IPv4</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">your</span><span class="w"> </span><span class="nx">Cloud9</span><span class="w"> </span><span class="nx">environment</span><span class="w"> </span><span class="nx">when</span><span class="w"> </span><span class="nx">filling</span><span class="w"> </span><span class="nx">out</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">configuration</span><span class="p">.</span>
 </code></pre></div>
 
-<p><img alt="serv18" src="../images/serv18.png" /></p>
-<p>Execute command below to create the topics needed for workshop as shown in image</p>
-<div class="codehilite"><pre><span></span><code>./create-topics.sh
-</code></pre></div>
-
-<p>You will see warnings printed to the terminal like below. You may ignore them.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">SLF4J</span><span class="p">:</span><span class="w"> </span><span class="n">Failed</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="s2">&quot;org.slf4j.impl.StaticLoggerBinder&quot;</span><span class="o">.</span>
-<span class="n">SLF4J</span><span class="p">:</span><span class="w"> </span><span class="n">Defaulting</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">no</span><span class="o">-</span><span class="n">operation</span><span class="w"> </span><span class="p">(</span><span class="n">NOP</span><span class="p">)</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="n">implementation</span>
-<span class="n">SLF4J</span><span class="p">:</span><span class="w"> </span><span class="n">See</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">slf4j</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">codes</span><span class="o">.</span><span class="n">html</span><span class="c1">#StaticLoggerBinder for further details.</span>
-</code></pre></div>
-
-<p><img alt="serv19" src="../images/serv19.png" /></p>
-<p>You should see the four MSK topics (<strong>clickstream, Departments_Agg, ClickEvents_UserId_Agg_Result, User_Sessions_Aggregates_With_Order_Checkout</strong>) created.</p>
-<p><img alt="serv20" src="../images/serv20.png" /></p>
+<p><img alt="Internal_Config" src="../images/Internal_Config.png" /></p>
+<ol>
+<li>
+<p>Click on "Save and Test". If everything is set up correctly, the test results should come back as green, indicating that the Data Source is functioning properly. If you encounter an error, double-check if your security groups were properly set up during the preparation step.</p>
+</li>
+<li>
+<p>On the Configuration page, locate the "Dashboards" option at the top and click on it. Then, select "Import" next to the "Prometheus 2.0 Stats" option. This action will import a pre-built dashboard specifically designed for monitoring the Prometheus service itself.</p>
+</li>
+</ol>
+<h2 id="import-grafana-dashboard"><strong>Import Grafana Dashboard</strong><a class="headerlink" href="#import-grafana-dashboard" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Download <a href="https://static.us-east-1.prod.workshops.aws/public/e5fd5787-41ca-4fb6-892c-83ed614aa24f/static/openmonitoring/msk_grafana_dashboard.json">this file</a> to your workstation. This file contains the configuration for a basic Grafana dashboard that provides an overview of your MSK cluster using metrics collected by Prometheus.</li>
+<li>Return to the Grafana user interface in your web browser.</li>
+<li>In the left pane, click on the Dashboard icon, typically represented by four squares.
+<img alt="Dashboard" src="../images/Dashboard.png" /></li>
+<li>Click on the "New" option.</li>
+<li>Click on the "Import" button.
+<img alt="Import" src="../images/Import.png" /></li>
+<li>On the top of the screen, click on "Upload .json file."</li>
+<li>Select the JSON file you previously downloaded (msk_grafana_dashboard.json) from your workstation.
+<img alt="Import_Json" src="../images/Import_Json.png" /></li>
+<li>After clicking the "Import" button and successfully uploading the JSON file, you will be directed to a screen that displays the imported Grafana dashboard. This screen will resemble the provided screenshot, showing the newly imported dashboard for your MSK cluster.</li>
+</ol>
+<p>The displayed Grafana dashboard is designed to showcase the metrics collected from your Amazon MSK cluster through the Prometheus service. It provides visual representations and insights into various aspects of your MSK cluster's performance, allowing you to monitor and analyze key metrics in real-time. With this dashboard, you can gain a thorough understanding of the health and behavior of your MSK cluster, facilitating effective management and troubleshooting.</p>
+<p><img alt="Final_Dashboard" src="../images/Final_Dashboard.png" /></p>
 
 
 

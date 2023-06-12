@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../../1_Intro/exercise/">
+        <link rel="prev" href="../../setup/exercise/">
       
       
-        <link rel="next" href="../../3_Producer/exercise/">
+        <link rel="next" href="../../run_grafana/exercise/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.13">
     
     
       
-        <title>2 - Setup MSK Serverless cluster - Amazon MSK Train-The-Trainer Workshop</title>
+        <title>3 - Run Prometheus - Amazon MSK Train-The-Trainer Workshop</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup-msk-serverless-cluster" class="md-skip">
+        <a href="#run-prometheus-using-docker" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2 - Setup MSK Serverless cluster
+              3 - Run Prometheus
             
           </span>
         </div>
@@ -290,7 +290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part1/overview/exercise/" class="md-nav__link">
+      <a href="../../../part1/overview/exercise/" class="md-nav__link">
         1 - Overview
       </a>
     </li>
@@ -304,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part1/Prerequisites/exercise/" class="md-nav__link">
+      <a href="../../../part1/Prerequisites/exercise/" class="md-nav__link">
         2 - Prerequisites
       </a>
     </li>
@@ -318,7 +318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part1/1_provisoned/exercise/" class="md-nav__link">
+      <a href="../../../part1/1_provisoned/exercise/" class="md-nav__link">
         3 - Launching MSK cluster (Provisoned)(Console)
       </a>
     </li>
@@ -332,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part1/2_cli/exercise/" class="md-nav__link">
+      <a href="../../../part1/2_cli/exercise/" class="md-nav__link">
         4 - Launching MSK cluster (Provisoned)(CLI)
       </a>
     </li>
@@ -359,14 +359,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
       
       
       
@@ -375,7 +377,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Part 2
@@ -386,14 +388,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
       
       
       
@@ -402,7 +406,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_4_1">
           <span class="md-nav__icon md-icon"></span>
           Open Monitoring Lab
@@ -415,7 +419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part2/intro/exercise/" class="md-nav__link">
+      <a href="../../intro/exercise/" class="md-nav__link">
         1 - Overview
       </a>
     </li>
@@ -429,7 +433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part2/setup/exercise/" class="md-nav__link">
+      <a href="../../setup/exercise/" class="md-nav__link">
         2 - Setup
       </a>
     </li>
@@ -441,11 +445,66 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../../day1/part2/run_prometheus/exercise/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3 - Run Prometheus
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         3 - Run Prometheus
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#docker-basics" class="md-nav__link">
+    Docker Basics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-security-group-on-your-cloud9-instance-for-prometheus-and-grafana" class="md-nav__link">
+    Update Security Group on your Cloud9 instance for Prometheus and Grafana
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-prometheus-user-interface" class="md-nav__link">
+    Connect to Prometheus User Interface
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -457,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../day1/part2/run_grafana/exercise/" class="md-nav__link">
+      <a href="../../run_grafana/exercise/" class="md-nav__link">
         4 - Run Grafana
       </a>
     </li>
@@ -533,16 +592,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
       
       
       
@@ -551,7 +608,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           Part 4
@@ -562,16 +619,14 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
       
       
       
@@ -580,7 +635,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_6_1">
           <span class="md-nav__icon md-icon"></span>
           Building a Serverless Apache Kafka Data Pipeline
@@ -593,7 +648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../1_Intro/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/1_Intro/exercise/" class="md-nav__link">
         1 - Introduction
       </a>
     </li>
@@ -605,21 +660,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../day2/part4/2_Setup/exercise/" class="md-nav__link">
         2 - Setup MSK Serverless cluster
       </a>
-      
     </li>
   
 
@@ -631,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../3_Producer/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/3_Producer/exercise/" class="md-nav__link">
         3 - Produce clickstream data to MSK Serverless using Elastic Container Service
       </a>
     </li>
@@ -645,7 +690,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../4_LambdaConsumer/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/4_LambdaConsumer/exercise/" class="md-nav__link">
         4 - Consume data from MSK Serverless using Lambda
       </a>
     </li>
@@ -659,7 +704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../5_QS_Dashboard/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/5_QS_Dashboard/exercise/" class="md-nav__link">
         5 - Create Quicksight Dashboard
       </a>
     </li>
@@ -673,7 +718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../6_KDA_Consumer/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part4/6_KDA_Consumer/exercise/" class="md-nav__link">
         6 - Consume using Kinesis Data Analytics and write to Amazon OpenSearch Service
       </a>
     </li>
@@ -756,7 +801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../part5/overview/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part5/overview/exercise/" class="md-nav__link">
         1 - Architecture Introduction
       </a>
     </li>
@@ -770,7 +815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../part5/Prerequisites/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part5/Prerequisites/exercise/" class="md-nav__link">
         2 - Prerequisites
       </a>
     </li>
@@ -784,7 +829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../part5/athena/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part5/athena/exercise/" class="md-nav__link">
         3 - Integration with Athena
       </a>
     </li>
@@ -798,7 +843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../part5/redshift/exercise/" class="md-nav__link">
+      <a href="../../../../day2/part5/redshift/exercise/" class="md-nav__link">
         4 - Integration with Redshift
       </a>
     </li>
@@ -839,6 +884,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#docker-basics" class="md-nav__link">
+    Docker Basics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-security-group-on-your-cloud9-instance-for-prometheus-and-grafana" class="md-nav__link">
+    Update Security Group on your Cloud9 instance for Prometheus and Grafana
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-prometheus-user-interface" class="md-nav__link">
+    Connect to Prometheus User Interface
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -855,77 +929,127 @@
   
 
 
-<h1 id="setup-msk-serverless-cluster"><strong>Setup MSK Serverless cluster</strong><a class="headerlink" href="#setup-msk-serverless-cluster" title="Permanent link">&para;</a></h1>
-<h1 id="msk-serverless-overview"><strong>MSK Serverless Overview</strong><a class="headerlink" href="#msk-serverless-overview" title="Permanent link">&para;</a></h1>
-<p>Apache Kafka is a distributed event store and stream-processing platform. Kafka provides a mechanism to decouple data processing from the source and target destinations as it's highly scalable and resilient. Kafka is very customizable, based on your workload, which introduces operational overhead.</p>
-<p>With serverless Kafka the tradeoff is you lose the flexibility of being able to configure the capacity of your cluster while gaining the ability to use Kafka through a single interface that just provides an endpoint for clients.</p>
-<p>In this module we will stand up a Serverless Apache Kafka Cluster by navigating through the AWS Console.</p>
-<h1 id="create-msk-serverless-cluster"><strong>Create MSK Serverless Cluster</strong><a class="headerlink" href="#create-msk-serverless-cluster" title="Permanent link">&para;</a></h1>
-<p>Navigate to <a href="https://us-east-2.console.aws.amazon.com/msk/">Amazon MSK console page</a> and click the <strong>Create cluster</strong> button on the top right.</p>
-<p><img alt="serv1" src="../images/serv1.png" /></p>
-<h2 id="cluster-settings"><strong>Cluster Settings</strong><a class="headerlink" href="#cluster-settings" title="Permanent link">&para;</a></h2>
-<p>Choose <strong>Custom create</strong> to customize cluster networking and other settings. Provide the <strong>Cluster name</strong>.</p>
-<p><img alt="serv2" src="../images/serv2.png" /></p>
-<p>Ensure cluster type is selected as <strong>Serverless</strong> and click <strong>Next</strong> button.</p>
-<p><img alt="serv3" src="../images/serv3.png" /></p>
-<h2 id="networking"><strong>Networking</strong><a class="headerlink" href="#networking" title="Permanent link">&para;</a></h2>
-<p>In the VPC Configuration section, click <strong>Add subnet</strong> button to have cluster spread across 3 Availability Zones</p>
-<p><img alt="serv4" src="../images/serv4.png" /></p>
-<p>Select <strong>MMVPC</strong> from the VPC dropdown. For Subnets, select the zones <strong>us-east-2a, us-east-2b, us-east-2c</strong> and choose Subnets with name starting <strong>PrivateSubnetMSK</strong> from dropdown for each zone.</p>
-<p><img alt="serv5" src="../images/serv5.png" /></p>
-<p>Choose <strong>Custom security groups</strong>, remove the default security group and choose security group with name <strong>MSK Security Group</strong> from dropdown list and click <strong>Next</strong> button.</p>
-<p><img alt="serv6" src="../images/serv6.png" /></p>
-<h2 id="security"><strong>Security</strong><a class="headerlink" href="#security" title="Permanent link">&para;</a></h2>
-<p>MSK Serverless defaults to <strong>IAM role-based authentication</strong>. Click <strong>Next</strong> to proceed.</p>
-<p><img alt="serv7" src="../images/serv7.png" /></p>
-<h2 id="metrics-and-tags"><strong>Metrics and tags</strong><a class="headerlink" href="#metrics-and-tags" title="Permanent link">&para;</a></h2>
-<p>Leave it to default and click <strong>Next</strong> to proceed.</p>
-<p><img alt="serv8" src="../images/serv8.png" /></p>
-<h2 id="review-and-create"><strong>Review and create</strong><a class="headerlink" href="#review-and-create" title="Permanent link">&para;</a></h2>
-<p>Review the configuration and click <strong>Create cluster</strong> button.</p>
-<p><img alt="serv9" src="../images/serv9.png" /></p>
-<p>Wait for couple of minutes for cluster to be created and available to use. Wait for cluster status to change from <strong>Creating</strong> to <strong> Active</strong></p>
-<p><img alt="serv10" src="../images/serv10.png" />
-<img alt="serv11" src="../images/serv11.png" /></p>
-<h2 id="copy-cluster-endpoint"><strong>Copy Cluster Endpoint</strong><a class="headerlink" href="#copy-cluster-endpoint" title="Permanent link">&para;</a></h2>
-<p>Click on the <strong>View client information</strong> button and copy the details of cluster endpoint and save it on notepad for later use.</p>
-<p><img alt="serv12" src="../images/serv12.png" />
-<img alt="serv13" src="../images/serv13.png" /></p>
-<h1 id="create-msk-topics"><strong>Create MSK Topics</strong><a class="headerlink" href="#create-msk-topics" title="Permanent link">&para;</a></h1>
-<p>Now that the cluster is ready and available to use, we need to create Kafka topics to produce and consume data. Please follow instructions below to create Kafka topics needed for this workshop.</p>
-<h2 id="connect-to-kafka-client"><strong>Connect to Kafka Client</strong><a class="headerlink" href="#connect-to-kafka-client" title="Permanent link">&para;</a></h2>
-<p>Navigate to <a href="https://us-east-2.console.aws.amazon.com/ec2/v2/home">Amazon EC2 console</a>page.</p>
-<p>On the EC2 home page click on <strong>Instances(running)</strong> link as show in below image.</p>
-<p><img alt="serv14" src="../images/serv14.png" /></p>
-<p>On the EC2 instances page select the checkbox for the instance named <strong>KafkaClientInstance</strong> and click on <strong>Connec</strong>t button on top right as shown in below image.</p>
-<p><img alt="serv15" src="../images/serv15.png" /></p>
-<p>On the page <strong>Connect to instance</strong>, ensure you select the <strong>Session Manager</strong> tab and click on the <strong>Connect</strong> button.</p>
-<p><img alt="serv16" src="../images/serv16.png" /></p>
-<p>This would open a new tab with EC2 terminal.</p>
-<h2 id="create-topics"><strong>Create Topics</strong><a class="headerlink" href="#create-topics" title="Permanent link">&para;</a></h2>
-<p>On the Terminal, please execute below command to change to ec2-user by running the below command:</p>
-<div class="codehilite"><pre><span></span><code>sudo su - ec2-user
+<h1 id="run-prometheus-using-docker"><strong>Run Prometheus using Docker</strong><a class="headerlink" href="#run-prometheus-using-docker" title="Permanent link">&para;</a></h1>
+<ol>
+<li>Open Cloud9 terminal.</li>
+<li>Create a prometheus directory to work in</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>mkdir prometheus
+cd prometheus
 </code></pre></div>
 
-<p><img alt="serv17" src="../images/serv17.png" /></p>
-<p>Please execute below command to set your MSK cluster broker endpoint to the shell variable BS. Please replace<strong>YOUR_CLUSTER_ENDPOINT</strong> in below command with the endpoint you copied in the last step of previous section as shown in the image.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">BS</span><span class="o">=</span><span class="n">YOUR_CLUSTER_ENDPOINT</span>
+<ol>
+<li>Create a service configuration file and name it <code>prometheus.yml</code></li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="c1"># file: prometheus.yml</span>
+<span class="c1"># my global config</span>
+<span class="nt">global</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">scrape_interval</span><span class="p">:</span><span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+
+<span class="c1"># A scrape configuration containing exactly one endpoint to scrape:</span>
+<span class="c1"># Here it&#39;s Prometheus itself.</span>
+<span class="nt">scrape_configs</span><span class="p">:</span>
+<span class="c1"># The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;prometheus&#39;</span>
+<span class="w">  </span><span class="nt">static_configs</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 9090 is the prometheus server port</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;localhost:9090&#39;</span><span class="p p-Indicator">]</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;broker&#39;</span>
+<span class="w">  </span><span class="nt">file_sd_configs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">files</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;targets.json&#39;</span>
 </code></pre></div>
 
-<p><img alt="serv18" src="../images/serv18.png" /></p>
-<p>Execute command below to create the topics needed for workshop as shown in image</p>
-<div class="codehilite"><pre><span></span><code>./create-topics.sh
+<ol>
+<li>Navigate to the Cluster details section, and under the Properties tab, copy the broker endpoints.
+<img alt="Broker_Endpoints" src="../images/Broker_Endpoints.png" /></li>
+<li>Please create a new file called <code>targets.json</code>. In this file, replace the placeholders <code>&lt;broker_dns_[1,2,N]&gt;</code> with the actual values of your broker endpoints that were collected in step 3.</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;labels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;job&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jmx&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;targets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;&lt;broker_dns_1&gt;:11001&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;&lt;broker_dns_2&gt;:11001&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;&lt;broker_dns_N&gt;:11001&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;labels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;job&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;targets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;&lt;broker_dns_1&gt;:11002&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;&lt;broker_dns_2&gt;:11002&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;&lt;broker_dns_N&gt;:11002&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
 </code></pre></div>
 
-<p>You will see warnings printed to the terminal like below. You may ignore them.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">SLF4J</span><span class="p">:</span><span class="w"> </span><span class="n">Failed</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="s2">&quot;org.slf4j.impl.StaticLoggerBinder&quot;</span><span class="o">.</span>
-<span class="n">SLF4J</span><span class="p">:</span><span class="w"> </span><span class="n">Defaulting</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">no</span><span class="o">-</span><span class="n">operation</span><span class="w"> </span><span class="p">(</span><span class="n">NOP</span><span class="p">)</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="n">implementation</span>
-<span class="n">SLF4J</span><span class="p">:</span><span class="w"> </span><span class="n">See</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">slf4j</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">codes</span><span class="o">.</span><span class="n">html</span><span class="c1">#StaticLoggerBinder for further details.</span>
+<ol>
+<li>To run Prometheus on Docker, execute the following command:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">9090</span>:9090<span class="w"> </span>--name<span class="o">=</span>prometheus<span class="w"> </span>-v<span class="w"> </span>/home/ec2-user/environment/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml<span class="w"> </span>-v<span class="w"> </span>/home/ec2-user/environment/prometheus/targets.json:/etc/prometheus/targets.json<span class="w"> </span>prom/prometheus<span class="w"> </span>--config.file<span class="o">=</span>/etc/prometheus/prometheus.yml
 </code></pre></div>
 
-<p><img alt="serv19" src="../images/serv19.png" /></p>
-<p>You should see the four MSK topics (<strong>clickstream, Departments_Agg, ClickEvents_UserId_Agg_Result, User_Sessions_Aggregates_With_Order_Checkout</strong>) created.</p>
-<p><img alt="serv20" src="../images/serv20.png" /></p>
+<p>This command will pull down the Prometheus container, run it, and mount the configuration files created earlier into the container. Additionally, it will expose the Prometheus service on port 9090. 
+Before running Prometheus on Docker, please double-check and ensure the correct path to your configuration files. Make sure the path you provide in the command reflects the actual location of the configuration files on your system.</p>
+<h3 id="docker-basics">Docker Basics<a class="headerlink" href="#docker-basics" title="Permanent link">&para;</a></h3>
+<p>The container will run in the background, allowing other tasks to proceed concurrently. To check the logs, execute the following command:</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>logs<span class="w"> </span>&lt;containerID&gt;
+</code></pre></div>
+
+<p>To terminate the container, you can use the following command:</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>stop<span class="w"> </span>prometheus
+</code></pre></div>
+
+<p>To completely remove the container, you must first stop it using the command mentioned earlier. Once the container is stopped, you can proceed to remove it using the following command:</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span>prometheus
+</code></pre></div>
+
+<h2 id="update-security-group-on-your-cloud9-instance-for-prometheus-and-grafana">Update Security Group on your Cloud9 instance for Prometheus and Grafana<a class="headerlink" href="#update-security-group-on-your-cloud9-instance-for-prometheus-and-grafana" title="Permanent link">&para;</a></h2>
+<p>To configure the inbound rules for the AWS Cloud9 security group, follow these steps:</p>
+<ol>
+<li>Open the EC2 service in the AWS Management Console.</li>
+<li>Select "Security Groups" from the navigation menu.</li>
+<li>Locate and select the checkbox next to the security group named "aws-cloud9-msklab...".</li>
+<li>Click on the "Actions" button and choose "Edit Inbound Rules" from the dropdown menu.
+<img alt="Edit_Inbound_C9" src="../images/Edit_Inbound_C9.png" /></li>
+<li>Click on the "Add Rule" button to add the following rules:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>Rule 1 - Prometheus:
+
+Type: Custom TCP
+Port Range: 9090
+Source: MyIP and add the security group &quot;aws-cloud9-msklab...&quot; (the group you&#39;re editing) as well
+Description: Prometheus
+
+Rule 2 - Grafana:
+
+Type: Custom TCP
+Port Range: 3000
+Source: MyIP
+Description: Grafana
+</code></pre></div>
+
+<p>Once you have added both rules, click on the "Save Rules" button located at the bottom right corner of the window.</p>
+<p><img alt="Edit_Inbound_C9_2" src="../images/Edit_Inbound_C9_2.png" /></p>
+<h2 id="connect-to-prometheus-user-interface">Connect to Prometheus User Interface<a class="headerlink" href="#connect-to-prometheus-user-interface" title="Permanent link">&para;</a></h2>
+<p>To obtain the IPv4 Public IP address of your AWS Cloud9 instance, follow these steps:</p>
+<ol>
+<li>Open the AWS Management Console.</li>
+<li>Switch to the EC2 service.</li>
+<li>Locate and click on your Cloud9 instance in the list.</li>
+<li>In the details pane at the bottom, find the "IPv4 Public IP" field.</li>
+<li>Copy the IPv4 Public IP address displayed in that field.</li>
+<li>Open your web browser and enter the following URL in the address bar, replacing <code>&lt;IPv4 Public IP&gt;</code> with the IPv4 Public IP address you copied earlier:</li>
+</ol>
+<p><code>http://&lt;IPv4 Public IP&gt;:9090</code></p>
+<p>Please note that the instructions provided assume that you have already launched and can access your AWS Cloud9 instance.</p>
+<p><img alt="Prometheus" src="../images/Prometheus.png" /></p>
 
 
 
