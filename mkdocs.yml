@@ -29,7 +29,6 @@ nav:
       - 4 - Setup Pre-migration Environment: 'day2/part3/4_premigration/exercise.md'
       - 5 - MirrorMaker 2 on Kafka Connect: 'day2/part3/5_mirrormaker/exercise.md'
       - 6 - Client Migration and Cutover: 'day2/part3/6_migration/exercise.md'
-      - 7 - Cleanup: 'day2/part3/7_cleanup/exercise.md'
   - Part 4: 
     - Building a Serverless Apache Kafka Data Pipeline:
       - 1 - Introduction: 'day2/part4/1_Intro/exercise.md'

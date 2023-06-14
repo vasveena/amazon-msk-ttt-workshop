@@ -10,7 +10,7 @@ In this section, we setup Kafka Connect and the MirrorMaker 2 Kafka Connect conn
 
 This section picks up from the previous section. You should still be at a terminal prompt in **KafkaClientInstance1**.
 
-1. Configure Kafka Connect.
+Configure Kafka Connect.
 
 ```
 cd /tmp/kafka
@@ -19,42 +19,42 @@ cp connect-distributed-iam-auth.properties connect-distributed.properties
 
 ```
 
-2. Start the Kafka Connect service. It will use the ssl parameters from the /tmp/connect-distributed.properties file and connect to the Amazon MSK cluster.
+Start the Kafka Connect service. It will use the ssl parameters from the /tmp/connect-distributed.properties file and connect to the Amazon MSK cluster.
 
 ```
 sudo systemctl start kafka-connect.service
 sudo systemctl status kafka-connect.service
 
 ```
-* This is the expected output from running these commands:
+This is the expected output from running these commands:
 
 ![migrate24](images/mi_1.png)
 
-3. Make sure the Kafka Connect service started properly.
+Make sure the Kafka Connect service started properly.
 
 ```
 cat /tmp/kafka/kafka-connect.log|grep Herder
 ```
-* You should see an output similar to this:
+You should see an output similar to this:
 
 ![migrate25](images/mi_2.png)
 
 #### Note
-* It might take a few seconds for it to start up. If you get an output which does not look like the picture below, give it a few seconds and retry the command.
-* A Distributed herder coordinates with other workers to spread work across multiple processes. In the output you can see that the Herder started successfully and could connect to the Amazon MSK cluster and read the internal Kafka connect topics.*
+It might take a few seconds for it to start up. If you get an output which does not look like the picture below, give it a few seconds and retry the command.
+A Distributed herder coordinates with other workers to spread work across multiple processes. In the output you can see that the Herder started successfully and could connect to the Amazon MSK cluster and read the internal Kafka connect topics.*
 
-4. Confirm Kafka Connect REST Interface
+Confirm Kafka Connect REST Interface
 
-* Kafka Connect supports a REST API for managing connectors. The default port for the service is 8083 and we did not change the port in the **connect-distributed.properties** file. On each of the Kafka Client Instances, the service is available at [http://localhost:8083](http://localhost:8083). Run the following command:
+Kafka Connect supports a REST API for managing connectors. The default port for the service is 8083 and we did not change the port in the **connect-distributed.properties** file. On each of the Kafka Client Instances, the service is available at [http://localhost:8083](http://localhost:8083). Run the following command:
 
 ```
 curl -X GET http://localhost:8083| jq .
 
 ```
-* You should get an output like the following:
-  ![migrate26](images/mi_3.png)
+You should get an output like the following:
+![migrate26](images/mi_3.png)
   
-5. Observe the topics currently in the source and destination Amazon MSK clusters. Run the following commands:
+Observe the topics currently in the source and destination Amazon MSK clusters. Run the following commands:
 
 ```
 cd /home/ec2-user/kafka
@@ -91,7 +91,7 @@ To read more about the connectors and what they do, see the Connectors section i
 
 We are going to configure and run all 3 of the MirrorMaker2 Connectors
 
-* Edit the MirrorMaker 2 Kakfa Connect Connectors properties files
+Edit the MirrorMaker 2 Kakfa Connect Connectors properties files
 
 ```
 cd /tmp/kafka
@@ -110,7 +110,7 @@ We are now ready to start each of these connectors. Feel free to review the 3 .j
 
 #### **Start MirrorSourceConnectorHeader**
 
-1. Create a new **MirrorSourceConnector** connector by submitting a request to the REST interface.
+Create a new **MirrorSourceConnector** connector by submitting a request to the REST interface.
 
 ```
 curl -X PUT -H "Content-Type: application/json" --data @mm2-msc-cust-repl-policy-iam-auth.json http://localhost:8083/connectors/mm2-msc/config | jq '.'
@@ -120,64 +120,64 @@ The expected output of the command:
 
 ![migrate27](images/mi_4.png)
 
-2. Check the status of the connector.
+Check the status of the connector.
 
 ```
 curl -s localhost:8083/connectors/mm2-msc/status | jq .
 
 ```
 
-* The expected output of the command is:
+The expected output of the command is:
 ![migrate28](images/mi_5.png)
 
 **Note:** Even though the tasks.max configuration is set to 4, 3 tasks are started as there are 3 partitions in the topic.
 
 #### **MirrorCheckpointConnector**
 
-1. Create a new **MirrorCheckpointConnector** connector by submitting a request to the REST interface.
+Create a new **MirrorCheckpointConnector** connector by submitting a request to the REST interface.
 
 ```
 curl -X PUT -H "Content-Type: application/json" --data @mm2-cpc-cust-repl-policy-iam-auth-sync.json http://localhost:8083/connectors/mm2-cpc/config  | jq .
 
 ```
-* The expected output of the command is:
+The expected output of the command is:
 
 ![migrate29](images/mi_6.png)
 
-2. Check the status of the connector:
+Check the status of the connector:
 
 ``` 
 curl -s localhost:8083/connectors/mm2-cpc/status | jq .
 
 ```
-* The expected output of the command is: 
+The expected output of the command is: 
 
 ![migrate30](images/mi_7.png)
 
 #### **MirrorHeartbeatConnector**
 
-1. Create a new **MirrorHeartbeatConnector** connector by submitting a request to the REST interface.
+Create a new **MirrorHeartbeatConnector** connector by submitting a request to the REST interface.
 
 ```
 curl -X PUT -H "Content-Type: application/json" --data @mm2-hbc-iam-auth.json http://localhost:8083/connectors/mm2-hbc/config | jq '.'
 
 ```
 
-* The expected output of the command is:
+The expected output of the command is:
 
 ![migrate31](images/mi_8.png)
 
-2. Check the status of the connector:
+Check the status of the connector:
 
 ```
 curl -s localhost:8083/connectors/mm2-hbc/status | jq .
 
 ```
-* The expected output of the command is:
+The expected output of the command is:
 
 ![migrate32](images/mi_9.png)
 
-3. Observe the topics now in the source and destination Amazon MSK clusters. Run the following commands:
+Observe the topics now in the source and destination Amazon MSK clusters. Run the following commands:
 
 ``` 
 cd /home/ec2-user/kafka
