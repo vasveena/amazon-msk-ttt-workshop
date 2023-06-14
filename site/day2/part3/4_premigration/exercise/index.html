@@ -1,0 +1,1222 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.11">
+    
+    
+      
+        <title>4 - Setup Pre-migration Environment - Amazon MSK Train-The-Trainer Workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.50e68009.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#setup-pre-migration-environment" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Amazon MSK Train-The-Trainer Workshop" class="md-header__button md-logo" aria-label="Amazon MSK Train-The-Trainer Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Amazon MSK Train-The-Trainer Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4 - Setup Pre-migration Environment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vasveena/amazon-msk-ttt-workshop/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vasveena/amazon-msk-ttt-workshop
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Amazon MSK Train-The-Trainer Workshop" class="md-nav__button md-logo" aria-label="Amazon MSK Train-The-Trainer Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Amazon MSK Train-The-Trainer Workshop
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vasveena/amazon-msk-ttt-workshop/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vasveena/amazon-msk-ttt-workshop
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../setup/" class="md-nav__link">
+        Setup
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Part 1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Part 1" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Part 1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Kafka overview & Amazon MSK Cluster Creation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kafka overview & Amazon MSK Cluster Creation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Kafka overview & Amazon MSK Cluster Creation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day1/part1/overview/exercise/" class="md-nav__link">
+        1 - Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day1/part1/Prerequisites/exercise/" class="md-nav__link">
+        2 - Prerequisites
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day1/part1/1_provisoned/exercise/" class="md-nav__link">
+        3 - Launching MSK cluster (Provisoned)(Console)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day1/part1/2_cli/exercise/" class="md-nav__link">
+        4 - Launching MSK cluster (Provisoned)(CLI)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Part 2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Part 2" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Part 2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Open Monitoring Lab
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Open Monitoring Lab" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Open Monitoring Lab
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day1/part2/intro/exercise/" class="md-nav__link">
+        1 - Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day1/part2/setup/exercise/" class="md-nav__link">
+        2 - Setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day1/part2/run_prometheus/exercise/" class="md-nav__link">
+        3 - Run Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../day1/part2/run_grafana/exercise/" class="md-nav__link">
+        4 - Run Grafana
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Part 3
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Part 3" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Part 3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Kafka Migration Lab - MSK to MSK Serverless
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kafka Migration Lab - MSK to MSK Serverless" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Kafka Migration Lab - MSK to MSK Serverless
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_intro/exercise/" class="md-nav__link">
+        1 - Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_labsetup/exercise/" class="md-nav__link">
+        2 - Lab Setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_monitoring/exercise/" class="md-nav__link">
+        3 - Setup Monitoring
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          4 - Setup Pre-migration Environment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        4 - Setup Pre-migration Environment
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#simulate-pre-migration-producer-and-consumerheader-anchor-link" class="md-nav__link">
+    Simulate pre-migration producer and consumerHeader anchor link
+  </a>
+  
+    <nav class="md-nav" aria-label="Simulate pre-migration producer and consumerHeader anchor link">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-a-producer-against-the-source-amazon-msk-cluster" class="md-nav__link">
+    Start a producer against the source Amazon MSK cluster
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-a-consumer" class="md-nav__link">
+    Run a Consumer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_mirrormaker/exercise/" class="md-nav__link">
+        5 - MirrorMaker 2 on Kafka Connect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_migration/exercise/" class="md-nav__link">
+        6 - Client Migration and Cutover
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Part 4
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Part 4" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Part 4
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" type="checkbox" id="__nav_6_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_1">
+          Building a Serverless Apache Kafka Data Pipeline
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Building a Serverless Apache Kafka Data Pipeline" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Building a Serverless Apache Kafka Data Pipeline
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../part4/1_Intro/exercise/" class="md-nav__link">
+        1 - Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../part4/2_Setup/exercise/" class="md-nav__link">
+        2 - Setup MSK Serverless cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../part4/3_Producer/exercise/" class="md-nav__link">
+        3 - Produce clickstream data to MSK Serverless using Elastic Container Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../part4/4_LambdaConsumer/exercise/" class="md-nav__link">
+        4 - Consume data from MSK Serverless using Lambda
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../part4/5_QS_Dashboard/exercise/" class="md-nav__link">
+        5 - Create Quicksight Dashboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../part4/6_KDA_Consumer/exercise/" class="md-nav__link">
+        6 - Consume using Kinesis Data Analytics and write to Amazon OpenSearch Service
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Part 5
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Part 5" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Part 5
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" type="checkbox" id="__nav_7_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_1">
+          MSK Integration with Athena and Redshift
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MSK Integration with Athena and Redshift" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          MSK Integration with Athena and Redshift
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../part5/overview/exercise/" class="md-nav__link">
+        1 - Architecture Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../part5/Prerequisites/exercise/" class="md-nav__link">
+        2 - Prerequisites
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../part5/athena/exercise/" class="md-nav__link">
+        3 - Integration with Athena
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../part5/redshift/exercise/" class="md-nav__link">
+        4 - Integration with Redshift
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#simulate-pre-migration-producer-and-consumerheader-anchor-link" class="md-nav__link">
+    Simulate pre-migration producer and consumerHeader anchor link
+  </a>
+  
+    <nav class="md-nav" aria-label="Simulate pre-migration producer and consumerHeader anchor link">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-a-producer-against-the-source-amazon-msk-cluster" class="md-nav__link">
+    Start a producer against the source Amazon MSK cluster
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-a-consumer" class="md-nav__link">
+    Run a Consumer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/vasveena/amazon-msk-ttt-workshop/edit/master/docs/day2/part3/4_premigration/exercise.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="setup-pre-migration-environment"><strong>Setup pre-migration environment</strong><a class="headerlink" href="#setup-pre-migration-environment" title="Permanent link">&para;</a></h1>
+<h2 id="simulate-pre-migration-producer-and-consumerheader-anchor-link"><strong>Simulate pre-migration producer and consumerHeader anchor link</strong><a class="headerlink" href="#simulate-pre-migration-producer-and-consumerheader-anchor-link" title="Permanent link">&para;</a></h2>
+<p>In this section of the lab, we will be simulating a pre-migration environment with an existing Apache Kafka source cluster (in this lab, this will be an AWS MSK cluster, but it doesn't have to be). This source cluster will have one topic (ExampleTopic), one producer producing to this topic, and a consumer reading from this topic. We will setup a sample source cluster used to simulate existing cluster.</p>
+<h3 id="start-a-producer-against-the-source-amazon-msk-cluster"><strong>Start a producer against the source Amazon MSK cluster</strong><a class="headerlink" href="#start-a-producer-against-the-source-amazon-msk-cluster" title="Permanent link">&para;</a></h3>
+<p>In the Cloud9 terminal, lets setup environment variables and connect to KafkaClientInstance1</p>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">MSK_STACK</span><span class="o">=&lt;&lt;</span><span class="n">Stack</span><span class="w"> </span><span class="k">Name</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="c1"># IMPORTANT: If running in EventEngine, set MSK_STACK to your unique Event Engine Stack Name, such as mod-xxxxxxx instead of MSKMM</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">ssh_cmd1</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">aws</span><span class="w"> </span><span class="n">cloudformation</span><span class="w"> </span><span class="k">describe</span><span class="o">-</span><span class="n">stacks</span><span class="w"> </span><span class="o">--</span><span class="n">stack</span><span class="o">-</span><span class="k">name</span><span class="w"> </span><span class="n">$MSK_STACK</span><span class="w"> </span><span class="o">--</span><span class="k">query</span><span class="w"> </span><span class="s1">&#39;Stacks[0].Outputs[?OutputKey==`SSHKafkaClientEC2Instance1`].OutputValue&#39;</span><span class="w"> </span><span class="o">--</span><span class="n">output</span><span class="w"> </span><span class="kt">text</span><span class="p">)</span><span class="w"></span>
+<span class="n">$ssh_cmd1</span><span class="w"></span>
+</code></pre></div>
+
+<p>Answer yes to "Are you sure you want to continue connecting (yes/no)" and you should be connected to <strong>KafkaClientInstance1</strong>.</p>
+<p>Go to the /tmp/kafka directory and take a quick look where configuration files and scripts have already been downloaded to this EC2 instance.</p>
+<div class="codehilite"><pre><span></span><code>cd /tmp/kafka
+ls
+</code></pre></div>
+
+<p>We will be using many of these files in the following steps of this lab. </p>
+<p>Get MSK Cluster client information</p>
+<p>Go to the <a href="https://console.aws.amazon.com/msk/home?region=us-east-1#/clusters">Amazon MSK console</a>. Click on the Provisioned MSK cluster that was created by CloudFormation (default name: <strong>MSKSrc-XXXX</strong>)</p>
+<p>Click on <strong>View client information</strong> on the top right side of the page under <strong>Cluster summary</strong>.</p>
+<p><img alt="migrate19" src="../images/prem_1.png" /></p>
+<p>Click on <strong>Copy</strong> under <strong>Bootstrap servers</strong> and paste it in a notepad application.</p>
+<p>Repeat the same steps for the Serverless MSK Cluster that was created by CloudFormation (default name: <strong>MSKServerlessDest</strong>)</p>
+<p><img alt="migrate20" src="../images/prem_2.png" /></p>
+<p>Run Environment Variable setup script</p>
+<p>We use various environment variables in this lab, so let's run a small shell script to make things more convenient.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">brokersmsksource</span><span class="o">=&lt;</span><span class="n">Source</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"> </span><span class="n">servers</span><span class="w"> </span><span class="n">address</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">brokersmskdest</span><span class="o">=&lt;</span><span class="n">Serverless</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"> </span><span class="n">servers</span><span class="w"> </span><span class="n">address</span><span class="o">&gt;</span><span class="w"></span>
+</code></pre></div>
+
+<p>Example: </p>
+<p><img alt="migrate21" src="../images/prem_3.png" /></p>
+<p>We add some variables to the bash profile and will verify the variables are set correctly, with the final "echo" statement.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">region</span><span class="o">=$</span><span class="p">(</span><span class="n">curl</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">169.254</span><span class="o">.</span><span class="mf">169.254</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">placement</span><span class="o">/</span><span class="n">region</span><span class="p">)</span><span class="w"></span>
+<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;export brokersmsksource=${brokersmsksource}&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">tee</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="o">~/.</span><span class="n">bash_profile</span><span class="w"></span>
+<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;export brokersmskdest=${brokersmskdest}&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">tee</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="o">~/.</span><span class="n">bash_profile</span><span class="w"></span>
+</code></pre></div>
+
+<p>You should see a value from the last echo command. Make sure you see a value for <strong>$brokersmsksource</strong> before proceeding.</p>
+<p>Next, we configure the <strong>KafkaClientInstance1</strong> with Amazon MSK IAM authentication client.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ec2</span><span class="o">-</span><span class="n">user</span><span class="o">/</span><span class="n">kafka</span><span class="o">/</span><span class="n">libs</span><span class="w"></span>
+<span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">aws</span><span class="o">/</span><span class="n">aws</span><span class="o">-</span><span class="n">msk</span><span class="o">-</span><span class="n">iam</span><span class="o">-</span><span class="n">auth</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">aws</span><span class="o">-</span><span class="n">msk</span><span class="o">-</span><span class="n">iam</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">all</span><span class="o">.</span><span class="n">jar</span><span class="w"></span>
+
+<span class="n">cd</span><span class="w">  </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ec2</span><span class="o">-</span><span class="n">user</span><span class="w"></span>
+<span class="n">mkdir</span><span class="w"> </span><span class="n">iam</span><span class="o">-</span><span class="n">auth</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">./</span><span class="n">iam</span><span class="o">-</span><span class="n">auth</span><span class="w"></span>
+<span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">aws</span><span class="o">/</span><span class="n">aws</span><span class="o">-</span><span class="n">msk</span><span class="o">-</span><span class="n">iam</span><span class="o">-</span><span class="n">auth</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">aws</span><span class="o">-</span><span class="n">msk</span><span class="o">-</span><span class="n">iam</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">all</span><span class="o">.</span><span class="n">jar</span><span class="w"></span>
+<span class="n">cd</span><span class="w"> </span><span class="o">../</span><span class="w"></span>
+
+<span class="n">cat</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="n">EOF</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ec2</span><span class="o">-</span><span class="n">user</span><span class="o">/</span><span class="n">kafka</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">client</span><span class="o">-</span><span class="n">config</span><span class="o">.</span><span class="n">properties</span><span class="w"></span>
+<span class="c1"># Sets up TLS for encryption and SASL for authN.</span><span class="w"></span>
+<span class="n">security</span><span class="o">.</span><span class="n">protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SASL_SSL</span><span class="w"></span>
+
+<span class="c1"># Identifies the SASL mechanism to use.</span><span class="w"></span>
+<span class="n">sasl</span><span class="o">.</span><span class="n">mechanism</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AWS_MSK_IAM</span><span class="w"></span>
+
+<span class="c1"># Binds SASL client implementation.</span><span class="w"></span>
+<span class="n">sasl</span><span class="o">.</span><span class="n">jaas</span><span class="o">.</span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">software</span><span class="o">.</span><span class="n">amazon</span><span class="o">.</span><span class="n">msk</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">iam</span><span class="o">.</span><span class="n">IAMLoginModule</span><span class="w"> </span><span class="n">required</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1"># Encapsulates constructing a SigV4 signature based on extracted credentials.</span><span class="w"></span>
+<span class="c1"># The SASL client bound by &quot;sasl.jaas.config&quot; invokes this class.</span><span class="w"></span>
+<span class="n">sasl</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">callback</span><span class="o">.</span><span class="n">handler</span><span class="o">.</span><span class="k">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">software</span><span class="o">.</span><span class="n">amazon</span><span class="o">.</span><span class="n">msk</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">iam</span><span class="o">.</span><span class="n">IAMClientCallbackHandler</span><span class="w"></span>
+<span class="n">EOF</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="n">CLASSPATH</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">ec2</span><span class="o">-</span><span class="n">user</span><span class="o">/</span><span class="n">iam</span><span class="o">-</span><span class="n">auth</span><span class="o">/</span><span class="n">aws</span><span class="o">-</span><span class="n">msk</span><span class="o">-</span><span class="n">iam</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">all</span><span class="o">.</span><span class="n">jar</span><span class="w"></span>
+<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;export CLASSPATH=${CLASSPATH}&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">tee</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="o">~/.</span><span class="n">bash_profile</span><span class="w"></span>
+</code></pre></div>
+
+<p>Let's go to the <strong>/home/ec2-user/kafka</strong> dir and create a topic called <strong>ExampleTopic</strong>.</p>
+<div class="codehilite"><pre><span></span><code>cd /home/ec2-user/kafka
+bin/kafka-topics.sh --create --bootstrap-server=$brokersmsksource --command-config /home/ec2-user/kafka/config/client-config.properties  --replication-factor 3 --partitions 3 --topic ExampleTopic
+</code></pre></div>
+
+<p>Setup the Producer settings (including Glue Schema Registry and Monitoring)</p>
+<div class="codehilite"><pre><span></span><code><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">kafka</span><span class="w"></span>
+<span class="n">cp</span><span class="w"> </span><span class="n">producer</span><span class="o">.</span><span class="n">properties_msk</span><span class="w"> </span><span class="n">producer</span><span class="o">.</span><span class="n">properties_msk_dest</span><span class="w"></span>
+<span class="n">sed</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="s2">&quot;s/BOOTSTRAP_SERVERS_CONFIG=/BOOTSTRAP_SERVERS_CONFIG=$brokersmsksource/g&quot;</span><span class="w"> </span><span class="n">producer</span><span class="o">.</span><span class="n">properties_msk</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="n">schema_compatibility</span><span class="o">=</span><span class="n">FULL_ALL</span><span class="w"> </span>
+<span class="k">export</span><span class="w"> </span><span class="n">EXTRA_ARGS</span><span class="o">=-</span><span class="n">javaagent</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ec2</span><span class="o">-</span><span class="n">user</span><span class="o">/</span><span class="n">prometheus</span><span class="o">/</span><span class="n">jmx_prometheus_javaagent</span><span class="o">-</span><span class="mf">0.13</span><span class="o">.</span><span class="mf">0.j</span><span class="n">ar</span><span class="o">=</span><span class="mi">3800</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ec2</span><span class="o">-</span><span class="n">user</span><span class="o">/</span><span class="n">prometheus</span><span class="o">/</span><span class="n">kafka</span><span class="o">-</span><span class="n">producer</span><span class="o">-</span><span class="n">consumer</span><span class="o">.</span><span class="n">yml</span><span class="w"></span>
+</code></pre></div>
+
+<p>Run the Producer and confirm the log output</p>
+<div class="codehilite"><pre><span></span><code><span class="n">java</span><span class="w"> </span><span class="n">$EXTRA_ARGS</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">KafkaClickstreamClient</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="p">.</span><span class="n">jar</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">ExampleTopic</span><span class="w"> </span><span class="o">-</span><span class="n">pfp</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">kafka</span><span class="o">/</span><span class="n">producer</span><span class="p">.</span><span class="n">properties_msk</span><span class="w"> </span><span class="o">-</span><span class="n">nt</span><span class="w"> </span><span class="mh">8</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="mh">10800</span><span class="w"> </span><span class="o">-</span><span class="n">nle</span><span class="w"> </span><span class="o">-</span><span class="n">gsr</span><span class="w"> </span><span class="o">-</span><span class="n">gsrr</span><span class="w"> </span><span class="n">$region</span><span class="w"> </span><span class="o">-</span><span class="n">iam</span><span class="w"> </span><span class="o">-</span><span class="n">gar</span><span class="w"> </span><span class="o">-</span><span class="n">gcs</span><span class="w"> </span><span class="n">$schema_compatibility</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">producer</span><span class="p">.</span><span class="n">log</span><span class="w"> </span><span class="mh">2</span><span class="o">&gt;&amp;</span><span class="mh">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+</code></pre></div>
+
+<p>To kill the producer before the 3 hours are up, note down the pid (process id) of the producer process. Use kill <pid> to kill the process.
+The javaagent is a Prometheus JMX exporter that will export the Apacke Kafka producer metrics for Prometheus to scrape and store for queries and visualization.
+To get the source code of the producer see <a href="https://github.com/aws-samples/clickstream-producer-for-apache-kafka">github</a>.
+The output of the previous command:</p>
+<p><img alt="migrate22" src="../images/prem_4.png" /></p>
+<p>Tail the producer log file to see the producer sending events. Ctrl-C to exit from the tail command.</p>
+<div class="codehilite"><pre><span></span><code>tail -f /tmp/producer.log
+</code></pre></div>
+
+<p><strong>[Optional]</strong> Check to see if the schema got registered in Schema Registry.</p>
+<p>In the <a href="https://us-east-1.console.aws.amazon.com/glue/home?region=us-east-1#/v2/data-catalog/schemas">AWS Glue Console</a>, under <strong>Schema registries -&gt; Schemas</strong>, you should see the <strong>ExampleTopic</strong> registered as the Producer was run with Glue Schema Registry args: <em>-gsr -gsrr $region -gar -gcs $schema_compatibility</em></p>
+<h3 id="run-a-consumer"><strong>Run a Consumer</strong><a class="headerlink" href="#run-a-consumer" title="Permanent link">&para;</a></h3>
+<p>Now, let's configure and run a Kafka Consumer application reading from the previously created ExampleTopic.</p>
+<p>Setup Consumer environment settings</p>
+<div class="codehilite"><pre><span></span><code><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">kafka</span><span class="w"></span>
+<span class="n">cp</span><span class="w"> </span><span class="n">consumer</span><span class="o">.</span><span class="n">properties</span><span class="w"> </span><span class="n">consumer</span><span class="o">.</span><span class="n">properties_dest</span><span class="w"></span>
+<span class="n">sed</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="s2">&quot;s/BOOTSTRAP_SERVERS_CONFIG=/BOOTSTRAP_SERVERS_CONFIG=$brokersmsksource/g&quot;</span><span class="w"> </span><span class="n">consumer</span><span class="o">.</span><span class="n">properties</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">EXTRA_ARGS</span><span class="o">=-</span><span class="n">javaagent</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ec2</span><span class="o">-</span><span class="n">user</span><span class="o">/</span><span class="n">prometheus</span><span class="o">/</span><span class="n">jmx_prometheus_javaagent</span><span class="o">-</span><span class="mf">0.13</span><span class="o">.</span><span class="mf">0.j</span><span class="n">ar</span><span class="o">=</span><span class="mi">3900</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ec2</span><span class="o">-</span><span class="n">user</span><span class="o">/</span><span class="n">prometheus</span><span class="o">/</span><span class="n">kafka</span><span class="o">-</span><span class="n">producer</span><span class="o">-</span><span class="n">consumer</span><span class="o">.</span><span class="n">yml</span><span class="w"></span>
+</code></pre></div>
+
+<p>Run the Clickstream consumer. The consumer will run in the background for 3 hours.</p>
+<p>To kill the consumer before the 3 hours are up, note down the pid (process id) of the consumer process. 
+Use kill <pid> to kill the process.
+The javaagent is a Prometheus JMX exporter that will export the Apacke Kafka consumer metrics for Prometheus to scrape and store for queries and visualization.*
+To get the source code of the consumer see <a href="https://github.com/aws-samples/clickstream-consumer-for-apache-kafka">github</a>. </p>
+<div class="codehilite"><pre><span></span><code><span class="n">java</span><span class="w"> </span><span class="n">$EXTRA_ARGS</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">KafkaClickstreamConsumer</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="p">.</span><span class="n">jar</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">ExampleTopic</span><span class="w"> </span><span class="o">-</span><span class="n">pfp</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">kafka</span><span class="o">/</span><span class="n">consumer</span><span class="p">.</span><span class="n">properties</span><span class="w"> </span><span class="o">-</span><span class="n">nt</span><span class="w"> </span><span class="mh">3</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="mh">10800</span><span class="w"> </span><span class="o">-</span><span class="n">src</span><span class="w"> </span><span class="n">msksource</span><span class="w"> </span><span class="o">-</span><span class="n">gsr</span><span class="w"> </span><span class="o">-</span><span class="n">iam</span><span class="w"> </span><span class="o">-</span><span class="n">gsrr</span><span class="w"> </span><span class="n">$region</span><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">consumer</span><span class="p">.</span><span class="n">log</span><span class="w"> </span><span class="mh">2</span><span class="o">&gt;&amp;</span><span class="mh">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+</code></pre></div>
+
+<p>The output of the previous command should be similar to this:
+<img alt="migrate23" src="../images/prem_5.png" /></p>
+<p>Tail the consumer log file to see the consumer reading messages and making progress. Ctrl-C to exit from the tail command.</p>
+<div class="codehilite"><pre><span></span><code>tail -f /tmp/consumer.log
+</code></pre></div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../3_monitoring/exercise/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3 - Setup Monitoring" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              3 - Setup Monitoring
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../5_mirrormaker/exercise/" class="md-footer__link md-footer__link--next" aria-label="Next: 5 - MirrorMaker 2 on Kafka Connect" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              5 - MirrorMaker 2 on Kafka Connect
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.092fa1f6.min.js"}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.5a9542cf.min.js"></script>
+      
+    
+  </body>
+</html>
