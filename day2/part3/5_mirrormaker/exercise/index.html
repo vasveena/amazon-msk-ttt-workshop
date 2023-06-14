@@ -726,20 +726,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../7_cleanup/exercise.md" class="md-nav__link">
-        7 - Cleanup
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -1157,60 +1143,36 @@
 <p>In this section, we setup Kafka Connect and the MirrorMaker 2 Kafka Connect connectors.</p>
 <h3 id="setup-kafka-connect-cluster"><strong>Setup Kafka Connect cluster</strong><a class="headerlink" href="#setup-kafka-connect-cluster" title="Permanent link">&para;</a></h3>
 <p>This section picks up from the previous section. You should still be at a terminal prompt in <strong>KafkaClientInstance1</strong>.</p>
-<ol>
-<li>Configure Kafka Connect.</li>
-</ol>
+<p>Configure Kafka Connect.</p>
 <div class="codehilite"><pre><span></span><code><span class="nv">cd</span> <span class="o">/</span><span class="nv">tmp</span><span class="o">/</span><span class="nv">kafka</span>
 <span class="nv">sed</span> <span class="o">-</span><span class="nv">i</span> <span class="o">-</span><span class="nv">e</span> <span class="s2">&quot;</span><span class="s">s/bootstrap.servers=/bootstrap.servers=$brokersmskdest/g</span><span class="s2">&quot;</span> <span class="k">connect</span><span class="o">-</span><span class="nv">distributed</span><span class="o">-</span><span class="nv">iam</span><span class="o">-</span><span class="nv">auth</span>.<span class="nv">properties</span>
 <span class="nv">cp</span> <span class="k">connect</span><span class="o">-</span><span class="nv">distributed</span><span class="o">-</span><span class="nv">iam</span><span class="o">-</span><span class="nv">auth</span>.<span class="nv">properties</span> <span class="k">connect</span><span class="o">-</span><span class="nv">distributed</span>.<span class="nv">properties</span>  
 </code></pre></div>
 
-<ol>
-<li>Start the Kafka Connect service. It will use the ssl parameters from the /tmp/connect-distributed.properties file and connect to the Amazon MSK cluster.</li>
-</ol>
+<p>Start the Kafka Connect service. It will use the ssl parameters from the /tmp/connect-distributed.properties file and connect to the Amazon MSK cluster.</p>
 <div class="codehilite"><pre><span></span><code><span class="nv">sudo</span> <span class="nv">systemctl</span> <span class="nv">start</span> <span class="nv">kafka</span><span class="o">-</span><span class="k">connect</span>.<span class="nv">service</span>
 <span class="nv">sudo</span> <span class="nv">systemctl</span> <span class="nv">status</span> <span class="nv">kafka</span><span class="o">-</span><span class="k">connect</span>.<span class="nv">service</span>
 </code></pre></div>
 
-<ul>
-<li>This is the expected output from running these commands:</li>
-</ul>
+<p>This is the expected output from running these commands:</p>
 <p><img alt="migrate24" src="../images/mi_1.png" /></p>
-<ol>
-<li>Make sure the Kafka Connect service started properly.</li>
-</ol>
+<p>Make sure the Kafka Connect service started properly.</p>
 <div class="codehilite"><pre><span></span><code><span class="nv">cat</span> <span class="o">/</span><span class="nv">tmp</span><span class="o">/</span><span class="nv">kafka</span><span class="o">/</span><span class="nv">kafka</span><span class="o">-</span><span class="k">connect</span>.<span class="nv">log</span><span class="o">|</span><span class="nv">grep</span> <span class="nv">Herder</span>
 </code></pre></div>
 
-<ul>
-<li>You should see an output similar to this:</li>
-</ul>
+<p>You should see an output similar to this:</p>
 <p><img alt="migrate25" src="../images/mi_2.png" /></p>
 <h4 id="note">Note<a class="headerlink" href="#note" title="Permanent link">&para;</a></h4>
-<ul>
-<li>It might take a few seconds for it to start up. If you get an output which does not look like the picture below, give it a few seconds and retry the command.</li>
-<li>
-<p>A Distributed herder coordinates with other workers to spread work across multiple processes. In the output you can see that the Herder started successfully and could connect to the Amazon MSK cluster and read the internal Kafka connect topics.*</p>
-</li>
-<li>
+<p>It might take a few seconds for it to start up. If you get an output which does not look like the picture below, give it a few seconds and retry the command.
+A Distributed herder coordinates with other workers to spread work across multiple processes. In the output you can see that the Herder started successfully and could connect to the Amazon MSK cluster and read the internal Kafka connect topics.*</p>
 <p>Confirm Kafka Connect REST Interface</p>
-</li>
-<li>
 <p>Kafka Connect supports a REST API for managing connectors. The default port for the service is 8083 and we did not change the port in the <strong>connect-distributed.properties</strong> file. On each of the Kafka Client Instances, the service is available at <a href="http://localhost:8083">http://localhost:8083</a>. Run the following command:</p>
-</li>
-</ul>
 <div class="codehilite"><pre><span></span><code>curl -X GET http://localhost:8083| jq .
 </code></pre></div>
 
-<ul>
-<li>
 <p>You should get an output like the following:
-  <img alt="migrate26" src="../images/mi_3.png" /></p>
-</li>
-<li>
+<img alt="migrate26" src="../images/mi_3.png" /></p>
 <p>Observe the topics currently in the source and destination Amazon MSK clusters. Run the following commands:</p>
-</li>
-</ul>
 <div class="codehilite"><pre><span></span><code>cd /home/ec2-user/kafka
 ./bin/kafka-topics.sh --bootstrap-server=$brokersmsksource --command-config /home/ec2-user/kafka/config/client-config.properties --list
 </code></pre></div>
@@ -1233,9 +1195,7 @@
 <h3 id="configure-and-start-mirrormaker-2-connectors-with-custom-replication-policy"><strong>Configure and start MirrorMaker 2 connectors (with Custom Replication Policy)</strong><a class="headerlink" href="#configure-and-start-mirrormaker-2-connectors-with-custom-replication-policy" title="Permanent link">&para;</a></h3>
 <p>To read more about the connectors and what they do, see the Connectors section in KIP-382. Note: there is not a MM2 Sink Connector/Task available yet as originally described in KIP-382. You may wish to keep on eye on <a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-656%3A+MirrorMaker2+Exactly-once+Semantics">KIP-656</a></p>
 <p>We are going to configure and run all 3 of the MirrorMaker2 Connectors</p>
-<ul>
-<li>Edit the MirrorMaker 2 Kakfa Connect Connectors properties files</li>
-</ul>
+<p>Edit the MirrorMaker 2 Kakfa Connect Connectors properties files</p>
 <div class="codehilite"><pre><span></span><code>cd /tmp/kafka
 sed -i -e &quot;s/\&quot;target.cluster.bootstrap.servers\&quot;: \&quot;\&quot;/\&quot;target.cluster.bootstrap.servers\&quot;: \&quot;$brokersmskdest\&quot;/g&quot; mm2-msc-cust-repl-policy-iam-auth.json
 sed -i -e &quot;s/\&quot;source.cluster.bootstrap.servers\&quot;: \&quot;\&quot;/\&quot;source.cluster.bootstrap.servers\&quot;: \&quot;$brokersmsksource\&quot;/g&quot; mm2-msc-cust-repl-policy-iam-auth.json
@@ -1249,70 +1209,46 @@ sed -i -e &quot;s/\&quot;source.cluster.bootstrap.servers\&quot;: \&quot;\&quot;
 
 <p>We are now ready to start each of these connectors. Feel free to review the 3 .json files we modified in the previous sed commands before continuing.</p>
 <h4 id="start-mirrorsourceconnectorheader"><strong>Start MirrorSourceConnectorHeader</strong><a class="headerlink" href="#start-mirrorsourceconnectorheader" title="Permanent link">&para;</a></h4>
-<ol>
-<li>Create a new <strong>MirrorSourceConnector</strong> connector by submitting a request to the REST interface.</li>
-</ol>
+<p>Create a new <strong>MirrorSourceConnector</strong> connector by submitting a request to the REST interface.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">curl</span><span class="w"> </span><span class="o">-</span><span class="n">X</span><span class="w"> </span><span class="n">PUT</span><span class="w"> </span><span class="o">-</span><span class="n">H</span><span class="w"> </span><span class="ss">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="c1">--data @mm2-msc-cust-repl-policy-iam-auth.json http://localhost:8083/connectors/mm2-msc/config | jq &#39;.&#39;</span>
 </code></pre></div>
 
 <p>The expected output of the command: </p>
 <p><img alt="migrate27" src="../images/mi_4.png" /></p>
-<ol>
-<li>Check the status of the connector.</li>
-</ol>
+<p>Check the status of the connector.</p>
 <div class="codehilite"><pre><span></span><code>curl -s localhost:8083/connectors/mm2-msc/status | jq .
 </code></pre></div>
 
-<ul>
-<li>The expected output of the command is:
-<img alt="migrate28" src="../images/mi_5.png" /></li>
-</ul>
+<p>The expected output of the command is:
+<img alt="migrate28" src="../images/mi_5.png" /></p>
 <p><strong>Note:</strong> Even though the tasks.max configuration is set to 4, 3 tasks are started as there are 3 partitions in the topic.</p>
 <h4 id="mirrorcheckpointconnector"><strong>MirrorCheckpointConnector</strong><a class="headerlink" href="#mirrorcheckpointconnector" title="Permanent link">&para;</a></h4>
-<ol>
-<li>Create a new <strong>MirrorCheckpointConnector</strong> connector by submitting a request to the REST interface.</li>
-</ol>
+<p>Create a new <strong>MirrorCheckpointConnector</strong> connector by submitting a request to the REST interface.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">curl</span><span class="w"> </span><span class="o">-</span><span class="n">X</span><span class="w"> </span><span class="n">PUT</span><span class="w"> </span><span class="o">-</span><span class="n">H</span><span class="w"> </span><span class="ss">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="c1">--data @mm2-cpc-cust-repl-policy-iam-auth-sync.json http://localhost:8083/connectors/mm2-cpc/config  | jq .</span>
 </code></pre></div>
 
-<ul>
-<li>The expected output of the command is:</li>
-</ul>
+<p>The expected output of the command is:</p>
 <p><img alt="migrate29" src="../images/mi_6.png" /></p>
-<ol>
-<li>Check the status of the connector:</li>
-</ol>
+<p>Check the status of the connector:</p>
 <div class="codehilite"><pre><span></span><code>curl -s localhost:8083/connectors/mm2-cpc/status | jq .
 </code></pre></div>
 
-<ul>
-<li>The expected output of the command is: </li>
-</ul>
+<p>The expected output of the command is: </p>
 <p><img alt="migrate30" src="../images/mi_7.png" /></p>
 <h4 id="mirrorheartbeatconnector"><strong>MirrorHeartbeatConnector</strong><a class="headerlink" href="#mirrorheartbeatconnector" title="Permanent link">&para;</a></h4>
-<ol>
-<li>Create a new <strong>MirrorHeartbeatConnector</strong> connector by submitting a request to the REST interface.</li>
-</ol>
+<p>Create a new <strong>MirrorHeartbeatConnector</strong> connector by submitting a request to the REST interface.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">curl</span><span class="w"> </span><span class="o">-</span><span class="n">X</span><span class="w"> </span><span class="n">PUT</span><span class="w"> </span><span class="o">-</span><span class="n">H</span><span class="w"> </span><span class="ss">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="c1">--data @mm2-hbc-iam-auth.json http://localhost:8083/connectors/mm2-hbc/config | jq &#39;.&#39;</span>
 </code></pre></div>
 
-<ul>
-<li>The expected output of the command is:</li>
-</ul>
+<p>The expected output of the command is:</p>
 <p><img alt="migrate31" src="../images/mi_8.png" /></p>
-<ol>
-<li>Check the status of the connector:</li>
-</ol>
+<p>Check the status of the connector:</p>
 <div class="codehilite"><pre><span></span><code>curl -s localhost:8083/connectors/mm2-hbc/status | jq .
 </code></pre></div>
 
-<ul>
-<li>The expected output of the command is:</li>
-</ul>
+<p>The expected output of the command is:</p>
 <p><img alt="migrate32" src="../images/mi_9.png" /></p>
-<ol>
-<li>Observe the topics now in the source and destination Amazon MSK clusters. Run the following commands:</li>
-</ol>
+<p>Observe the topics now in the source and destination Amazon MSK clusters. Run the following commands:</p>
 <div class="codehilite"><pre><span></span><code>cd /home/ec2-user/kafka
 ./bin/kafka-topics.sh --bootstrap-server=$brokersmsksource --command-config /home/ec2-user/kafka/config/client-config.properties --list
 </code></pre></div>

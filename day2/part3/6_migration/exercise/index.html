@@ -666,20 +666,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../7_cleanup/exercise.md" class="md-nav__link">
-        7 - Cleanup
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -1034,17 +1020,19 @@
 <h1 id="client-migration-and-cutover"><strong>Client Migration and Cutover</strong><a class="headerlink" href="#client-migration-and-cutover" title="Permanent link">&para;</a></h1>
 <p>We will perform the following steps in this section: </p>
 <ol>
-<li>Consumer Migration</li>
-<li>Terminate consumer reading from source cluster.</li>
 <li>
-<p>Start consumer reading from destination MSK cluster.</p>
+<p>Consumer Migration</p>
+<ul>
+<li>Terminate consumer reading from source cluster.</li>
+<li>Start consumer reading from destination MSK cluster.</li>
+</ul>
 </li>
 <li>
 <p>Producer Migration</p>
-</li>
+<ul>
 <li>Terminate producer sending to source cluster.</li>
-<li>
-<p>Start producer sending to destination MSK cluster.</p>
+<li>Start producer sending to destination MSK cluster.</li>
+</ul>
 </li>
 <li>
 <p>Stop MM2 and Kafka Connect</p>
@@ -1052,61 +1040,40 @@
 </ol>
 <h2 id="consumer-migration"><strong>Consumer Migration</strong><a class="headerlink" href="#consumer-migration" title="Permanent link">&para;</a></h2>
 <p>Again, we will continue where we last left off and assume you are still connected to KafkaClientInstance1. (The linux prompt should include the instance name.)</p>
-<ol>
-<li>
-<p>Terminate the Consumer</p>
-</li>
-<li>
-<p>We need the <strong>pid</strong> of the Consumer. If you don't remember it, you can issue the following command to obtain the <strong>pid</strong>:</p>
-</li>
-</ol>
+<p>Terminate the Consumer. We need the <strong>pid</strong> of the Consumer. If you don't remember it, you can issue the following command to obtain the <strong>pid</strong>:</p>
 <div class="codehilite"><pre><span></span><code>jps -l | grep Consumer
 </code></pre></div>
 
-<ul>
-<li>And then, stop the Consumer with the following command:</li>
-</ul>
+<p>And then, stop the Consumer with the following command:</p>
 <div class="codehilite"><pre><span></span><code>kill &lt;pid&gt;
 </code></pre></div>
 
-<ol>
-<li>Tail the consumer log file to check if it exited properly and note down the last processed Global Seq no and the last offset. Ctrl-C to exit from the tail command.</li>
-</ol>
+<p>Tail the consumer log file to check if it exited properly and note down the last processed Global Seq no and the last offset. Ctrl-C to exit from the tail command.</p>
 <div class="codehilite"><pre><span></span><code>tail -100 /tmp/consumer.log | grep Global
 tail -100 /tmp/consumer.log | grep &quot;Last Offsets&quot;
 </code></pre></div>
 
-<ol>
-<li>Update Consumer connection configuration to use Destination cluster. </li>
-</ol>
+<p>Update Consumer connection configuration to use Destination cluster. </p>
 <div class="codehilite"><pre><span></span><code>cd /tmp/kafka
 sed -i -e &quot;s/BOOTSTRAP_SERVERS_CONFIG=/BOOTSTRAP_SERVERS_CONFIG=$brokersmskdest/g&quot; consumer.properties_dest
 </code></pre></div>
 
-<ol>
-<li>Backup log and Run the Consumer against the destination Amazon MSK cluster.</li>
-</ol>
+<p>Backup log and Run the Consumer against the destination Amazon MSK cluster.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">cp</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">consumer</span><span class="p">.</span><span class="n">log</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">consumer</span><span class="p">.</span><span class="n">log_src</span><span class="w"></span>
 <span class="n">java</span><span class="w"> </span><span class="n">$EXTRA_ARGS</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">KafkaClickstreamConsumer</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="p">.</span><span class="n">jar</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">ExampleTopic</span><span class="w"> </span><span class="o">-</span><span class="n">pfp</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">kafka</span><span class="o">/</span><span class="n">consumer</span><span class="p">.</span><span class="n">properties_dest</span><span class="w"> </span><span class="o">-</span><span class="n">nt</span><span class="w"> </span><span class="mh">3</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="mh">10800</span><span class="w"> </span><span class="o">-</span><span class="n">src</span><span class="w"> </span><span class="n">msksource</span><span class="w"> </span><span class="o">-</span><span class="n">iam</span><span class="w"> </span><span class="o">-</span><span class="n">gsr</span><span class="w"> </span><span class="o">-</span><span class="n">gsrr</span><span class="w"> </span><span class="n">$region</span><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">consumer</span><span class="p">.</span><span class="n">log</span><span class="w"> </span><span class="mh">2</span><span class="o">&gt;&amp;</span><span class="mh">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
 </code></pre></div>
 
-<ol>
-<li>Check the consumer log to make sure it is consuming messages.</li>
-</ol>
+<p>Check the consumer log to make sure it is consuming messages.</p>
 <div class="codehilite"><pre><span></span><code>tail -f /tmp/consumer.log
 </code></pre></div>
 
-<ol>
-<li>Check to make sure that the consumer started consuming from the last offset synced by the <strong>MirrorCheckpointConnector</strong>.</li>
-</ol>
+<p>Check to make sure that the consumer started consuming from the last offset synced by the <strong>MirrorCheckpointConnector</strong>.</p>
 <div class="codehilite"><pre><span></span><code>grep &#39;Consumer position:&#39; /tmp/consumer.log
 </code></pre></div>
 
-<p><em>At this point the consumer is migrated to the destination Amazon MSK cluster.</em></p>
+<p>At this point the consumer is migrated to the destination Amazon MSK cluster.*</p>
 <h2 id="producer-migration"><strong>Producer Migration</strong><a class="headerlink" href="#producer-migration" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Terminate the Producer</li>
-</ol>
+<p>Terminate the Producer</p>
 <p>Again, we need the <strong>pid</strong> that you had recorded earlier when starting the producer. If you don't remember it, run the following command:</p>
 <div class="codehilite"><pre><span></span><code>jps -l | grep KafkaClickstreamClient
 </code></pre></div>
@@ -1115,50 +1082,36 @@ sed -i -e &quot;s/BOOTSTRAP_SERVERS_CONFIG=/BOOTSTRAP_SERVERS_CONFIG=$brokersmsk
 <div class="codehilite"><pre><span></span><code>kill &lt;pid&gt;
 </code></pre></div>
 
-<ol>
-<li>Tail the producer log file to check if it exited properly. When exiting, the producer records the last <strong>Global Seq No</strong>. Ctrl-C to exit.</li>
-</ol>
+<p>Tail the producer log file to check if it exited properly. When exiting, the producer records the last <strong>Global Seq No</strong>. Ctrl-C to exit.</p>
 <div class="codehilite"><pre><span></span><code>tail -f /tmp/producer.log
 </code></pre></div>
 
-<ol>
-<li>Update Producer configuration</li>
-</ol>
+<p>Update Producer configuration</p>
 <div class="codehilite"><pre><span></span><code><span class="n">sed</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="s2">&quot;s/BOOTSTRAP_SERVERS_CONFIG=/BOOTSTRAP_SERVERS_CONFIG=$brokersmskdest/g&quot;</span><span class="w"> </span><span class="n">producer</span><span class="o">.</span><span class="n">properties_msk_dest</span><span class="w"></span>
 <span class="k">export</span><span class="w"> </span><span class="n">EXTRA_ARGS</span><span class="o">=-</span><span class="n">javaagent</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ec2</span><span class="o">-</span><span class="n">user</span><span class="o">/</span><span class="n">prometheus</span><span class="o">/</span><span class="n">jmx_prometheus_javaagent</span><span class="o">-</span><span class="mf">0.13</span><span class="o">.</span><span class="mf">0.j</span><span class="n">ar</span><span class="o">=</span><span class="mi">3800</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ec2</span><span class="o">-</span><span class="n">user</span><span class="o">/</span><span class="n">prometheus</span><span class="o">/</span><span class="n">kafka</span><span class="o">-</span><span class="n">producer</span><span class="o">-</span><span class="n">consumer</span><span class="o">.</span><span class="n">yml</span><span class="w"></span>
 </code></pre></div>
 
-<ol>
-<li>Now, run the Producer against the destination Amazon MSK cluster</li>
-</ol>
+<p>Now, run the Producer against the destination Amazon MSK cluster</p>
 <div class="codehilite"><pre><span></span><code><span class="n">mv</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">producer</span><span class="p">.</span><span class="n">log</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">producer</span><span class="p">.</span><span class="n">log_src</span><span class="w"></span>
 <span class="n">java</span><span class="w"> </span><span class="n">$EXTRA_ARGS</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">KafkaClickstreamClient</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="p">.</span><span class="n">jar</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">ExampleTopic</span><span class="w"> </span><span class="o">-</span><span class="n">pfp</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">kafka</span><span class="o">/</span><span class="n">producer</span><span class="p">.</span><span class="n">properties_msk_dest</span><span class="w"> </span><span class="o">-</span><span class="n">nt</span><span class="w"> </span><span class="mh">8</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="mh">10800</span><span class="w"> </span><span class="o">-</span><span class="n">nle</span><span class="w"> </span><span class="o">-</span><span class="n">gsr</span><span class="w"> </span><span class="o">-</span><span class="n">iam</span><span class="w"> </span><span class="o">-</span><span class="n">gsrr</span><span class="w"> </span><span class="n">$region</span><span class="w"> </span><span class="o">-</span><span class="n">gar</span><span class="w"> </span><span class="o">-</span><span class="n">gcs</span><span class="w"> </span><span class="n">$schema_compatibility</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">producer</span><span class="p">.</span><span class="n">log</span><span class="w"> </span><span class="mh">2</span><span class="o">&gt;&amp;</span><span class="mh">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
 </code></pre></div>
 
-<ol>
-<li>Tail the producer log file. Ctrl-C to exit.</li>
-</ol>
+<p>Tail the producer log file. Ctrl-C to exit.</p>
 <div class="codehilite"><pre><span></span><code>tail -f /tmp/producer.log
 </code></pre></div>
 
-<ol>
-<li>Run the following command to check if the consumer picked up the new partitions for the newly created ExampleTopic in the destination Amazon MSK cluster.</li>
-</ol>
+<p>Run the following command to check if the consumer picked up the new partitions for the newly created ExampleTopic in the destination Amazon MSK cluster.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">grep</span><span class="w"> </span><span class="s">&quot;Consumer assignment&quot;</span><span class="w"> </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">consumer</span><span class="p">.</span><span class="n">log</span><span class="w"></span>
 </code></pre></div>
 
-<ul>
-<li>Check the consumer.log file to see if the consumer is reading messages from the newly created ExampleTopic in the destination Amazon MSK cluster.</li>
-</ul>
+<p>Check the consumer.log file to see if the consumer is reading messages from the newly created ExampleTopic in the destination Amazon MSK cluster.</p>
 <div class="codehilite"><pre><span></span><code>tail -f /tmp/consumer.log
 </code></pre></div>
 
-<p><em>At this point the producer is migrated to the destination Amazon MSK cluster.</em></p>
+<p>At this point the producer is migrated to the destination Amazon MSK cluster.*</p>
 <h2 id="stop-mirrormaker-2-and-kafka-connect"><strong>Stop MirrorMaker 2 and Kafka Connect</strong><a class="headerlink" href="#stop-mirrormaker-2-and-kafka-connect" title="Permanent link">&para;</a></h2>
 <p>At this point, we have successfully migrated from our Source to Destination cluster, and we can stop Kafka Connect (and this will stop the MirrorMaker 2 connectors).</p>
-<ul>
-<li>Run the following commands:</li>
-</ul>
+<p>Run the following commands:</p>
 <div class="codehilite"><pre><span></span><code><span class="nv">sudo</span> <span class="nv">systemctl</span> <span class="nv">stop</span> <span class="nv">kafka</span><span class="o">-</span><span class="k">connect</span>
 <span class="nv">sudo</span> <span class="nv">systemctl</span> <span class="nv">status</span> <span class="nv">kafka</span><span class="o">-</span><span class="k">connect</span>
 </code></pre></div>
