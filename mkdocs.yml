@@ -22,7 +22,14 @@ nav:
       - 3 - Run Prometheus: 'day1/part2/run_prometheus/exercise.md'
       - 4 - Run Grafana: 'day1/part2/run_grafana/exercise.md'
   - Part 3: 
-    - Kafka Migration Lab - MSK to MSK Serverless
+    - Kafka Migration Lab - MSK to MSK Serverless:
+      - 1 - Introduction: 'day2/part3/1_intro/exercise.md'
+      - 2 - Lab Setup: 'day2/part3/2_labsetup/exercise.md'
+      - 3 - Setup Monitoring: 'day2/part3/3_monitoring/exercise.md'
+      - 4 - Setup Pre-migration Environment: 'day2/part3/4_premigration/exercise.md'
+      - 5 - MirrorMaker 2 on Kafka Connect: 'day2/part3/5_mirrormaker/exercise.md'
+      - 6 - Client Migration and Cutover: 'day2/part3/6_migration/exercise.md'
+      - 7 - Cleanup: 'day2/part3/7_cleanup/exercise.md'
   - Part 4: 
     - Building a Serverless Apache Kafka Data Pipeline:
       - 1 - Introduction: 'day2/part4/1_Intro/exercise.md'
