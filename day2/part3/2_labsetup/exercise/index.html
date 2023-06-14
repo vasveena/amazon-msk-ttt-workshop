@@ -991,18 +991,24 @@
 
 <h1 id="lab-setup"><strong>Lab Setup</strong><a class="headerlink" href="#lab-setup" title="Permanent link">&para;</a></h1>
 <h2 id="setup-ssh-keys-in-cloud9-enviroment"><strong>Setup SSH Keys in Cloud9 Enviroment</strong><a class="headerlink" href="#setup-ssh-keys-in-cloud9-enviroment" title="Permanent link">&para;</a></h2>
-<p>Go to the <a href="https://us-east-1.console.aws.amazon.com/cloud9control/home?region=us-east-1#/">AWS Cloud9 console</a>.</p>
-<p>You will see a Cloud9 environment with the name <strong>msk-xxxxxxxxxx</strong>. Open the Cloud9 IDE.</p>
+<p>Go to your <a href="https://catalog.us-east-1.prod.workshops.aws/join?access-code=8bb7-0416d7-c5">event dashboard</a> and click on <strong>Get EC2 SSH Key</strong> on the bottom left. </p>
+<p><img alt="migrate50" src="../images/setup_4.png" /></p>
+<p>Download the keypair <strong>ws-default-keypair.pem</strong></p>
+<p><img alt="migrate51" src="../images/setup_5.png" /></p>
+<p>Now, go to the <a href="https://us-east-1.console.aws.amazon.com/cloud9control/home?region=us-east-1#/">AWS Cloud9 console</a>.</p>
+<p>You will see a Cloud9 environment with the name <strong>msk-teamXX-Cloud9EC2Bastion</strong>. Open the Cloud9 IDE.</p>
 <p><img alt="migrate3" src="../images/setup_1.png" /></p>
 <p>In the <strong>Getting started</strong> section, click on <strong>Upload files</strong></p>
 <p><img alt="migrate4" src="../images/setup_2.png" /></p>
-<p>Click on <strong>Select files</strong>. Pick the EC2 pem file that you downloaded in Event Engine Team Dashboard. Click <strong>Open</strong>. The file will be copied to the <strong>/home/ec2-user/environment</strong> dir and will also be visible in the left pane.</p>
+<p>Click on <strong>Select files</strong>. Pick the <strong>ws-default-keypair.pem</strong> file from your desktop. Click <strong>Open</strong>. The file will be copied to the <strong>/home/ec2-user/environment</strong> dir and will also be visible in the left pane.</p>
 <p><img alt="migrate5" src="../images/setup_3.png" /></p>
-<p>Go to the <strong>bash</strong> pane at the bottom and type in the following commands to setup the ssh environment so that you can access the Kafka Client EC2 instances. Run the following commands.</p>
+<p>Go to the <strong>bash</strong> pane at the bottom (you can enlarge the section if you want) and type in the following commands to setup the ssh environment so that you can access the Kafka Client EC2 instances. Run the following commands.</p>
 <div class="codehilite"><pre><span></span><code>chmod 600 ws-default-keypair.pem
 eval `ssh-agent`
 ssh-add -k ws-default-keypair.pem
 </code></pre></div>
+
+<p><img alt="migrate52" src="../images/setup_6.png" /></p>
 
               
             </article>

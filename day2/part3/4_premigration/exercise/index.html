@@ -1034,15 +1034,15 @@
 <p>In this section of the lab, we will be simulating a pre-migration environment with an existing Apache Kafka source cluster (in this lab, this will be an AWS MSK cluster, but it doesn't have to be). This source cluster will have one topic (ExampleTopic), one producer producing to this topic, and a consumer reading from this topic. We will setup a sample source cluster used to simulate existing cluster.</p>
 <h3 id="start-a-producer-against-the-source-amazon-msk-cluster"><strong>Start a producer against the source Amazon MSK cluster</strong><a class="headerlink" href="#start-a-producer-against-the-source-amazon-msk-cluster" title="Permanent link">&para;</a></h3>
 <p>In the Cloud9 terminal, lets setup environment variables and connect to KafkaClientInstance1</p>
-<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">MSK_STACK</span><span class="o">=&lt;&lt;</span><span class="n">Stack</span><span class="w"> </span><span class="k">Name</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="c1"># IMPORTANT: If running in EventEngine, set MSK_STACK to your unique Event Engine Stack Name, such as mod-xxxxxxx instead of MSKMM</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">MSK_STACK</span><span class="o">=&lt;&lt;</span><span class="n">Stack</span><span class="w"> </span><span class="k">Name</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="c1"># Looks like msk-team22 for example</span><span class="w"></span>
 <span class="k">export</span><span class="w"> </span><span class="n">ssh_cmd1</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">aws</span><span class="w"> </span><span class="n">cloudformation</span><span class="w"> </span><span class="k">describe</span><span class="o">-</span><span class="n">stacks</span><span class="w"> </span><span class="o">--</span><span class="n">stack</span><span class="o">-</span><span class="k">name</span><span class="w"> </span><span class="n">$MSK_STACK</span><span class="w"> </span><span class="o">--</span><span class="k">query</span><span class="w"> </span><span class="s1">&#39;Stacks[0].Outputs[?OutputKey==`SSHKafkaClientEC2Instance1`].OutputValue&#39;</span><span class="w"> </span><span class="o">--</span><span class="n">output</span><span class="w"> </span><span class="kt">text</span><span class="p">)</span><span class="w"></span>
 <span class="n">$ssh_cmd1</span><span class="w"></span>
 </code></pre></div>
 
 <p>Answer yes to "Are you sure you want to continue connecting (yes/no)" and you should be connected to <strong>KafkaClientInstance1</strong>.</p>
-<p>Go to the /tmp/kafka directory and take a quick look where configuration files and scripts have already been downloaded to this EC2 instance.</p>
+<p>Go to the <strong>/tmp/kafka</strong> directory and take a quick look where configuration files and scripts have already been downloaded to this EC2 instance.</p>
 <div class="codehilite"><pre><span></span><code>cd /tmp/kafka
-ls
+ls -l
 </code></pre></div>
 
 <p>We will be using many of these files in the following steps of this lab. </p>

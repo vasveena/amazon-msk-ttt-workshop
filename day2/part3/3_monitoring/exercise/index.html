@@ -992,17 +992,18 @@
 <h1 id="setup-monitoring"><strong>Setup Monitoring</strong><a class="headerlink" href="#setup-monitoring" title="Permanent link">&para;</a></h1>
 <p>In this section, we will setup Grafana and Prometheus for monitoring MirrorMaker. </p>
 <h2 id="monitoring-mirrormaker-2-on-kafka-connect"><strong>Monitoring MirrorMaker 2 on Kafka Connect</strong><a class="headerlink" href="#monitoring-mirrormaker-2-on-kafka-connect" title="Permanent link">&para;</a></h2>
-<p>Download the monitoring setup script from s3 and make it executable by running the following command on Cloud9 terminal</p>
+<p>Using same bash, download the monitoring setup script from s3 and make it executable by running the following command on Cloud9 terminal</p>
 <div class="codehilite"><pre><span></span><code>aws s3 cp s3://aws-streaming-artifacts/msk-lab-resources/setup-monitoring.sh /home/ec2-user/environment &amp;&amp; chmod +x setup-monitoring.sh
 </code></pre></div>
 
 <p>Example:</p>
 <p><img alt="migrate6" src="../images/moni_1.png" /></p>
 <p>Now, let's run the monitoring setup script</p>
-<p>Get the CloudFormation stack name which looks like <strong>msk-xxxxxxxxxxxxxx</strong>. 
-The IP address is the IP that will be given access to the Grafana and Prometheus dashboard urls. Easy way to get your local desktop IP address is to go to <a href="https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#SecurityGroups:">EC2 Security Groups Console</a>. Open <strong>any</strong> security group in the list and click on <strong>Edit inbound rules</strong>. Click on <strong>Add rule</strong> and under <strong>Source</strong>, select <strong>My IP</strong>. </p>
+<p>Get the CloudFormation stack name which looks like <strong>msk-teamxx</strong>. For example: <strong>msk-team22</strong>.</p>
+<p>The IP address is the IP that will be given access to the Grafana and Prometheus dashboard urls. Easy way to get your local desktop IP address is to go to <a href="https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#SecurityGroups:">EC2 Security Groups Console</a>. Open <strong>any</strong> security group in your account and click on <strong>Edit inbound rules</strong>. Click on <strong>Add rule</strong> and under <strong>Source</strong>, select <strong>My IP</strong>. </p>
 <p><img alt="migrate7" src="../images/moni_2.png" /></p>
-<p>Make a note of your IP address.</p>
+<p>Make a note of your IP address. You can cancel the changes since we are not actually trying to edit the Inbound Rules of any security group. </p>
+<p>Now, run the following command: </p>
 <div class="codehilite"><pre><span></span><code><span class="p">.</span><span class="o">/</span><span class="n">setup</span><span class="o">-</span><span class="n">monitoring</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="o">&lt;</span><span class="n">stackName</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">region</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">IPAddress</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">laptop</span><span class="o">/</span><span class="mh">32</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">filesystem</span><span class="w"> </span><span class="n">location</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">grafana</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">prometheus</span><span class="o">&gt;</span><span class="w"></span>
 </code></pre></div>
 
