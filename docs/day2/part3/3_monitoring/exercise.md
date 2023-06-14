@@ -4,7 +4,7 @@ In this section, we will setup Grafana and Prometheus for monitoring MirrorMaker
 
 ## **Monitoring MirrorMaker 2 on Kafka Connect**
 
-Download the monitoring setup script from s3 and make it executable by running the following command on Cloud9 terminal
+Using same bash, download the monitoring setup script from s3 and make it executable by running the following command on Cloud9 terminal
 
 ```
 aws s3 cp s3://aws-streaming-artifacts/msk-lab-resources/setup-monitoring.sh /home/ec2-user/environment && chmod +x setup-monitoring.sh
@@ -17,12 +17,15 @@ Example:
    
 Now, let's run the monitoring setup script
 
-Get the CloudFormation stack name which looks like **msk-xxxxxxxxxxxxxx**. 
-The IP address is the IP that will be given access to the Grafana and Prometheus dashboard urls. Easy way to get your local desktop IP address is to go to [EC2 Security Groups Console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#SecurityGroups:). Open **any** security group in the list and click on **Edit inbound rules**. Click on **Add rule** and under **Source**, select **My IP**. 
+Get the CloudFormation stack name which looks like **msk-teamxx**. For example: **msk-team22**.
+
+The IP address is the IP that will be given access to the Grafana and Prometheus dashboard urls. Easy way to get your local desktop IP address is to go to [EC2 Security Groups Console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#SecurityGroups:). Open **any** security group in your account and click on **Edit inbound rules**. Click on **Add rule** and under **Source**, select **My IP**. 
 
 ![migrate7](images/moni_2.png)
 
-Make a note of your IP address.
+Make a note of your IP address. You can cancel the changes since we are not actually trying to edit the Inbound Rules of any security group. 
+
+Now, run the following command: 
 
 ```
 ./setup-monitoring.sh <stackName> <region> <IPAddress of laptop/32> <filesystem location to install grafana and prometheus>

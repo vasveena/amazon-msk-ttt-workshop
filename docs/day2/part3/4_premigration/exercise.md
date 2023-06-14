@@ -9,7 +9,7 @@ In this section of the lab, we will be simulating a pre-migration environment wi
 In the Cloud9 terminal, lets setup environment variables and connect to KafkaClientInstance1
 
 ```
-export MSK_STACK=<<Stack Name>> # IMPORTANT: If running in EventEngine, set MSK_STACK to your unique Event Engine Stack Name, such as mod-xxxxxxx instead of MSKMM
+export MSK_STACK=<<Stack Name>> # Looks like msk-team22 for example
 export ssh_cmd1=$(aws cloudformation describe-stacks --stack-name $MSK_STACK --query 'Stacks[0].Outputs[?OutputKey==`SSHKafkaClientEC2Instance1`].OutputValue' --output text)
 $ssh_cmd1
 
@@ -17,11 +17,11 @@ $ssh_cmd1
 
 Answer yes to "Are you sure you want to continue connecting (yes/no)" and you should be connected to **KafkaClientInstance1**.
 
-Go to the /tmp/kafka directory and take a quick look where configuration files and scripts have already been downloaded to this EC2 instance.
+Go to the **/tmp/kafka** directory and take a quick look where configuration files and scripts have already been downloaded to this EC2 instance.
 
 ```
 cd /tmp/kafka
-ls
+ls -l
 
 ```
 
