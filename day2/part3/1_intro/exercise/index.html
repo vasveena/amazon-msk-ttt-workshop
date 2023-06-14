@@ -945,23 +945,14 @@
 
 <h1 id="migrate-to-amazon-msk-serverless"><strong>Migrate to Amazon MSK Serverless</strong><a class="headerlink" href="#migrate-to-amazon-msk-serverless" title="Permanent link">&para;</a></h1>
 <p>In this section, we will be performing a migration from Amazon MSK to Amazon MSK Serverless with the help of <a href="https://docs.aws.amazon.com/whitepapers/latest/amazon-msk-migration-guide/mirrormaker-2.0-mm2.html">MirrorMaker 2</a>. </p>
-<ol>
-<li>
 <p>Go to your <a href="https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks?filteringText=&amp;filteringStatus=active&amp;viewNested=true">CloudFormation console</a>.</p>
-</li>
-<li>
 <p>You should be able to see the following 3 CloudFormation stacks in your account in CREATE_COMPLETE state. If you see these stacks, go to next page. </p>
 <p><img alt="migrate1" src="../images/intro_1.png" /></p>
-</li>
-<li>
-<p>If you do not see the stacks in your assigned account, launch the following <a href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=MSKMM&amp;templateURL=https://aws-streaming-artifacts.s3.amazonaws.com/msk-lab-resources/cfn-templates/MSKServerlessMigrationWithImportsNested.yml">CFN stack</a> in N. Virginia (us-east-1) region. Make sure that the stack name is "msk-<your team ID or unique hash>". For example:
-   <strong>msk-team20</strong>. Provide <strong>ws-default-keypair</strong> as the PEM key and <strong>/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2</strong> as LatestAmiId.</p>
+<p>If you do not see the stacks in your assigned account, launch the following <a href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=MSKMM&amp;templateURL=https://aws-streaming-artifacts.s3.amazonaws.com/msk-lab-resources/cfn-templates/MSKServerlessMigrationWithImportsNested.yml">CFN stack</a> in N. Virginia (us-east-1) region. Make sure that the stack name is "msk-<your team ID or unique hash>". For example: <strong>msk-team20</strong>. Provide <strong>ws-default-keypair</strong> as the PEM key and <strong>/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2</strong> as LatestAmiId.</p>
 <p><img alt="migrate2" src="../images/intro_2.png" /></p>
 <p>Accept the IAM capabilities and launch the stack.</p>
 <p><img alt="migrate40" src="../images/intro_3.png" /></p>
 <p>The stacks take about 25-30 minutes to launch successfully.</p>
-</li>
-</ol>
 
               
             </article>
