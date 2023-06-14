@@ -999,9 +999,9 @@
 <p>Click on <strong>Select files</strong>. Pick the EC2 pem file that you downloaded in Event Engine Team Dashboard. Click <strong>Open</strong>. The file will be copied to the <strong>/home/ec2-user/environment</strong> dir and will also be visible in the left pane.</p>
 <p><img alt="migrate5" src="../images/setup_3.png" /></p>
 <p>Go to the <strong>bash</strong> pane at the bottom and type in the following commands to setup the ssh environment so that you can access the Kafka Client EC2 instances. Run the following commands.</p>
-<div class="codehilite"><pre><span></span><code>    chmod 600 ws-default-keypair.pem
-    eval `ssh-agent`
-    ssh-add -k ws-default-keypair.pem
+<div class="codehilite"><pre><span></span><code>chmod 600 ws-default-keypair.pem
+eval `ssh-agent`
+ssh-add -k ws-default-keypair.pem
 </code></pre></div>
 
               
